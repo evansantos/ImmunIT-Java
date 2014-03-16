@@ -6,15 +6,17 @@
 <h1 class="page-header">Dashboard</h1>
 
 <div class="row placeholders">
-    <div class="col-xs-6 col-sm-3 placeholder">
-        <img src="images/calendar.jpg" class="img-rounded img-responsive" alt="Calendário de vacinação">
+    <div class="col-xs-6 col-sm-3">
+        <img src="images/calendar.jpg" class="img-rounded img-responsive" alt="Calendário de vacinação" style="width: 263px;
+height: 197px;">
         <h4>Calendário de vacinação</h4>
         <!--<span class="text-muted">Something else</span>-->
     </div>
-    <div class="col-xs-6 col-sm-3 placeholder">
-        <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4>Label</h4>
-        <span class="text-muted">Something else</span>
+    <div class="col-xs-6 col-sm-3">
+        <img src="images/caderneta_de_vacinacao.jpg" class="img-rounded img-responsive" alt="Carteira de vacinação" style="width: 263px;
+height: 197px;">
+        <h4>Carteira de vacinação</h4>
+        <!--<span class="text-muted">Something else</span>-->
     </div>
     <div class="col-xs-6 col-sm-3 placeholder">
         <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
