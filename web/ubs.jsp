@@ -12,7 +12,9 @@
             <th>Endereço</th>
             <th>Responsável</th>
             <th style="text-align:right;">
-                <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
+                <a href="ubsform.jsp">
+                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
+                </a>
             </th>
         </tr>
     </thead>
