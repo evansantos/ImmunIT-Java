@@ -7,22 +7,28 @@
 
 <form role="form">
     <div class="form-group">
-        <label for="descricao">
-            Nome
+        <label for="cnes">
+            CNES
         </label>
-        <input type="text" name="descricao" id="descricao" class="form-control">
+        <input type="text" name="cnes" id="cnes" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="nomefantasia">
+            Nome Fantasia
+        </label>
+        <input type="text" name="nomefantasia" id="nomefantasia" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="razaosocial">
+            Razão Social
+        </label>
+        <input type="text" name="razaosocial" id="razaosocial" class="form-control">
     </div>
     <div class="form-group">
         <label for="endereco">
             Endereço
         </label>
         <input type="text" name="endereco" id="endereco" class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="responsavel">
-            Responsável
-        </label>
-        <input type="text" name="responsavel" id="responsavel" class="form-control">
     </div>
     <div class="pull-right">
         <button type="submit" class="btn btn-default">Salvar</button>
