@@ -3,28 +3,50 @@
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
-<h1 class="page-header">UBS</h1>
+<h1 class="page-header">Paciente</h1>
 
 <form role="form">
     <div class="form-group">
-        <label for="cnes">
-            CNES
-        </label>
-        <input type="text" name="cnes" id="cnes" class="form-control">
+        <div class="col-sm-6" style="padding-left: 0px">
+            <label for="cartaosus">
+                Cartão SUS
+            </label>
+            <input type="text" name="cartaosus" id="cartaosus" class="form-control">
+        </div>
+        <div class="col-sm-6" style="padding-right: 0px">
+            <label for="cpf">
+                CPF
+            </label>
+            <input type="text" name="cpf" id="cpf" class="form-control">
+        </div>
     </div>
     <div class="form-group">
-        <label for="nomefantasia">
-            Nome Fantasia
-        </label>
-        <input type="text" name="nomefantasia" id="nomefantasia" class="form-control">
+        <div class="col-sm-3" style="padding-left: 0px">
+            <label for="nome">
+                Nome
+            </label>
+            <input type="text" name="nome" id="nome" class="form-control">
+        </div>
+        <div class="col-sm-3">
+            <label for="sobrenome">
+                Sobrenome
+            </label>
+            <input type="text" name="sobrenome" id="sobrenome" class="form-control">
+        </div>
+        <div class="col-sm-2">
+            <label for="datanascimento">
+                Data Nascimento
+            </label>
+            <input type="text" name="datanascimento" id="datanascimento" class="form-control">
+        </div>
+        <div class="col-sm-4" style="padding-right: 0">
+            <label for="responsavel">
+                Responsavel
+            </label>
+            <input type="text" name="responsavel" id="responsavel" class="form-control">
+        </div>
     </div>
-    <div class="form-group">
-        <label for="razaosocial">
-            Razão Social
-        </label>
-        <input type="text" name="razaosocial" id="razaosocial" class="form-control">
-    </div>
-    
+    <div class="clearfix"></div>
     <div class="form-group" style="padding-bottom: 10px;">
         <div class="col-sm-2" style="padding-left: 0px;">
             <label for="cep">
@@ -52,19 +74,19 @@
         </div>
     </div>
     <div class="form-group" style="padding-bottom: 10px;">
-        <div class="col-sm-5" style="padding-left: 0px;">
+        <div class="col-sm-4" style="padding-left: 0px;">
             <label for="bairro">
                 Bairro
             </label>
             <input type="text" name="bairro" id="bairro" class="form-control">
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
             <label for="cidade">
                 Cidade
             </label>
             <input type="text" name="cidade" id="cidade" class="form-control">
         </div>
-        <div class="col-sm-2" style="padding-right: 0px;">
+        <div class="col-sm-2">
             <label for="uf">
                 Uf
             </label>
@@ -75,6 +97,12 @@
                 <option>4</option>
                 <option>5</option>
             </select>
+        </div>
+        <div class="col-sm-2"  style="padding-right: 0px;">
+            <label for="telefone">
+                Telefone
+            </label>
+            <input type="text"  id="telefone" name="telefone" class="form-control">
         </div>
     </div>
     
