@@ -8,7 +8,7 @@
           </ul>
           <ul class="nav nav-sidebar"><!-- gerencia -->
             <li><a href="vacineControl.jsp">Controle de vacinas</a></li>
-            <li><a href="">Nav item again</a></li>
+            <li><a href="patient.jsp">Paciente</a></li>
             <li><a href="">One more nav</a></li>
             <li><a href="">Another nav item</a></li>
             <li><a href="">More navigation</a></li>
