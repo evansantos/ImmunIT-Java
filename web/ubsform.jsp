@@ -24,14 +24,15 @@
         </label>
         <input type="text" name="razaosocial" id="razaosocial" class="form-control">
     </div>
-    <div class="form-group">
-        <label for="cep">
-            CEP
-        </label>
-        <input type="text" name="cep" id="cep" class="form-control">
-    </div>
+    
     <div class="form-group" style="padding-bottom: 10px;">
-        <div class="col-sm-8" style="padding-left: 0px;">
+        <div class="col-sm-2" style="padding-left: 0px;">
+            <label for="cep">
+                CEP
+            </label>
+            <input type="text" name="cep" id="cep" class="form-control">
+        </div>
+        <div class="col-sm-6">
             <label for="endereco">
                 Endereço
             </label>
