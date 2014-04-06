@@ -3,21 +3,20 @@
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
-<h1 class="page-header">UBS</h1>
+<h1 class="page-header">Paciente</h1>
 
-<table class="table table-striped table-condensed">
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>CPF</th>
+            <th>Cartão SUS</th>
             <th>Nome</th>
             <th>Sobrenome</th>
-            
-            <th>Ramal</th>
-            <th>Função</th>
-            <th>UBS</th>
+            <th>Data de nascimento</th>
+            <th>Responsável</th>
+            <th>Telefone</th>
             <th>Acesso</th>
             <th style="text-align:right;">
-                <a href="userform.jsp">
+                <a href="ubsform.jsp">
                     <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
                 </a>
             </th>
@@ -25,17 +24,15 @@
     </thead>
     <tbody>
         <tr>
-            <td>342.347.091-29</td>
-            <td>João Maria </td>
-            <td>Ferreira</td>
-            
-            <td>R 321</td>
-            <td>Enfeirmeiro</td>
-            <td>Satelite</td>
+            <td>1</td>
+            <td>Sirigueijo</td>
+            <td>Siri Cascudo </td>
+            <td>Fenda do Biquini</td>
+            <td></td>
+            <td></td>
             <td><span class="glyphicon glyphicon-ok"></span></td>
             <td style="text-align:right;">
                 <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-lock"></span>Senha</button>
                     <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
   <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
 </div>
@@ -45,7 +42,7 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="14"></td>
+            <td colspan="8"></td>
         </tr>
     </tfoot>
 </table>
