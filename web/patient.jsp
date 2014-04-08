@@ -16,7 +16,7 @@
             <th>Telefone</th>
             <th>Acesso</th>
             <th style="text-align:right;">
-                <a href="ubsform.jsp">
+                <a href="patientform.jsp">
                     <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
                 </a>
             </th>

@@ -4,7 +4,6 @@
           "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
           "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
 
-
 <struts-config>
     <form-beans>
     
@@ -19,12 +18,58 @@
     </global-forwards>
 
     <action-mappings>
-        <action path="/Welcome" forward="/welcomeStruts.jsp"/>
+        <action path="/login" type="br.immunit.controller.LoginControl">
+            <forward name="success" path="/main.jsp"/>
+            <forward name="fail" path="/login.jsp"/>
+        </action>
+        
+        <!-- CONTROLE DE UBS-->
+            <action path="/enderecoUbs" type="br.immunit.controller.UbsEnderecoControl">
+                <forward name="success" path="/ubsformSuccess.jsp" />
+                <forward name="fail" path="/ubsform.jsp" />
+            </action>
+
+            <action path="/cadastrarUbs" type="br.immunit.controller.UbsCadastraControl">
+                <forward name="success" path="/ubs.jsp" />
+                <forward name="fail" path="/ubsform.jsp" />
+            </action>
+
+            <action path="/pesquisaUbs" type="br.immunit.controller.UbsPesquisaControl">
+                <forward name="success" path="/ubsSuccess.jsp" />
+                <forward name="fail" path="/ubs.jsp" />
+            </action>
+
+            <action path="/editaUbs" type="br.immunit.controller.UbsEditaControl">
+                <forward name="success" path="/ubs.jsp" />
+            </action>
+        <!-- CONTROLE DE UBS-->
+        
+        <!-- CONTROLE DE USUÁRIOS-->
+            <action path="/enderecoUser" type="br.immunit.controller.UserEnderecoControl">
+                <forward name="success" path="/userformSuccess.jsp" />
+                <forward name="fail" path="/userform.jsp" />
+            </action>
+
+            <action path="/cadastrarUser" type="br.immunit.controller.UserCadastraControl">
+                <forward name="success" path="/user.jsp" />
+                <forward name="fail" path="/userform.jsp" />
+            </action>
+
+            <action path="/pesquisaUser" type="br.immunit.controller.UserPesquisaControl">
+                <forward name="success" path="/userSuccess.jsp" />
+                <forward name="fail" path="/user.jsp" />
+            </action>
+
+            <action path="/editaUser" type="br.immunit.controller.UserEditaControl">
+                <forward name="success" path="/user.jsp" />
+            </action>
+        <!-- CONTROLE DE USUÁRIOS-->
+
+        <action path="/Welcome" forward="/login.jsp" />
     </action-mappings>
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
-
-    <message-resources parameter="com/myapp/struts/ApplicationResource"/>    
+    <message-resources parameter="br/immunit/struts/ApplicationResource"/>    
     
     <!-- ========================= Tiles plugin ===============================-->
     <!--

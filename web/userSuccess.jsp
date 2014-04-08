@@ -1,9 +1,26 @@
 <%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<%@page pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
-<h1 class="page-header">UBS</h1>
+<%    
+    String cpf = (String) session.getAttribute("pesquisaUser");    
+    long u_Cpf = Long.parseLong(cpf);
+%>
+
+<jsp:useBean id="lista" class="br.immunit.dao.UserDAO" />
+<c:forEach var="u" items="<%=lista.preencheLista(u_Cpf)%>">
+    
+<h1 class="page-header">Usu·rio</h1>
+
+<form method="post" action="pesquisaUser.do">
+    <div class="form-group">
+        <label>Buscar Usu·rio</label>
+        <input type="text" name="pesquisaUser" id="pesquisaUser">
+        <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+    </div>
+</form>
 
 <table class="table table-striped table-condensed">
     <thead>
@@ -11,11 +28,9 @@
             <th>CPF</th>
             <th>Nome</th>
             <th>Sobrenome</th>
-            
             <th>Ramal</th>
-            <th>Fun√ß√£o</th>
+            <th>FunÁ„o</th>
             <th>UBS</th>
-            <th>Acesso</th>
             <th style="text-align:right;">
                 <a href="userform.jsp">
                     <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
@@ -25,20 +40,20 @@
     </thead>
     <tbody>
         <tr>
-            <td>342.347.091-29</td>
-            <td>Jo√£o Maria </td>
-            <td>Ferreira</td>
-            
-            <td>R 321</td>
-            <td>Enfeirmeiro</td>
-            <td>Satelite</td>
-            <td><span class="glyphicon glyphicon-ok"></span></td>
+            <td>${u.cpf}</td>
+            <td>${u.nome}</td>
+            <td>${u.sobrenome}</td>
+            <td>${u.ramal}</td>
+            <td>${u.funcao}</td>
+            <td>${u.ubs}</td>
             <td style="text-align:right;">
                 <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-lock"></span>Senha</button>
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
-</div>
+                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-lock"></span> Senha</button>
+                    <a href="userformEdit.jsp">                    
+                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
+                    </a>
+                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
+                  </div>
             </td>
         </tr>
         
@@ -49,5 +64,7 @@
         </tr>
     </tfoot>
 </table>
+
+</c:forEach>
 
 <%@include  file="includes/_footer.jsp" %>

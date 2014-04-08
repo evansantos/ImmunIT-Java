@@ -1,128 +1,166 @@
 <%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<%@page pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
-<h1 class="page-header">UBS</h1>
+<%
+    String cpf = (String) session.getAttribute("cpf"); 
+    String rg = (String) session.getAttribute("rg"); 
+    String nome = (String) session.getAttribute("nome");
+    String sobrenome = (String) session.getAttribute("sobrenome");
+    String sexo = (String) session.getAttribute("sexo");
+    String datanascimento = (String) session.getAttribute("datanascimento");
+    String email = (String) session.getAttribute("email");
+    String cep = (String) session.getAttribute("cep");   
+    
+    if(cep != null){
+    }else{
+        cpf = "";
+        rg = "";
+        nome = "";
+        sobrenome = "";
+        sexo = "";
+        datanascimento = "";
+        email = "";
+        cep = ""; 
+    }
+%>
 
-<form role="form">
+<h1 class="page-header">Adicionar Usuário</h1>
+
+<form role="form" method="post" action="enderecoUser.do">
+    
     <div class="form-group">
+        
         <div class="col-sm-6" style="padding-left: 0px;">
-            <label for="cpf">
-                CPF
-            </label>
-            <input type="text" name="cpf" id="cpf" class="form-control">
+            <label for="cpf">CPF</label>
+            <input type="text" name="cpf" id="cpf" class="form-control" value="<%=cpf%>">
         </div>
         <div class="col-sm-6" style="padding-right: 0px;">
-            <label for="rg">
-                RG
-            </label>
-            <input type="text" name="rg" id="rg" class="form-control">
+            <label for="rg">RG </label>
+            <input type="text" name="rg" id="rg" class="form-control" value="<%=rg%>">
         </div>
+        
     </div>
+    
     <div class="clearfix"></div>
+    
     <div class="form-group">
+        
         <div class="col-sm-6" style="padding-left: 0px;">
-            <label for="nome">
-                Nome
-            </label>
-            <input type="text" name="nome" id="nome" class="form-control">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" class="form-control" value="<%=nome%>">
         </div>
         <div class="col-sm-6" style="padding-right: 0px;">
-            <label for="sobrenome">
-                Sobrenome
-            </label>
-            <input type="text" name="sobrenome" id="sobrenome" class="form-control">
+            <label for="sobrenome">Sobrenome</label>
+            <input type="text" name="sobrenome" id="sobrenome" class="form-control" value="<%=sobrenome%>">
         </div>
+        
     </div>
+    
     <div class="clearfix"></div>
+    
     <div class="form-group">
+        
         <div class="col-sm-3" style="padding-left: 0px;">
-            <label>
-                Sexo
-            </label>
+            <label>Sexo </label>
             <div class="clearfix"></div>
-            <div class="radio-inline">
-                <label>
-                    <input type="radio" name="sexo" id="sexo1" value="Feminino" checked>
-                    Feminino
-                </label>
-            </div>
-            <div class="radio-inline">
-                <label>
-                    <input type="radio" name="sexo" id="sexo2" value="Masculino">
-                    Masculino
-                </label>
-            </div>
+            
+            <%
+                if(sexo.equals("F")){
+            %>
+                <div class="radio-inline">
+                    <label><input type="radio" name="sexo" id="sexo1" value="F" checked>Feminino</label>
+                </div>
+                <div class="radio-inline">
+                    <label><input type="radio" name="sexo" id="sexo2" value="M">Masculino</label>
+                </div>
+            <%
+                }else{
+            %>
+                <div class="radio-inline">
+                    <label><input type="radio" name="sexo" id="sexo1" value="F">Feminino</label>
+                </div>
+                <div class="radio-inline">
+                    <label><input type="radio" name="sexo" id="sexo2" value="M" checked>Masculino</label>
+                </div>
+            <%
+                }
+            %>
+
         </div>  
         <div class="col-sm-3">
-            <label for="datanascimento">
-                Data de Nascimento
-            </label>
-            <input type="text" name="datanascimento" id="datanascimento" class="form-control">
+            <label for="datanascimento">Data de Nascimento</label>
+            <input type="text" name="datanascimento" id="datanascimento" class="form-control" value="<%=datanascimento%>">
         </div>
         <div class="col-sm-6" style="padding-right: 0px;"> 
-            <label for="email">
-                E-mail
-            </label>
-            <input type="text" name="email" id="email" class="form-control">
+            <label for="email">E-mail</label>
+            <input type="text" name="email" id="email" class="form-control" value="<%=email%>">
         </div>
     </div>
+    
     <div class="clearfix"></div>
-   <div class="form-group" style="padding-bottom: 10px;">
+   
+    <div class="form-group" style="padding-bottom: 10px;">
+        
         <div class="col-sm-2" style="padding-left: 0px;">
-            <label for="cep">
-                CEP
-            </label>
-            <input type="text" name="cep" id="cep" class="form-control">
+            <label for="cep">CEP</label>
+            <input type="text" name="cep" id="cep" class="form-control" value="<%=cep%>">
+            <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span> Pesquisa</button>
         </div>
+    
+    </div>
+    
+</form>       
+     
+<form method="post" action="cadastrarUser.do">
+
+    <input type="text" name="cpf" id="cpf" value="<%=cpf%>" hidden="">
+    <input type="text" name="rg" id="rg" value="<%=rg%>" hidden="">
+    <input type="text" name="nome" id="nome" value="<%=nome%>" hidden="">
+    <input type="text" name="sobrenome" id="sobrenome" value="<%=sobrenome%>" hidden="">
+    <input type="text" name="sexo" id="sexo" value="<%=sexo%>" hidden="">
+    <input type="text" name="datanascimento" id="datanascimento" value="<%=datanascimento%>" hidden="">
+    <input type="text" name="email" id="email" value="<%=email%>" hidden="">
+    <input type="text" name="cep" id="cep" value="<%=cep%>" hidden="">
+    
+    <div class="form-group" style="padding-bottom: 10px;">       
         <div class="col-sm-6">
-            <label for="endereco">
-                EndereÃ§o
-            </label>
+            <label for="endereco">Endereço</label>
             <input type="text" name="endereco" id="endereco" class="form-control">
         </div>
         <div class="col-sm-2">
-            <label for="numero">
-                NÃºmero
-            </label>
+            <label for="numero">Número</label>
             <input type="text" name="numero" id="numero" class="form-control">
         </div>
         <div class="col-sm-2" style="padding-right: 0px;">
-            <label for="complemento">
-                Complemento
-            </label>
+            <label for="complemento">Complemento</label>
             <input type="text" name="complemento" id="complemento" class="form-control">
         </div>
     </div>
+    
     <div class="form-group" style="padding-bottom: 10px;">
+        
         <div class="col-sm-5" style="padding-left: 0px;">
-            <label for="bairro">
-                Bairro
-            </label>
+            <label for="bairro">Bairro</label>
             <input type="text" name="bairro" id="bairro" class="form-control">
         </div>
         <div class="col-sm-5">
-            <label for="cidade">
-                Cidade
-            </label>
+            <label for="cidade">Cidade</label>
             <input type="text" name="cidade" id="cidade" class="form-control">
-        </div>
+        </div>            
         <div class="col-sm-2" style="padding-right: 0px;">
-            <label for="uf">
-                Uf
-            </label>
-            <select id="uf" name="uf" class="form-control">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
+            <label for="estado">UF</label>
+            <input type="text" name="estado" id="estado" class="form-control">
         </div>
+        
     </div>
+    
     <div class="clearfix"></div>
+    
     <div class="form-group">
+        
         <div class="col-sm-3" style="padding-left: 0;">
             <label for="telefone">Telefone</label>
             <input type="text" name="telefone" id="telefone" class="form-control" />
@@ -131,36 +169,36 @@
             <label for="ramal">ramal</label>
             <input type="text" name="ramal" id="ramal" class="form-control" />
         </div>
+        
         <div class="col-sm-4" style="padding-right: 0px;">
-            <label for="funcao">
-                FunÃ§Ã£o
-            </label>
+            <label for="funcao">Função</label>
             <select id="funcao" name="funcao" class="form-control">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <jsp:useBean id="listaF" class="br.immunit.dao.FuncaoDAO" />
+                <c:forEach var="f" items="<%=listaF.preencheLista()%>">
+                    <option>${f.funcao}</option>
+                </c:forEach>
             </select>
         </div>
+        
         <div class="col-sm-3" style="padding-right: 0px;">
-            <label for="ubs">
-                UBS
-            </label>
+            <label for="ubs">UBS</label>
             <select id="ubs" name="ubs" class="form-control">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <jsp:useBean id="listaU" class="br.immunit.dao.UbsDAO" />
+                <c:forEach var="u" items="<%=listaU.listaUBS()%>">
+                    <option>${u.nomeFantasia}</option>
+                </c:forEach>
             </select>
         </div>
     </div>
 
     <div class="clearfix"></div>
+    
+    <input type="text" name="enderecoExiste" id="enderecoExiste" value="0" hidden="">
+    
     <div class="pull-right">
-        <button type="submit" class="btn btn-default">Salvar</button>
+        <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-save"></span> Salvar</button>
     </div>
+    
 </form>
 
 <%@include  file="includes/_footer.jsp" %>

@@ -30,22 +30,22 @@
                         <div class="col-sm-12 col-md-12 col-lg-12" style="margin-top:10px; text-align: center;">
                             <img src="images/logo.png" />
                         </div>
-                </div>
-                <form class="form-signin" role="form">
+                </div>                
+                <form class="form-signin" role="form" METHOD=POST ACTION="login.do">
                     <h2 class="form-signin-heading">Login:</h2>
                     <div class="row">
                         <div class="col-sm-6 col-md-6 col-lg-6" style="margin-top:10px">
-                            <input type="email" class="form-control " placeholder="Email address" required="" autofocus="">
+                            <input name="login" type="Text" class="form-control " placeholder="Usuário" required="" autofocus="">
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6" style="margin-top:10px">
-                            <input type="password" class="form-control" placeholder="Password" required="">
+                            <input name="senha" type="password" class="form-control" placeholder="Senha" required="">
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-12" style="margin-top:10px">
-                            <button class="btn btn-lg btn-primary btn-block" type="submit">login</button>  
+                            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Acessar">
+                            <!--<button class="btn btn-lg btn-primary btn-block" type="submit" >login</button>-->
                         </div>
                     </div>
                 </form>
-
             </div>
         </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

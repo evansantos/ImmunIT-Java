@@ -3,7 +3,26 @@
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
-<h1 class="page-header">UBS</h1>
+<%
+    session.removeAttribute("cpf");
+    session.removeAttribute("rg");
+    session.removeAttribute("nome");
+    session.removeAttribute("sobrenome");
+    session.removeAttribute("sexo");
+    session.removeAttribute("datanascimento");
+    session.removeAttribute("email");
+    session.removeAttribute("cep");
+%>
+
+<h1 class="page-header">Usuário</h1>
+
+<form method="post" action="pesquisaUser.do">
+    <div class="form-group">
+        <label>Buscar Usuário</label>
+        <input type="text" name="pesquisaUser" id="pesquisaUser">
+        <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+    </div>
+</form>
 
 <table class="table table-striped table-condensed">
     <thead>
@@ -11,7 +30,6 @@
             <th>CPF</th>
             <th>Nome</th>
             <th>Sobrenome</th>
-            
             <th>Ramal</th>
             <th>Função</th>
             <th>UBS</th>
@@ -25,21 +43,14 @@
     </thead>
     <tbody>
         <tr>
-            <td>342.347.091-29</td>
-            <td>João Maria </td>
-            <td>Ferreira</td>
-            
-            <td>R 321</td>
-            <td>Enfeirmeiro</td>
-            <td>Satelite</td>
-            <td><span class="glyphicon glyphicon-ok"></span></td>
-            <td style="text-align:right;">
-                <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-lock"></span>Senha</button>
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
-</div>
-            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="text-align:right;"></td>
         </tr>
         
     </tbody>

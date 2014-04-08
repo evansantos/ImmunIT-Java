@@ -3,8 +3,28 @@
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
+<%
+    session.removeAttribute("cnes");
+    session.removeAttribute("nomeFantasia");
+    session.removeAttribute("razaoSocial");
+    session.removeAttribute("telefone");
+    session.removeAttribute("cep");
+%>
+
 <h1 class="page-header">UBS</h1>
 
+<form method="post" action="pesquisaUbs.do">
+    <div class="form-group">
+        <div class="col-sm-2" style="padding-left: 0;">
+            <label>Buscar UBS</label>
+            <input type="text" name="pesquisaUBS" id="pesquisaUBS" class="form-control" style="">
+        </div>
+        <div class="col-sm-2" style="padding-top: 25px; padding-left: 0">
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+        </div>
+    </div>
+</form>
+    
 <table class="table table-striped">
     <thead>
         <tr>
@@ -22,82 +42,12 @@
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
-            <td>Sirigueijo</td>
-            <td>Siri Cascudo </td>
-            <td>Fenda do Biquini</td>
-            <td><span class="glyphicon glyphicon-ok"></span></td>
-            <td style="text-align:right;">
-                <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
-</div>
-            </td>
-        </tr>
-       <tr>
-            <td>1</td>
-            <td>Sirigueijo</td>
-            <td>Siri Cascudo </td>
-            <td>Fenda do Biquini</td>
-            <td><span class="glyphicon glyphicon-ok"></span></td>
-            <td style="text-align:right;">
-                <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
-</div>
-            </td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Sirigueijo</td>
-            <td>Siri Cascudo </td>
-            <td>Fenda do Biquini</td>
-            <td><span class="glyphicon glyphicon-ok"></span></td>
-            <td style="text-align:right;">
-                <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
-</div>
-            </td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Sirigueijo</td>
-            <td>Siri Cascudo </td>
-            <td>Fenda do Biquini</td>
-            <td><span class="glyphicon glyphicon-ok"></span></td>
-            <td style="text-align:right;">
-                <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
-</div>
-            </td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Sirigueijo</td>
-            <td>Siri Cascudo </td>
-            <td>Fenda do Biquini</td>
-            <td><span class="glyphicon glyphicon-ok"></span></td>
-            <td style="text-align:right;">
-                <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
-</div>
-            </td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Sirigueijo</td>
-            <td>Siri Cascudo </td>
-            <td>Fenda do Biquini</td>
-            <td><span class="glyphicon glyphicon-ok"></span></td>
-            <td style="text-align:right;">
-                <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
-</div>
-            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="text-align:right;"></td>
         </tr>
     </tbody>
     <tfoot>
