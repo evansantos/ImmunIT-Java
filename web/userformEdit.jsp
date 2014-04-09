@@ -14,7 +14,7 @@
 
     <h1 class="page-header">Editar Usuário</h1>
 
-    <form role="form" method="post" action="editaUser.do">
+    <form role="form" method="post" action="enderecoUser.do">
 
         <div class="form-group">
 
@@ -69,8 +69,10 @@
                     </div>
                 </c:if>
             </div>
+        </div>   
                 
-            </div>  
+        <div class="form-group">
+        
             <div class="col-sm-3">
                 <label for="datanascimento">Data de Nascimento</label>                
                 <input type="text" name="datanascimento" id="datanascimento" class="form-control" value="${u.dataNascimento}" readonly="">
@@ -82,7 +84,7 @@
         </div>
 
         <div class="clearfix"></div>
-
+        
         <div class="form-group" style="padding-bottom: 10px;">
 
             <div class="col-sm-2" style="padding-left: 0px;">
@@ -92,7 +94,15 @@
             </div>
 
         </div>
+                
+    </form>     
+                
+    <form role="form" method="post" action="editaUser.do">                
 
+        <input type="hidden" name="cpf" id="cpf" class="form-control" value="${u.cpf}">
+        <input type="hidden" name="email" id="email" class="form-control" value="${u.email}">
+        <input type="hidden" name="cep" id="cep" class="form-control" value="${u.cep}">
+        
         <div class="form-group" style="padding-bottom: 10px;">       
             <div class="col-sm-6">
                 <label for="endereco">Endereço</label>
