@@ -16,9 +16,13 @@
 
 <form method="post" action="pesquisaUser.do">
     <div class="form-group">
-        <label>Buscar Usuário</label>
-        <input type="text" name="pesquisaUser" id="pesquisaUser">
-        <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+        <div class="col-sm-3" style="padding-left: 0;">
+            <label>Buscar Usuário</label>
+            <input type="text" name="pesquisaUser" id="pesquisaUser" class="form-control">
+        </div>
+        <div class="col-sm-2" style="padding-top: 25px; padding-left: 0">
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+        </div>
     </div>
 </form>
 
@@ -50,10 +54,10 @@
                 <div class="btn-group btn-group-sm">
                     <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-lock"></span> Senha</button>
                     <a href="userformEdit.jsp">                    
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
+                        <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
                     </a>
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
-                  </div>
+                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
+                </div>
             </td>
         </tr>
         

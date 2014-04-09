@@ -14,7 +14,7 @@
             <th>Validade</th>
             <th>Quantidade</th>
             <th style="text-align:right;">
-                <a href="vacineform.jsp">
+                <a href="vacineControlForm.jsp">
                     <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
                 </a>
             </th>

@@ -4,42 +4,37 @@
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
 <%
-    session.removeAttribute("cpf");
-    session.removeAttribute("rg");
-    session.removeAttribute("nome");
-    session.removeAttribute("sobrenome");
-    session.removeAttribute("sexo");
-    session.removeAttribute("datanascimento");
-    session.removeAttribute("email");
+    session.removeAttribute("cnes");
+    session.removeAttribute("nomeFantasia");
+    session.removeAttribute("razaoSocial");
+    session.removeAttribute("telefone");
     session.removeAttribute("cep");
 %>
 
-<h1 class="page-header">Usuário</h1>
+<h1 class="page-header">UBS</h1>
 
-<form method="post" action="pesquisaUser.do">
+<form method="post" action="pesquisaUbs.do">
     <div class="form-group">
-        <div class="col-sm-3" style="padding-left: 0;">
-            <label>Buscar Usuário</label>
-            <input type="text" name="pesquisaUser" id="pesquisaUser" class="form-control">
+        <div class="col-sm-2" style="padding-left: 0;">
+            <label>Buscar UBS</label>
+            <input type="text" name="pesquisaUBS" id="pesquisaUBS" class="form-control" style="">
         </div>
         <div class="col-sm-2" style="padding-top: 25px; padding-left: 0">
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
         </div>
     </div>
 </form>
-
-<table class="table table-striped table-condensed">
+    
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>CPF</th>
-            <th>Nome</th>
-            <th>Sobrenome</th>
-            <th>Ramal</th>
-            <th>Função</th>
-            <th>UBS</th>
-            <th>Acesso</th>
+            <th>CNES</th>
+            <th>Nome Fantasia</th>
+            <th>Razão Social</th>
+            <th>Endereço</th>
+            <th>Status</th>
             <th style="text-align:right;">
-                <a href="userform.jsp">
+                <a href="ubsform.jsp">
                     <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
                 </a>
             </th>
@@ -52,15 +47,12 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
-            <td></td>
             <td style="text-align:right;"></td>
         </tr>
-        
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="14"></td>
+            <td colspan="6"></td>
         </tr>
     </tfoot>
 </table>
