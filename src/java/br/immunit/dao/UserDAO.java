@@ -1,6 +1,5 @@
 package br.immunit.dao;
 
-import br.immunit.model.UbsModel;
 import br.immunit.model.UserModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -115,18 +114,38 @@ public class UserDAO extends DAO{
         return lista;
     }
     
-    public void atualizaUser() throws SQLException{        
+    public void atualizaUser(long cpf, String email, String cep, String endereco, int numero, 
+                             String complemento, String bairro, String cidade, String estado, 
+                             String telefone, int ramal, String funcao, String ubs) throws SQLException{        
         
         start();
         Statement stmt = conn.createStatement();
         
-        UserModel user = new UserModel();
-        UbsModel ubs = new UbsModel();
+        int codFuncao;
+        int codCnes;
         
-        String sql = "UPDATE user SET ubs_telefone = '" + ubs.getTelefone() + "', ubs_ativo = " + ubs.isAtivo() + " "
-                   + "WHERE ubs_cnes = " + ubs.getCnes()+ ""; 
+        UbsDAO u = new UbsDAO();
+        codCnes = u.buscaUBS(ubs);
         
-        stmt.execute(sql);
+        FuncaoDAO f = new FuncaoDAO();
+        codFuncao = f.buscaFuncao(funcao);
+        
+        String sqlUser = "UPDATE usuario SET usu_email = '" + email + "', end_Cep = '" + cep + "', "
+                   + "usu_NumeroRes = " + numero + ", usu_Complemento = '" + complemento + "', "
+                   + "usu_Telefone = '" + telefone + "', usu_Ramal = " + ramal + ", "
+                   + "fun_CodFuncao = " + codFuncao + ", ubs_Cnes = " + codCnes + " "
+                   + "WHERE usu_Cpf =" + cpf  +"";
+   
+        stmt.execute(sqlUser);
+        
+        //Se não existir o CEP é necessário cadastrar, caso exista ele atualiza no UPDATE acima
+        /*String sqlEndereco = "UPDATE endereco SET end_Endereco = '" + endereco + "', end_Bairro = '" + bairro + "', "
+                   + "end_Cidade = '" + cidade + "', end_Estado = '" + estado + "' "
+                   + "WHERE end_Cep = '" + cep + "'";
+   
+        stmt.execute(sqlEndereco);*/
+        
+        
         stop();
         
     }

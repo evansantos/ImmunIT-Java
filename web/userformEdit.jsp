@@ -2,7 +2,7 @@
 <%@page pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
-<%@include file="includes/_header.jsp" %>  Incluir sempre header 
+<%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
 <%    
     String cpf = (String) session.getAttribute("pesquisaUser");    
@@ -10,11 +10,11 @@
 %>
 
 <jsp:useBean id="lista" class="br.immunit.dao.UserDAO" />
-<c:forEach var="u" items="<%=lista.preencheLista(u_Cpf)%>">-
+<c:forEach var="u" items="<%=lista.preencheLista(u_Cpf)%>">
 
     <h1 class="page-header">Editar Usuário</h1>
 
-    <form role="form" method="post" action="editaUser.do">
+    <form role="form" method="post" action="enderecoUser.do">
 
         <div class="form-group">
 
@@ -31,7 +31,7 @@
 
         <div class="clearfix"></div>
 
-        <div class="form-group" style="padding-top: 10px;">
+        <div class="form-group">
 
             <div class="col-sm-6" style="padding-left: 0px;">
                 <label for="nome">Nome</label>
@@ -46,7 +46,7 @@
 
         <div class="clearfix"></div>
 
-        <div class="form-group" style="padding-top: 10px;">
+        <div class="form-group">
 
             <div class="col-sm-3" style="padding-left: 0px;">
                 <label>Sexo </label>
@@ -69,7 +69,10 @@
                     </div>
                 </c:if>
             </div>
+        </div>   
                 
+        <div class="form-group">
+        
             <div class="col-sm-3">
                 <label for="datanascimento">Data de Nascimento</label>                
                 <input type="text" name="datanascimento" id="datanascimento" class="form-control" value="${u.dataNascimento}" readonly="">
@@ -81,18 +84,27 @@
         </div>
 
         <div class="clearfix"></div>
-
-        <div class="form-group" style="padding-top: 10px;">
+        
+        <div class="form-group" style="padding-bottom: 10px;">
 
             <div class="col-sm-2" style="padding-left: 0px;">
                 <label for="cep">CEP</label>
                 <input type="text" name="cep" id="cep" class="form-control" value="${u.cep}">
-             </div>
-            <div class="col-sm-1" style="padding-top: 25px; padding-left: 0; padding-right: 0; width: 11%; ">
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Pesquisa</button>
+                <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span> Pesquisa</button>
             </div>
 
-            <div class="col-sm-5">
+        </div>
+                
+    </form>     
+                
+    <form role="form" method="post" action="editaUser.do">                
+
+        <input type="hidden" name="cpf" id="cpf" class="form-control" value="${u.cpf}">
+        <input type="hidden" name="email" id="email" class="form-control" value="${u.email}">
+        <input type="hidden" name="cep" id="cep" class="form-control" value="${u.cep}">
+        
+        <div class="form-group" style="padding-bottom: 10px;">       
+            <div class="col-sm-6">
                 <label for="endereco">Endereço</label>
                 <input type="text" name="endereco" id="endereco" class="form-control" value="${u.endereco}">
             </div>
@@ -100,14 +112,13 @@
                 <label for="numero">Número</label>
                 <input type="text" name="numero" id="numero" class="form-control" value="${u.numero}">
             </div>
-            <div class="col-sm-2"" style="padding-right: 0; padding-left: 0; width: 14%;">
+            <div class="col-sm-2" style="padding-right: 0px;">
                 <label for="complemento">Complemento</label>
                 <input type="text" name="complemento" id="complemento" class="form-control" value="${u.complemento}">
             </div>
         </div>
 
-        <div class="clearfix"></div>
-        <div class="form-group"  style="padding-top: 10px">
+        <div class="form-group" style="padding-bottom: 10px;">
 
             <div class="col-sm-5" style="padding-left: 0px;">
                 <label for="bairro">Bairro</label>
@@ -126,7 +137,7 @@
 
         <div class="clearfix"></div>
 
-        <div class="form-group" style="padding-top: 10px">
+        <div class="form-group">
 
             <div class="col-sm-3" style="padding-left: 0;">
                 <label for="telefone">Telefone</label>
@@ -160,14 +171,13 @@
         <div class="clearfix"></div>
 
         <input type="text" name="enderecoExiste" id="enderecoExiste" value="1" hidden="">
-        <div class="form-group" style="padding-top: 10px">
-            <div class="pull-right">
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Alterar</button>
-            </div>
+
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-save"></span> Alterar</button>
         </div>
 
     </form>
         
 </c:forEach>
-
+        
 <%@include  file="includes/_footer.jsp" %>

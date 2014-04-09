@@ -23,7 +23,7 @@
 
         <div class="form-group">
             <label for="nomefantasia">Nome Fantasia</label>
-            <input type="text" name="nomefantasia" id="nomefantasia" class="form-control" value="${u.nomeFantasia}">
+            <input type="text" name="nomefantasia" id="nomefantasia" class="form-control" value="${u.nomeFantasia}" readonly="">
         </div>
 
         <div class="form-group">

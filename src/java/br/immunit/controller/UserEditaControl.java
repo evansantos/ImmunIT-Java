@@ -20,19 +20,19 @@ public class UserEditaControl extends org.apache.struts.action.Action{
             String email = request.getParameter("email");
             String cep = request.getParameter("cep");
             String endereco = request.getParameter("endereco");
-            String numero = request.getParameter("numero");
+            int numero = Integer.parseInt(request.getParameter("numero"));
             String complemento = request.getParameter("complemento");
             String bairro = request.getParameter("bairro");
             String cidade = request.getParameter("cidade");
             String estado = request.getParameter("estado");
             String telefone = request.getParameter("telefone");
-            String ramal = request.getParameter("ramal");
+            int ramal = Integer.parseInt(request.getParameter("ramal"));
             String funcao = request.getParameter("funcao");
             String ubs = request.getParameter("ubs");
             
             UserDAO u = new UserDAO();
-            /*u.atualizaUser(cpf, email, cep, endereco, numero, complemento,bairro,
-            cidade);*/
+            u.atualizaUser(cpf, email, cep, endereco, numero, complemento,bairro, 
+                           cidade, estado, telefone, ramal, funcao, ubs);
             return mapping.findForward(SUCCESS);
     }
 }
