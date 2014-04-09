@@ -102,9 +102,7 @@
             <div class="col-sm-1" style="padding-top: 25px; padding-left: 0; padding-right: 0; width: 11%; ">
                 <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span> Pesquisa</button>
             </div>
-
-
-
+            
     </form>       
 
     <form method="post" action="cadastrarUser.do">

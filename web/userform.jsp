@@ -2,7 +2,7 @@
 <%@page pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
-<%@include file="includes/_header.jsp" %>  Incluir sempre header 
+<%@include file="includes/_header.jsp" %>  <!--Incluir sempre header--> 
 
 <%
     String cpf = (String) session.getAttribute("cpf"); 
