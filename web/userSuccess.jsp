@@ -53,9 +53,7 @@
             <td style="text-align:right;">
                 <div class="btn-group btn-group-sm">
                     <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-lock"></span> Senha</button>
-                    <a href="userformEdit.jsp">                    
-                        <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-                    </a>
+                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span><a href="userformEdit.jsp"> Editar</a></button>
                     <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
                 </div>
             </td>

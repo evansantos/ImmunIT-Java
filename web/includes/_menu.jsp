@@ -15,6 +15,9 @@
           <ul class="nav navbar-nav navbar-right">
             
             <li><a href="#">login</a></li>
+            
+            <li><a href="../userPassword.jsp">Senha</a></li>
+            <li><a href="#">Log off</a></li>
           </ul>
         </div>
       </div>

@@ -3,7 +3,11 @@
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
-<h1 class="page-header">Dashboard</h1>
+<h3 class="page-header">Bem vindo ao <strong>Immun<span style="color:#ff0000;">IT</span></strong><br/>
+    Sua carteirinha de vacina digital.</h1>
+
+
+<%--<h1 class="page-header">Dashboard</h1>
 
 <div class="row">
     <div class="col-xs-6 col-sm-6" style="text-align: center">
@@ -17,7 +21,7 @@
         <!--<span class="text-muted">Something else</span>-->
     </div>
    
-</div>
+</div>--%>
 
 
 <%@include file="includes/_footer.jsp" %> <%-- Incluir sempre footer --%>

@@ -16,7 +16,7 @@
 %>
 
 <jsp:useBean id="lista" class="br.immunit.dao.EnderecoDAO" />
-<c:forEach var="e" items="<%=lista.preencheLista(cep)%>">
+<c:forEach var="e" items="<%=lista.preencheLista(cep)%>"> 
 
     <h1 class="page-header">Adicionar Usuário</h1>
 
@@ -100,7 +100,7 @@
                 <input type="text" name="cep" id="cep" class="form-control" value="<%=cep%>">
             </div>
             <div class="col-sm-1" style="padding-top: 25px; padding-left: 0; padding-right: 0; width: 11%; ">
-                <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span> Pesquisa</button>
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Pesquisa</button>
             </div>
             
     </form>       
@@ -165,7 +165,7 @@
                     <jsp:useBean id="listaF" class="br.immunit.dao.FuncaoDAO" />
                     <c:forEach var="f" items="<%=listaF.preencheLista()%>">
                         <option>${f.funcao}</option>
-                    </c:forEach>
+                    </c:forEach> 
                 </select>
             </div>
             <div class="col-sm-3" style="padding-right: 0px;">
@@ -174,7 +174,7 @@
                     <jsp:useBean id="listaU" class="br.immunit.dao.UbsDAO" />
                     <c:forEach var="u" items="<%=listaU.listaUBS()%>">
                         <option>${u.nomeFantasia}</option>
-                    </c:forEach>
+                    </c:forEach> 
                 </select>
             </div>
                     
