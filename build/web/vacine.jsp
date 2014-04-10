@@ -1,9 +1,26 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
-<h1 class="page-header">UBS</h1>
+<%
+    session.removeAttribute("nome");
+%>
+
+<h1 class="page-header">Vacinas</h1>
+
+<form method="post" action="">
+    <div class="form-group">
+        <div class="col-sm-3" style="padding-left: 0;">
+            <label>Buscar Vacinas</label>
+            <input type="text" name="pesquisaUser" id="pesquisaUser" class="form-control">
+        </div>
+        <div class="col-sm-2" style="padding-top: 25px; padding-left: 0">
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+        </div>
+    </div>
+</form>
 
 <table class="table table-striped table-condensed">
     <thead>
@@ -18,17 +35,18 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>A101 </td>
-            <td>Paracetamol</td>
-            <td style="text-align:right;">
-                <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
-</div>
-            </td>
-        </tr>
-        
+         <jsp:useBean id="lista" class="br.immunit.dao.VacinaDAO" />
+         <c:forEach var="v" items="<%=lista.preencheLista()%>">
+            <tr>
+                <td>${v.codigo}</td>
+                <td>${v.nome}</td>
+                <td style="text-align:right;">
+                    <!--<div class="btn-group btn-group-sm">
+                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
+                    </div>-->
+                </td>
+            </tr>
+        </c:forEach>
     </tbody>
     <tfoot>
         <tr>

@@ -14,7 +14,7 @@
 
     <h1 class="page-header">Editar Usuário</h1>
 
-    <form role="form" method="post" action="enderecoUser.do">
+    <form role="form" method="post" action="enderecoUserEdit.do">
 
         <div class="form-group">
 
@@ -54,18 +54,18 @@
 
                 <c:if test="${u.sexo.equals('F')}">
                     <div class="radio-inline" readonly="">
-                        <label><input type="radio" name="sexo" id="sexo1" value="F" readonly="" checked>Feminino</label>
+                        <label><input type="radio" name="sexo" id="sexo1" value="F" disabled="" checked>Feminino</label>
                     </div>
                     <div class="radio-inline" readonly=""> 
-                        <label><input type="radio" name="sexo" id="sexo2" value="M" readonly="">Masculino</label>
+                        <label><input type="radio" name="sexo" id="sexo2" value="M" disabled="">Masculino</label>
                     </div>
                 </c:if>
                 <c:if test="${u.sexo.equals('M')}">
                     <div class="radio-inline" readonly="">
-                        <label><input type="radio" name="sexo" id="sexo1" value="F" readonly="">Feminino</label>
+                        <label><input type="radio" name="sexo" id="sexo1" value="F" disabled="">Feminino</label>
                     </div>
                     <div class="radio-inline" readonly="">
-                        <label><input type="radio" name="sexo" id="sexo2" value="M" readonly="" checked>Masculino</label>
+                        <label><input type="radio" name="sexo" id="sexo2" value="M" disabled="" checked>Masculino</label>
                     </div>
                 </c:if>
             </div>
@@ -90,8 +90,8 @@
             </div>
             <div class="col-sm-1" style="padding-top: 25px; padding-left: 0; padding-right: 0; width: 11%; ">
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Pesquisa</button>
-        </div>
-                
+            </div>
+                    
     </form>     
                 
     <form role="form" method="post" action="editaUser.do">                

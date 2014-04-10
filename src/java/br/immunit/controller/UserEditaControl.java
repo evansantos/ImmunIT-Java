@@ -9,6 +9,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 public class UserEditaControl extends org.apache.struts.action.Action{
+    
     private static final String SUCCESS = "success";
     
     @Override
@@ -29,10 +30,18 @@ public class UserEditaControl extends org.apache.struts.action.Action{
             int ramal = Integer.parseInt(request.getParameter("ramal"));
             String funcao = request.getParameter("funcao");
             String ubs = request.getParameter("ubs");
+            String enderecoExiste = request.getParameter("enderecoExiste");
+            
+            boolean e_Cadastrado;
+            if(enderecoExiste.equals("1")){
+                e_Cadastrado = true;
+            }else{
+                e_Cadastrado = false;
+            }
             
             UserDAO u = new UserDAO();
             u.atualizaUser(cpf, email, cep, endereco, numero, complemento,bairro, 
-                           cidade, estado, telefone, ramal, funcao, ubs);
+                           cidade, estado, telefone, ramal, funcao, ubs, e_Cadastrado);
             return mapping.findForward(SUCCESS);
     }
 }

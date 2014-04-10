@@ -183,8 +183,8 @@
         <div class="clearfix"></div>
 
         <input type="text" name="enderecoExiste" id="enderecoExiste" value="1" hidden="">
+        
         <div class="form-group"  style="padding-top: 10px;">
-            
             <div class="pull-right">
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Salvar</button>
             </div>

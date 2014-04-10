@@ -3,7 +3,7 @@
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
-<h1 class="page-header">Paciente</h1>
+<h1 class="page-header">Adicionar paciente</h1>
 
 <form role="form">
     <div class="form-group">

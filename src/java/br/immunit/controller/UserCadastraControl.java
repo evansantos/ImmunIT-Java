@@ -11,6 +11,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 public class UserCadastraControl extends org.apache.struts.action.Action {
+    
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
     
@@ -46,7 +47,10 @@ public class UserCadastraControl extends org.apache.struts.action.Action {
             return mapping.findForward(FAIL);
         }else{
             
-            long u_Cpf = Long.parseLong(cpf);
+            String cpf1 = cpf.replace(".", "");
+            String cpf2 = cpf1.replace("-", "");
+            
+            long u_Cpf = Long.parseLong(cpf2);
             int u_Numero = Integer.parseInt(numero);
             int u_Ramal = Integer.parseInt(ramal);
             

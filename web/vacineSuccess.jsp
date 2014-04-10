@@ -3,7 +3,19 @@
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
-<h1 class="page-header">UBS</h1>
+<h1 class="page-header">Vacinas</h1>
+
+<form method="post" action="pesquisaUser.do">
+    <div class="form-group">
+        <div class="col-sm-3" style="padding-left: 0;">
+            <label>Buscar Vacinas</label>
+            <input type="text" name="pesquisaUser" id="pesquisaUser" class="form-control">
+        </div>
+        <div class="col-sm-2" style="padding-top: 25px; padding-left: 0">
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+        </div>
+    </div>
+</form>
 
 <table class="table table-striped table-condensed">
     <thead>
@@ -19,13 +31,12 @@
     </thead>
     <tbody>
         <tr>
-            <td>A101 </td>
-            <td>Paracetamol</td>
+            <td></td>
+            <td></td>
             <td style="text-align:right;">
                 <div class="btn-group btn-group-sm">
                     <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
-</div>
+                </div>
             </td>
         </tr>
         

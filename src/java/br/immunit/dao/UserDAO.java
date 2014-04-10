@@ -24,6 +24,9 @@ public class UserDAO extends DAO{
         
         dataNascimento = ano + "-" + mes + "-" + dia;
         
+        String log = String.valueOf(cpf).toString();
+        login = log.substring(0, 6);
+        
         String sql = "INSERT INTO usuario (usu_Cpf, usu_Nome, usu_Sobrenome, usu_Sexo, usu_DataNascimento, "
                 + "usu_Rg, usu_Email, end_Cep, usu_numeroRes, usu_Complemento, usu_Telefone, "
                 + "usu_Ramal, fun_CodFuncao, ubs_Cnes, log_Login) VALUES "
@@ -33,6 +36,9 @@ public class UserDAO extends DAO{
 
         stmt.execute(sql);
         stop();
+
+        LoginDAO l = new LoginDAO();
+        l.cadastraLogin(login);
         
         if(cadastrarEndereco != true){
             EnderecoDAO e = new EnderecoDAO();
@@ -106,6 +112,7 @@ public class UserDAO extends DAO{
             user.setBairro(rs.getString("endereco.end_Bairro"));
             user.setCidade(rs.getString("endereco.end_Cidade"));
             user.setEstado(rs.getString("endereco.end_Estado"));
+            user.setLogin(rs.getString("usuario.log_Login"));
             lista.add(user);
         }
         
@@ -116,7 +123,8 @@ public class UserDAO extends DAO{
     
     public void atualizaUser(long cpf, String email, String cep, String endereco, int numero, 
                              String complemento, String bairro, String cidade, String estado, 
-                             String telefone, int ramal, String funcao, String ubs) throws SQLException{        
+                             String telefone, int ramal, String funcao, String ubs, boolean cadastrarEndereco) 
+            throws SQLException{        
         
         start();
         Statement stmt = conn.createStatement();
@@ -138,16 +146,33 @@ public class UserDAO extends DAO{
    
         stmt.execute(sqlUser);
         
-        //Se não existir o CEP é necessário cadastrar, caso exista ele atualiza no UPDATE acima
-        /*String sqlEndereco = "UPDATE endereco SET end_Endereco = '" + endereco + "', end_Bairro = '" + bairro + "', "
-                   + "end_Cidade = '" + cidade + "', end_Estado = '" + estado + "' "
-                   + "WHERE end_Cep = '" + cep + "'";
-   
-        stmt.execute(sqlEndereco);*/
-        
-        
         stop();
         
+        if(cadastrarEndereco != true){
+            EnderecoDAO e = new EnderecoDAO();
+            e.cadastraEndereco(cep, endereco, bairro, cidade, estado);
+        }        
+    }
+    
+    public void excluiUser(long cpf) throws SQLException{        
+        
+        start();
+        Statement stmt = conn.createStatement();
+        
+        String sqlSELECT = "SELECT * FROM usuario WHERE usu_Cpf = " + cpf + "";
+        ResultSet rs = stmt.executeQuery(sqlSELECT);
+        rs.next();
+        
+        String login = rs.getString("log_Login");
+        
+        String sqlDelUser = "DELETE FROM usuario WHERE usu_Cpf = " + cpf  + "";
+        stmt.execute(sqlDelUser);
+        
+        String sqlDelLogin = "DELETE FROM login WHERE log_Login = '" + login  + "'";
+        stmt.execute(sqlDelLogin);
+        
+        stop();
+       
     }
     
 }

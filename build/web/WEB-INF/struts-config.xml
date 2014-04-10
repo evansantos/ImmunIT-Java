@@ -18,10 +18,18 @@
     </global-forwards>
 
     <action-mappings>
-        <action path="/login" type="br.immunit.controller.LoginControl">
-            <forward name="success" path="/main.jsp"/>
-            <forward name="fail" path="/login.jsp"/>
-        </action>
+        
+        <!-- CONTROLE DE LOGINS-->
+            <action path="/login" type="br.immunit.controller.LoginControl">
+                <forward name="success" path="/main.jsp"/>
+                <forward name="fail" path="/login.jsp"/>
+            </action>
+            
+            <action path="/alterarSenha" type="br.immunit.controller.LoginSenhaControl">
+                <forward name="success" path="/user.jsp"/>
+                <forward name="fail" path="/userPassword.jsp"/>
+            </action>
+        <!-- CONTROLE DE LOGINS-->
         
         <!-- CONTROLE DE UBS-->
             <action path="/enderecoUbs" type="br.immunit.controller.UbsEnderecoControl">
@@ -63,9 +71,26 @@
             <action path="/editaUser" type="br.immunit.controller.UserEditaControl">
                 <forward name="success" path="/user.jsp" />
             </action>
+            
+            <action path="/excluiUser" type="br.immunit.controller.UserExcluiControl">
+                <forward name="success" path="/user.jsp" />
+            </action>
+            
+            <action path="/enderecoUserEdit" type="br.immunit.controller.UserEnderecoEditControl">
+                <forward name="success" path="/userformEditSuccess.jsp" />
+                <forward name="fail" path="/userformEditFail.jsp" />
+            </action>
         <!-- CONTROLE DE USUÁRIOS-->
+        
+        <!-- CONTROLE DE VACINA-->
+            <action path="/cadastrarVacina" type="br.immunit.controller.VacinaCadastraControl">
+                <forward name="success" path="/vacine.jsp" />
+                <forward name="fail" path="/vacineform.jsp" />
+            </action>
+        <!-- CONTROLE DE VACINA-->
+        
 
-        <action path="/Welcome" forward="/login.jsp" />
+            <action path="/Welcome" forward="/login.jsp" />
     </action-mappings>
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>

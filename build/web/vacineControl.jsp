@@ -3,7 +3,7 @@
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
-<h1 class="page-header">UBS</h1>
+<h1 class="page-header">Controle de vacinas</h1>
 
 <table class="table table-striped table-condensed">
     <thead>

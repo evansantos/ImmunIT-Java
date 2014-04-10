@@ -4,6 +4,7 @@ import br.immunit.dao.LoginDAO;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -19,6 +20,11 @@ public class LoginControl extends org.apache.struts.action.Action {
             throws Exception {
         
         LoginDAO loginUsuario = new LoginDAO();
+        HttpSession session = request.getSession();
+        
+        session.removeAttribute("login");
+        
+        session.setAttribute("login", request.getParameter("login"));
         
         if (loginUsuario.autentica(request.getParameter("login"), request.getParameter("senha"))) {            
             Cookie logado = new Cookie("Acesso",request.getParameter("login"));
