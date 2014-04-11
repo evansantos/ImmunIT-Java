@@ -52,16 +52,9 @@
             <td>${u.ubs}</td>
             <td style="text-align:right;">
                 <div class="btn-group btn-group-sm">
-                    <a href="userPassword.jsp">
-                        <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-lock"></span> Senha</button>
-                    </a>
-                    <a href="userformEdit.jsp">                    
-                        <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-                    </a>
-                    <form method="post" action="excluiUser.do">
-                        <input type="hidden" name="pesquisaUser" id="pesquisaUser" class="form-control" value="<%=u_Cpf%>">
-                        <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
-                    </form>
+                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-lock"></span> Senha</button>
+                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span><a href="userformEdit.jsp"> Editar</a></button>
+                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
                 </div>
             </td>
         </tr>

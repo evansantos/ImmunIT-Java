@@ -18,7 +18,7 @@
     <div class="form-group">
         <div class="col-sm-2" style="padding-left: 0;">
             <label>Buscar UBS</label>
-            <input type="text" name="pesquisaUBS" id="pesquisaUBS">
+            <input type="text" name="pesquisaUBS" id="pesquisaUBS" class="form-control">
         </div>
         <div class="col-sm-2" style="padding-top: 25px; padding-left: 0">
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
