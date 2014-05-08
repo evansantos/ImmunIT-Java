@@ -12,7 +12,7 @@
     }
 %>
 
-<h1 class="page-header">Adicionar vacina</h1>
+<h1 class="page-header">Aplicação de vacina</h1>
 
 <form role="form" method="post" action="#"> 
     <div class="form-group">
