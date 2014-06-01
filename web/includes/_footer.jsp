@@ -15,6 +15,10 @@
             $("#rg").mask("99.999.999-9");
             $("#telefone").mask("(99)9999-9999");
         });
+        
+        function callReport() {
+            window.open("vacineReport.jsp", "_blank", "toolbar=yes, scrollbars=yes, resizable=no,width=800, height=640");
+        }
         </script>
     </body>
 </html>
