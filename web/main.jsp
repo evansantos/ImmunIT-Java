@@ -1,9 +1,9 @@
 <%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<%@page pageEncoding="ISO-8859-1"%>
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
-<h3 class="page-header">Bem vindo ao <strong>Immun<span style="color:#ff0000;">IT</span></strong><br/>
+<h3 class="page-header">Bem-vindo ao <strong>Immun<span style="color:#ff0000;">IT</span></strong><br/>
     Sua carteirinha de vacina digital.</h1>
 
 
@@ -11,13 +11,13 @@
 
 <div class="row">
     <div class="col-xs-6 col-sm-6" style="text-align: center">
-        <img src="images/calendar.jpg" class="img-rounded img-responsive" alt="Calend√°rio de vacina√ß√£o">
-        <h4>Calend√°rio de vacina√ß√£o</h4>
+        <img src="images/calendar.jpg" class="img-rounded img-responsive" alt="Calend·rio de vacinaÁ„o">
+        <h4>Calend·rio de vacinaÁ„o</h4>
         <!--<span class="text-muted">Something else</span>-->
     </div>
     <div class="col-xs-6 col-sm-6" style="text-align: center">
-        <img src="images/caderneta_de_vacinacao.jpg" class="img-rounded img-responsive" alt="Carteira de vacina√ß√£o">
-        <h4>Carteira de vacina√ß√£o</h4>
+        <img src="images/caderneta_de_vacinacao.jpg" class="img-rounded img-responsive" alt="Carteira de vacinaÁ„o">
+        <h4>Carteira de vacinaÁ„o</h4>
         <!--<span class="text-muted">Something else</span>-->
     </div>
    

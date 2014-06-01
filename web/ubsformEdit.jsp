@@ -9,8 +9,8 @@
     int u_Cnes = Integer.parseInt(cnes);
 %>
 
-<jsp:useBean id="lista" class="br.immunit.dao.UbsDAO" />
-<c:forEach var="u" items="<%=lista.preencheLista(u_Cnes)%>">                  
+<jsp:useBean id="l_UbsFormEdit" class="br.immunit.dao.UbsDAO" />
+<c:forEach var="u" items="<%=l_UbsFormEdit.preencheLista(u_Cnes)%>">                  
 
     <h1 class="page-header">Editar UBS</h1>
 
@@ -18,17 +18,17 @@
 
         <div class="form-group">
             <label for="cnes">CNES</label>
-            <input type="text" name="cnes" id="cnes" class="form-control" value="${u.cnes}" readonly="">
+            <input type="text" name="cnes" class="form-control" value="${u.cnes}" readonly="">
         </div>
 
         <div class="form-group">
             <label for="nomefantasia">Nome Fantasia</label>
-            <input type="text" name="nomefantasia" id="nomefantasia" class="form-control" value="${u.nomeFantasia}" readonly="">
+            <input type="text" name="nomefantasia" id="nomefantasia" class="form-control" value="${u.nomeFantasia}">
         </div>
 
         <div class="form-group">
             <label for="razaosocial">Razão Social</label>
-            <input type="text" name="razaosocial" id="razaosocial" class="form-control" value="${u.razaoSocial}" readonly="">
+            <input type="text" name="razaosocial" id="razaosocial" class="form-control" value="${u.razaoSocial}" >
         </div>
 
         <div class="form-group" style="padding-bottom: 10px;"> 
@@ -36,14 +36,13 @@
             <div class="col-sm-2" style="padding-left: 0px;">
                 <label for="telefone">Telefone</label>
                 <input type="text" name="telefone" id="telefone" class="form-control" value="${u.telefone}">
-            </div> 
-
+            </div>
+            
             <div class="col-sm-2" style="padding-left: 0px;">
                 <label for="cep">CEP</label>
                 <input type="text" name="cep" id="cep" class="form-control" value="${u.cep}" readonly="">
             </div> 
   
-
             <div class="col-sm-6" >
                 <label for="endereco">Endereço</label>
                 <input type="text" name="endereco" id="endereco" class="form-control" value="${u.endereco}" readonly="">
@@ -63,7 +62,7 @@
 
             <div class="col-sm-4">
                 <label for="cidade">Cidade</label>
-                <input type="text" name="cidade" id="cidade" class="form-control" value="${u.cidade}" readonly="">
+                <input type="text" name="cidade" id="cidade" class="form-control" value="${u.cidade}" readonly=""> 
             </div>
 
             <div class="col-sm-2" style="padding-right: 0px;">
@@ -79,7 +78,9 @@
         </div>
 
         <div class="pull-right">
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Alterar</button>
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-save"></span> Alterar
+            </button>
         </div>
             
     </form>

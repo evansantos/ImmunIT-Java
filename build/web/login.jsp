@@ -1,13 +1,14 @@
 <%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<%@page pageEncoding="ISO-8859-1"%>
 
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 
 <html:html lang="true">
+    
     <head>
-        <meta charset="utf-8">
+        <meta charset="ISO-8859-1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title><bean:message key="welcome.title"/></title>
@@ -35,7 +36,7 @@
                     <h2 class="form-signin-heading">Login:</h2>
                     <div class="row">
                         <div class="col-sm-6 col-md-6 col-lg-6" style="margin-top:10px">
-                            <input name="login" type="Text" class="form-control " placeholder="UsuÃ¡rio" required="" autofocus="">
+                            <input name="login" type="Text" class="form-control " placeholder="Usuário" required="" autofocus="">
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-6" style="margin-top:10px">
                             <input name="senha" type="password" class="form-control" placeholder="Senha" required="">
@@ -53,4 +54,5 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
     </body>
+    
 </html:html>

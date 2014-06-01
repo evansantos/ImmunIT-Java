@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.mail.EmailException;
 
 public class UserDAO extends DAO{
     
@@ -13,16 +14,10 @@ public class UserDAO extends DAO{
                              String rg, String email, String cep, int numero, String complemento, String telefone,
                              int ramal, int funcao, int cnes, String login, String endereco, String bairro,
                              String cidade, String estado, boolean cadastrarEndereco) 
-            throws SQLException{        
+            throws SQLException, EmailException{        
         
         start();
         Statement stmt = conn.createStatement();
-        
-        String dia = dataNascimento.substring(0,2);
-        String mes = dataNascimento.substring(3,5);
-        String ano = dataNascimento.substring(6,10);
-        
-        dataNascimento = ano + "-" + mes + "-" + dia;
         
         String log = String.valueOf(cpf).toString();
         login = log.substring(0, 6);
@@ -38,7 +33,7 @@ public class UserDAO extends DAO{
         stop();
 
         LoginDAO l = new LoginDAO();
-        l.cadastraLogin(login);
+        l.cadastraLogin(login, nome, sobrenome, email);
         
         if(cadastrarEndereco != true){
             EnderecoDAO e = new EnderecoDAO();

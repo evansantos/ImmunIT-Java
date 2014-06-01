@@ -55,40 +55,39 @@ public class UbsDAO extends DAO{
     
     public List<UbsModel> preencheLista(int cnes) throws SQLException {
                
-        //Conexão com banco de dados
         start();
-               
-        //Cria um statement para podermos mandar um SQL para o banco
         Statement stmt = conn.createStatement();
 
-        //Mandamos o SQL para o banco e obtemos um ResultSet
-        String sql = "SELECT ubs.*, endereco.* FROM ubs INNER JOIN endereco ON ubs.end_Cep = endereco.end_Cep "
-                   + "WHERE ubs.ubs_Cnes = " + cnes + ""; 
+        String sql = "SELECT Ubs.*, Endereco.* FROM Ubs INNER JOIN Endereco ON Ubs.end_Cep = Endereco.end_Cep "
+                   + "WHERE Ubs.ubs_Cnes = " + cnes + ""; 
         
-        //Executa o comando SQL
         ResultSet rs = stmt.executeQuery(sql);
         
         List<UbsModel> lista = new ArrayList<UbsModel>();
 
         while (rs.next()) {
+            
             UbsModel ubs = new UbsModel();
-            ubs.setCnes(rs.getInt("ubs.ubs_Cnes"));
-            ubs.setNomeFantasia(rs.getString("ubs.ubs_NomeFantasia"));
-            ubs.setRazaoSocial(rs.getString("ubs.ubs_RazaoSocial"));
-            ubs.setTelefone(rs.getString("ubs.ubs_Telefone"));
-            ubs.setCep(rs.getString("endereco.end_Cep"));
-            ubs.setEndereco(rs.getString("endereco.end_Endereco"));
-            ubs.setNumero(rs.getInt("ubs.ubs_Numero"));
-            ubs.setBairro(rs.getString("endereco.end_Bairro"));
-            ubs.setCidade(rs.getString("endereco.end_Cidade"));
-            ubs.setEstado(rs.getString("endereco.end_Estado"));
-            ubs.setAtivo(rs.getBoolean("ubs.ubs_Ativo"));
+            
+            ubs.setCnes(rs.getInt("Ubs.ubs_Cnes"));
+            ubs.setNomeFantasia(rs.getString("Ubs.ubs_NomeFantasia"));
+            ubs.setRazaoSocial(rs.getString("Ubs.ubs_RazaoSocial"));
+            ubs.setTelefone(rs.getString("Ubs.ubs_Telefone"));
+            ubs.setCep(rs.getString("Endereco.end_Cep"));
+            ubs.setEndereco(rs.getString("Endereco.end_Endereco"));
+            ubs.setNumero(rs.getInt("Ubs.ubs_Numero"));
+            ubs.setBairro(rs.getString("Endereco.end_Bairro"));
+            ubs.setCidade(rs.getString("Endereco.end_Cidade"));
+            ubs.setEstado(rs.getString("Endereco.end_Estado"));
+            ubs.setAtivo(rs.getBoolean("Ubs.ubs_Ativo"));
+            
             lista.add(ubs);
+            
         }
-        
-        //Fecha a conexão do banco de dados
+
         stop();
         return lista;
+        
     }
     
     public void atualizaUBS(int cnes, String telefone, boolean ativo) throws SQLException{        

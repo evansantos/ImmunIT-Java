@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import javax.swing.JOptionPane;
 
 public class LoginSenhaControl extends org.apache.struts.action.Action {
     
@@ -21,20 +22,18 @@ public class LoginSenhaControl extends org.apache.struts.action.Action {
         String senhaAtual = request.getParameter("senhaatual");
         String senhaNova = request.getParameter("novasenha");
         String senhaConfere = request.getParameter("novasenhaconfere");
+        int quantidade = senhaNova.length();
         
         LoginDAO l = new LoginDAO();
         String senhaBD = l.pesquisaSenha(login);
         
-        if(senhaAtual.equals(senhaBD)){
-            if(senhaNova.equals(senhaConfere)){
-                l.atualizaSenha(login, senhaNova);
-                return mapping.findForward(SUCCESS);
-            }else{
-                return mapping.findForward(FAIL);
-            }
+        if(senhaAtual.equals(senhaBD) && senhaNova.equals(senhaConfere) && (quantidade >= 8 && quantidade <= 16)){
+            l.atualizaSenha(login, senhaNova);
+            JOptionPane.showMessageDialog(null,"SENHA ALTERADA COM SUCESSO.");
+            return mapping.findForward(SUCCESS);
         }else{
+            JOptionPane.showMessageDialog(null,"ERRO AO ALTERAR A SENHA.","",JOptionPane.ERROR_MESSAGE);
             return mapping.findForward(FAIL);
         }        
     }
-    
 }

@@ -12,8 +12,8 @@
     String cep = (String) session.getAttribute("cep");   
 %>
 
-<jsp:useBean id="lista" class="br.immunit.dao.EnderecoDAO" />
-<c:forEach var="e" items="<%=lista.preencheLista(cep)%>">                   
+<jsp:useBean id="l_UbsFormSuccess" class="br.immunit.dao.EnderecoDAO" />
+<c:forEach var="e" items="<%=l_UbsFormSuccess.preencheLista(cep)%>">                   
 
     <h1 class="page-header">Adicionar UBS</h1>
 
@@ -46,17 +46,20 @@
                 <input type="text" name="cep" id="cep" class="form-control" value="${e.cep}">
             </div> 
             <div class="col-sm-1" style="padding-top: 25px; padding-left: 0; padding-right: 0; width: 11%; ">
-                <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+                <button type="submit" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-search"></span> Pesquisar
+                </button>
             </div> 
+            
     </form>  
 
     <form method="post" action="cadastrarUbs.do">    
 
-        <input type="text" name="cnes" id="cnes" value="<%=cnes%>" hidden="">
-        <input type="text" name="nomefantasia" id="nomefantasia" value="<%=nomeFantasia%>" hidden="">
-        <input type="text" name="razaosocial" id="razaosocial" value="<%=razaoSocial%>" hidden="">
-        <input type="text" name="telefone" id="telefone" value="<%=telefone%>" hidden="">
-        <input type="text" name="cep" id="cep" value="${e.cep}" hidden="">
+        <input type="hidden" name="cnesOculto" id="cnesOculto" value="<%=cnes%>">
+        <input type="hidden" name="nomefantasiaOculto" id="nomefantasiaOculto" value="<%=nomeFantasia%>">
+        <input type="hidden" name="razaosocialOculto" id="razaosocialOculto" value="<%=razaoSocial%>">
+        <input type="hidden" name="telefoneOculto" id="telefoneOculto" value="<%=telefone%>">
+        <input type="hidden" name="cepOculto" id="cepOculto" value="${e.cep}">
 
             <div class="col-sm-5">
                 <label for="endereco">Endereço</label>
@@ -65,7 +68,8 @@
 
             <div class="col-sm-2" style="padding-right: 0; padding-left: 0; width: 14%;">
                 <label for="numero">Número</label>
-                <input type="text" name="numero" id="numero" class="form-control">
+                <input type="text" name="numero" id="numero" class="form-control" 
+                       onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
             </div>
         </div>
 
@@ -82,7 +86,8 @@
 
             <div class="col-sm-2" style="padding-right: 0px;">
                 <label for="estado">UF</label>
-                <input type="text" name="estado" id="estado" class="form-control" value="${e.estado}">
+                <input type="text" name="estado" id="estado" class="form-control" maxlength="2" value="${e.estado}"  
+                       onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return false; else return true;">
             </div>
 
             <div class="col-sm-2"  style="padding-right: 0px; padding-top: 38px; padding-left: 35px;">
@@ -91,11 +96,14 @@
             </div>
         </div>
         
-        <input type="text" name="enderecoExiste" id="enderecoExiste" value="1" hidden="">
+        <input type="hidden" name="enderecoExiste" id="enderecoExiste" value="1">
         
         <div class="pull-right">
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Salvar</button>
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-save"></span> Salvar
+            </button>
         </div>
+        
     </form>
             
 </c:forEach>

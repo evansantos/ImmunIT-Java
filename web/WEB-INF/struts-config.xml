@@ -22,10 +22,15 @@
         <!-- CONTROLE DE LOGINS-->
             <action path="/login" type="br.immunit.controller.LoginControl">
                 <forward name="success" path="/main.jsp"/>
-                <forward name="fail" path="/login.jsp"/>
+                <forward name="fail" path="/loginFail.jsp"/>
             </action>
             
-            <action path="/alterarSenha" type="br.immunit.controller.LoginSenhaControl">
+            <action path="/alterarSenhaLogin" type="br.immunit.controller.LoginSenhaControl">
+                <forward name="success" path="/main.jsp"/>
+                <forward name="fail" path="/loginPassword.jsp"/>
+            </action>
+            
+            <action path="/alterarSenhaUser" type="br.immunit.controller.LoginSenhaControl">
                 <forward name="success" path="/user.jsp"/>
                 <forward name="fail" path="/userPassword.jsp"/>
             </action>
@@ -89,6 +94,31 @@
             </action>
         <!-- CONTROLE DE VACINA-->
         
+        <!-- CONTROLE DE PACIENTE-->
+            <action path="/enderecoPaciente" type="br.immunit.controller.PacienteEnderecoControl">
+                <forward name="success" path="/patientformSuccess.jsp" />
+                <forward name="fail" path="/patientform.jsp" />
+            </action>
+
+            <action path="/cadastrarPaciente" type="br.immunit.controller.PacienteCadastraControl">
+                <forward name="success" path="/patient.jsp" />
+                <forward name="fail" path="/patientform.jsp" />
+            </action>
+
+            <action path="/pesquisaPaciente" type="br.immunit.controller.PacientePesquisaControl">
+                <forward name="success" path="/patientSuccess.jsp" />
+                <forward name="fail" path="/patient.jsp" />
+            </action>
+
+            <action path="/editaPaciente" type="br.immunit.controller.PacienteEditaControl">
+                <forward name="success" path="/patient.jsp" />
+            </action>
+            
+            <action path="/enderecoPacienteEdit" type="br.immunit.controller.PacienteEnderecoEditControl">
+                <forward name="success" path="/patientformEditSuccess.jsp" />
+                <forward name="fail" path="/patientformEditFail.jsp" />
+            </action>
+        <!-- CONTROLE DE PACIENTE-->
 
             <action path="/Welcome" forward="/login.jsp" />
     </action-mappings>

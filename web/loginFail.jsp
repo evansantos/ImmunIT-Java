@@ -45,6 +45,9 @@
                             <input class="btn btn-lg btn-primary btn-block" type="submit" value="Acessar">
                             <!--<button class="btn btn-lg btn-primary btn-block" type="submit" >login</button>-->
                         </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12" style="margin-top:10px; color: red">
+                            * Usuário e/ou senha incorretos, por favor tente novamente.
+                        </div>    
                     </div>
                 </form>
             </div>

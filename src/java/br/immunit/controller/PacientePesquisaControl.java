@@ -1,16 +1,15 @@
 package br.immunit.controller;
 
-import br.immunit.dao.UbsDAO;
+import br.immunit.dao.PacienteDAO;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-public class UbsPesquisaControl extends org.apache.struts.action.Action {
+public class PacientePesquisaControl extends org.apache.struts.action.Action {
     
     private static final String SUCCESS = "success";
     private static final String FAIL = "fail";
@@ -22,19 +21,17 @@ public class UbsPesquisaControl extends org.apache.struts.action.Action {
 
         HttpSession session = request.getSession();
         
-        session.removeAttribute("pesquisaUBS");        
-        session.setAttribute("pesquisaUBS", request.getParameter("pesquisaUBS"));
+        session.removeAttribute("pesquisaPaciente");        
+        session.setAttribute("pesquisaPaciente", request.getParameter("pesquisaPaciente"));
 
-        if(request.getParameter("pesquisaUBS").equals(""))
+        if(request.getParameter("pesquisaPaciente").equals(""))
         {
-            JOptionPane.showMessageDialog(null, "Digite o nome da UBS que deseja pesquisar.");
             return mapping.findForward(FAIL);
         }else{
-            UbsDAO u = new UbsDAO();
-            if(u.pesquisaUBS(Integer.parseInt(request.getParameter("pesquisaUBS")))){
+            PacienteDAO p = new PacienteDAO();
+            if(p.pesquisaPaciente(Long.parseLong(request.getParameter("pesquisaPaciente")))){
                 return mapping.findForward(SUCCESS);
             }else{ 
-                JOptionPane.showMessageDialog(null, "UBS não encontrada.");
                 return mapping.findForward(FAIL);
             }
         }

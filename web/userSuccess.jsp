@@ -9,8 +9,8 @@
     long u_Cpf = Long.parseLong(cpf);
 %>
 
-<jsp:useBean id="lista" class="br.immunit.dao.UserDAO" />
-<c:forEach var="u" items="<%=lista.preencheLista(u_Cpf)%>">
+<jsp:useBean id="l_UserSuccess" class="br.immunit.dao.UserDAO" />
+<c:forEach var="u" items="<%=l_UserSuccess.preencheLista(u_Cpf)%>">
     
 <h1 class="page-header">Usuário</h1>
 
@@ -52,9 +52,16 @@
             <td>${u.ubs}</td>
             <td style="text-align:right;">
                 <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-lock"></span> Senha</button>
-                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span><a href="userformEdit.jsp"> Editar</a></button>
-                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
+                    <a href="userPassword.jsp">
+                        <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-lock"></span> Senha</button>
+                    </a>
+                    <a href="userformEdit.jsp">
+                        <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
+                    </a>
+                    <form method="post" action="excluiUser.do">
+                        <input type="hidden" name="pesquisaUser" id="pesquisaUser" class="form-control" value="${u.cpf}">
+                        <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
+                    </form>
                 </div>
             </td>
         </tr>
