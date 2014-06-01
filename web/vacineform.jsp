@@ -22,12 +22,14 @@
             </label>
             <input type="text" name="codigo" id="codigo" class="form-control" readonly="">
         </div>-->
-        <div class="col-sm-9" style="padding-right: 0px;">
+        <div class="col-sm-11" style="padding-left: 0px;">
             <label for="nome">
                 Nome
             </label>
             <input type="text" name="nome" id="nome" class="form-control">
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Salvar</button>
+        </div>
+        <div class="col-sm-1" style="padding-right: 0px; padding-top: 24px">
+             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Salvar</button>
         </div>
     </div>
 

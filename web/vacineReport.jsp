@@ -14,7 +14,7 @@
         <title><bean:message key="welcome.title"/></title>
         
          <!-- Bootstrap -->
-         <link href="css/bootstrap.min.css" rel="stylesheet">
+         <link href="css/bootstrap.min.css" rel="stylesheet" media="all">
          <link href="css/style.css" rel="stylesheet" >
 
          <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -23,62 +23,89 @@
            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
          <![endif]--> 
-
+         
         <html:base />
     </head>
     <body>
+        
         <div class="container">
-            <div class="row">
-                <div class="col-sm-10">
-                    <span style="font-size:28px;"><strong>Relatório de controle de vacinas</strong></span>
-                </div>
-                <div class="col-sm-2">
-                    <span style="font-size:14px;"><strong>Data</strong></span>  <br/>
-                    <span style="font-size:12px;">19/06/2014</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <hr />
-                </div>
-            </div>
-
-            <div class="row"> <!-- criar laço das ubs aqui (caso tenha uma busca por dados de todas ubs) -->
-                <div class="col-sm-1">UBS:</div>
-                <div class="col-sm-11">
-                    <strong>Unidade Morumbi</strong>
-                </div>
-            </div>
-            <div style="height:15px; clear:both;"></div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <strong>Vacina</strong>
-                </div>
-                <div class="col-sm-3">
-                    <strong>Lote</strong>
-                </div>
-                <div class="col-sm-3">
-                    <strong>Validade</strong>
-                </div>
-                <div class="col-sm-3">
-                    <strong>Quantidade</strong>
-                </div>
-                <div style="padding-top:5px"><hr/></div>
-            </div>
-            <div class="row"> <!-- criar laço das vacinas aqui -->
-                <div class="col-sm-3">
-                    BCG
-                </div>
-                <div class="col-sm-3">
-                    AAAA-10
-                </div>
-                <div class="col-sm-3">
-                    30/02/2014
-                </div>
-                <div class="col-sm-3">
-                    999999
-                </div>
-            </div><!-- termina laço das vacinas aqui e termina o das ubs também aqui -->
+            <table border="0">
+                <tr>
+                    <td width='700' rowspan="2"><span style="font-size:28px;"><strong>Relatório de controle de vacinas</strong></span></td>
+                    <td width='100'><span style="font-size:14px;"><strong>Data</strong></span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="font-size:12px;">19/06/2014</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan='2'>
+                        <hr />
+                    </td>    
+                </tr>
+            </table>
+            <table><!-- criar laço das ubs aqui (caso tenha uma busca por dados de todas ubs) -->
+                <tr>
+                    <td width='50'>
+                        UBS:
+                    </td>
+                    <td width='750'>
+                        <strong>Unidade Morumbi</strong>
+                    </td>
+                </tr>
+            </table>
+           
+            <table class="table table-responsive table-striped" border="0">
+                <thead>
+                    <tr>
+                        <th>
+                            Vacina
+                        </th>
+                        <th>
+                            Lote
+                        </th>
+                        <th>
+                            Quantidade
+                        </th>
+                        <th>
+                            Validade
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr> <!-- criar laço das vacinas aqui -->
+                        <td>
+                            BCG
+                        </td>
+                        <td>
+                            AA-10
+                        </td>
+                        <td>
+                            100
+                        </td>
+                        <td>
+                            19/07/2014
+                        </td>
+                    </tr><!-- termina laço das vacinas aqui --> 
+                    <tr> <!-- criar laço das vacinas aqui -->
+                        <td>
+                            Poliomelite
+                        </td>
+                        <td>
+                            AA-15
+                        </td>
+                        <td>
+                            50
+                        </td>
+                        <td>
+                            31s/07/2014
+                        </td>
+                    </tr><!-- termina laço das vacinas aqui --> 
+                </tbody>
+            </table>
+            <!--termina o das ubs também aqui -->
+           
         </div>
     </body>
 </html>
