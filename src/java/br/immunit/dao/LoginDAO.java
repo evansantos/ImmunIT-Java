@@ -1,11 +1,16 @@
 package br.immunit.dao;
 
 import br.immunit.model.FuncaoModel;
+import br.immunit.controller.EnviarEmail;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.mail.EmailException;
+import sun.misc.BASE64Encoder;
 
 public class LoginDAO extends DAO{
     
@@ -30,15 +35,20 @@ public class LoginDAO extends DAO{
         return resultado;
     }
     
-    public void cadastraLogin(String login) throws SQLException{
+    public void cadastraLogin(String login, String nome, String sobrenome, String email) throws SQLException, EmailException{
         
         start();
         Statement stmt = conn.createStatement();
 
-        String sql = "INSERT INTO login (log_Login, log_Senha) VALUES (" + login + ", 'Teste')";
+        String senha = geraSenha();
+        
+        String sql = "INSERT INTO login (log_Login, log_Senha) VALUES ('" + login + "','" + senha + "')";
        
         stmt.execute(sql);
         stop();
+        
+        EnviarEmail e = new EnviarEmail();
+        e.criaEmail(senha, nome, sobrenome, email);
         
     }
     
@@ -96,4 +106,39 @@ public class LoginDAO extends DAO{
         
     }
     
+   /* public String criptografa(String senha){  
+        
+        try{  
+         MessageDigest digest = MessageDigest.getInstance("MD5");  
+                       digest.update(senha.getBytes());  
+         BASE64Encoder encoder = new BASE64Encoder();  
+                return encoder.encode(digest.digest());  
+        }catch(NoSuchAlgorithmException ns){  
+            ns.printStackTrace();  
+        }  
+        return senha;  
+    } 
+    
+    public void cadastrarUsuario() throws UsuarioDAOException, SQLException, Exception{   
+        Criptografa criptografa = new Criptografa();  
+                      
+        Usuario usr = new Usuario();  
+                usr.setNome(nome);  
+                usr.setLogin(login);  
+                usr.setSenha(criptografa.criptografa(senha));  
+        service.cadastrarUsuario(usr);  
+    }*/
+    
+    public String geraSenha(){  
+  
+        String criaSenha = "";
+        
+        for(int i=0; i<8; i++){
+            int n = 32 + (int)(Math.random() * 94);  
+            char s = (char)n; 
+            criaSenha = criaSenha + s;        
+        }
+        
+        return criaSenha;
+    }  
 }

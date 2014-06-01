@@ -8,7 +8,12 @@
     String nomeFantasia = (String) session.getAttribute("nomeFantasia"); 
     String razaoSocial = (String) session.getAttribute("razaoSocial");
     String telefone = (String) session.getAttribute("telefone"); 
-    String cep = (String) session.getAttribute("cep");   
+    String cep = (String) session.getAttribute("cep"); 
+    String endereco = (String) session.getAttribute("endereco"); 
+    String numero = (String) session.getAttribute("numero"); 
+    String bairro = (String) session.getAttribute("bairro"); 
+    String cidade = (String) session.getAttribute("cidade"); 
+    String estado = (String) session.getAttribute("estado"); 
     
     if(cep != null){
     }else{
@@ -17,6 +22,11 @@
         razaoSocial = "";
         telefone = "";
         cep = "";
+        endereco = "";
+        numero = "";
+        bairro = "";
+        cidade = "";
+        estado = "";        
     }
 %>
 
@@ -51,47 +61,49 @@
             <input type="text" name="cep" id="cep" class="form-control" value="<%=cep%>">
         </div> 
         <div class="col-sm-1" style="padding-top: 25px; padding-left: 0; padding-right: 0; width: 11%; ">
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Pesquisa</button>
+            <button type="submit" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-search"></span> Pesquisar
+            </button>
         </div> 
-            
-    <!--</div>-->
             
 </form>  
 
 <form method="post" action="cadastrarUbs.do">    
      
-    <input type="text" name="cnes" id="cnes" value="<%=cnes%>" hidden="">
-    <input type="text" name="nomefantasia" id="nomefantasia" value="<%=nomeFantasia%>" hidden="">
-    <input type="text" name="razaosocial" id="razaosocial" value="<%=razaoSocial%>" hidden="">
-    <input type="text" name="telefone" id="telefone" value="<%=telefone%>" hidden="">
-    <input type="text" name="cep" id="cep" value="<%=cep%>" hidden="">
+    <input type="hidden" name="cnesOculto" id="cnesOculto" value="<%=cnes%>">
+    <input type="hidden" name="nomefantasiaOculto" id="nomefantasiaOculto" value="<%=nomeFantasia%>">
+    <input type="hidden" name="razaosocialOculto" id="razaosocialOculto" value="<%=razaoSocial%>">
+    <input type="hidden" name="telefoneOculto" id="telefoneOculto" value="<%=telefone%>">
+    <input type="hidden" name="cepOculto" id="cepOculto" value="<%=cep%>">
      
     
     <div class="col-sm-5" style="padding-left: 0">
             <label for="endereco">Endereço</label>
-            <input type="text" name="endereco" id="endereco" class="form-control">
+            <input type="text" name="endereco" id="endereco" class="form-control" value="<%=endereco%>">
         </div>
 
     <div class="col-sm-2" style="padding-right: 0; padding-left: 0; width: 14%;">
             <label for="numero">Número</label>
-            <input type="text" name="numero" id="numero" class="form-control">
+            <input type="text" name="numero" id="numero" class="form-control"  value="<%=numero%>" 
+                   onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
         </div>
     </div>
 
     <div class="form-group" style="padding-bottom: 10px;">
         <div class="col-sm-4" style="padding-left: 0px;">
             <label for="bairro">Bairro</label>
-            <input type="text" name="bairro" id="bairro" class="form-control">
+            <input type="text" name="bairro" id="bairro" class="form-control" value="<%=bairro%>">
         </div>
 
         <div class="col-sm-4">
             <label for="cidade">Cidade</label>
-            <input type="text" name="cidade" id="cidade" class="form-control">
+            <input type="text" name="cidade" id="cidade" class="form-control" value="<%=cidade%>">
         </div>
 
         <div class="col-sm-2" style="padding-right: 0px;">
             <label for="estado">UF</label>
-            <input type="text" name="estado" id="estado" class="form-control">
+            <input type="text" name="estado" id="estado" class="form-control" maxlength="2" value="<%=estado%>" 
+                   onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return false; else return true;">
         </div>
         
         <div class="col-sm-2" style="padding-right: 0px; padding-top: 38px; padding-left: 35px;">
@@ -104,9 +116,12 @@
     
     <div class="form-group" style="padding-bottom: 10px;">
         <div class="pull-right">
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Salvar</button> 
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-save"></span> Salvar
+            </button> 
         </div>
     </div>
+    
 </form>           
             
 <%@include  file="includes/_footer.jsp" %>

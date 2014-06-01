@@ -10,8 +10,8 @@
     long u_Cpf = Long.parseLong(cpf);
 %>
 
-<jsp:useBean id="lista" class="br.immunit.dao.UserDAO" />
-<c:forEach var="u" items="<%=lista.preencheLista(u_Cpf)%>">
+<jsp:useBean id="l_UserFormEditSuccess" class="br.immunit.dao.UserDAO" />
+<c:forEach var="u" items="<%=l_UserFormEditSuccess.preencheLista(u_Cpf)%>">
 
     <h1 class="page-header">Editar Usuário</h1>
 

@@ -1,5 +1,5 @@
 <%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<%@page pageEncoding="ISO-8859-1"%>
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
@@ -20,7 +20,7 @@
 <table class="table table-striped table-condensed">
     <thead>
         <tr>
-            <th>CÃ³digo</th>
+            <th>Código</th>
             <th>Nome</th>
             <th style="text-align:right;">
                 <a href="vacineform.jsp">

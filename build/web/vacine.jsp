@@ -1,5 +1,5 @@
 <%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<%@page pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
@@ -25,7 +25,7 @@
 <table class="table table-striped table-condensed">
     <thead>
         <tr>
-            <th>CÃ³digo</th>
+            <th>Código</th>
             <th>Nome</th>
             <th style="text-align:right;">
                 <a href="vacineform.jsp">
@@ -35,8 +35,8 @@
         </tr>
     </thead>
     <tbody>
-         <jsp:useBean id="lista" class="br.immunit.dao.VacinaDAO" />
-         <c:forEach var="v" items="<%=lista.preencheLista()%>">
+         <jsp:useBean id="l_vacina" class="br.immunit.dao.VacinaDAO" />
+         <c:forEach var="v" items="<%=l_vacina.preencheLista()%>">
             <tr>
                 <td>${v.codigo}</td>
                 <td>${v.nome}</td>

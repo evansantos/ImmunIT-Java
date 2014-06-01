@@ -1,5 +1,5 @@
 <%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<%@page pageEncoding="ISO-8859-1"%>
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
@@ -8,7 +8,7 @@
 <table class="table table-striped table-condensed">
     <thead>
         <tr>
-            <th>CÃ³digo</th>
+            <th>Código</th>
             <th>Nome</th>
             <th>Lote</th>
             <th>Validade</th>
@@ -30,8 +30,8 @@
             <td style="text-align:right;">
                 <div class="btn-group btn-group-sm">
                     <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
-</div>
+                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
+                </div>
             </td>
         </tr>
         

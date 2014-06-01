@@ -10,8 +10,8 @@
     long u_Cpf = Long.parseLong(cpf);
 %>
 
-<jsp:useBean id="lista" class="br.immunit.dao.UserDAO" />
-<c:forEach var="u" items="<%=lista.preencheLista(u_Cpf)%>">
+<jsp:useBean id="l_UserFormEditFail" class="br.immunit.dao.UserDAO" />
+<c:forEach var="u" items="<%=l_UserFormEditFail.preencheLista(u_Cpf)%>">
 
     <h1 class="page-header">Editar Usuário</h1>
 
@@ -110,7 +110,7 @@
                 <label for="numero">Número</label>
                 <input type="text" name="numero" id="numero" class="form-control" value="">
             </div>
-            <div class="col-sm-2"" style="padding-right: 0; padding-left: 0; width: 14%;">
+            <div class="col-sm-2" style="padding-right: 0; padding-left: 0; width: 14%;">
                 <label for="complemento">Complemento</label>
                 <input type="text" name="complemento" id="complemento" class="form-control" value="">
             </div>

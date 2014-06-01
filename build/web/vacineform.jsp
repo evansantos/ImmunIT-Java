@@ -1,5 +1,5 @@
 <%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<%@page pageEncoding="ISO-8859-1"%>
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
@@ -18,7 +18,7 @@
     <div class="form-group">
         <!--<div class="col-sm-3" style="padding-left: 0px;">
             <label for="codigo">
-                CÃ³digo
+                Código
             </label>
             <input type="text" name="codigo" id="codigo" class="form-control" readonly="">
         </div>-->
@@ -27,6 +27,7 @@
                 Nome
             </label>
             <input type="text" name="nome" id="nome" class="form-control">
+            <p><!--Espaço--></p>
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Salvar</button>
         </div>
     </div>

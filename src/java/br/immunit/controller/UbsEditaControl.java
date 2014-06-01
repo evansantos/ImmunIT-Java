@@ -4,6 +4,7 @@ import br.immunit.dao.UbsDAO;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -30,6 +31,9 @@ public class UbsEditaControl extends org.apache.struts.action.Action{
             
             UbsDAO u = new UbsDAO();
             u.atualizaUBS(cnes,telefone,u_Ativo);
+            
+            JOptionPane.showMessageDialog(null,"Alteração efetuado com sucesso.");
+            
             return mapping.findForward(SUCCESS);
     }
 }

@@ -9,8 +9,8 @@
     long u_Cpf = Long.parseLong(cpf);
 %>
 
-<jsp:useBean id="lista" class="br.immunit.dao.UserDAO" />
-<c:forEach var="u" items="<%=lista.preencheLista(u_Cpf)%>">
+<jsp:useBean id="l_UserFormEdit" class="br.immunit.dao.UserDAO" />
+<c:forEach var="u" items="<%=l_UserFormEdit.preencheLista(u_Cpf)%>">
 
     <h1 class="page-header">Editar Usuário</h1>
 
@@ -97,7 +97,7 @@
     <form role="form" method="post" action="editaUser.do">                
 
         <input type="hidden" name="cpf" id="cpf" class="form-control" value="${u.cpf}">
-        <input type="hidden" name="email" id="email" class="form-control" value="${u.email}">
+        <input type="hidden" name="emailOculto" id="email" class="form-control" value="${u.email}">
         <input type="hidden" name="cep" id="cep" class="form-control" value="${u.cep}">
         
         
@@ -168,11 +168,12 @@
 
         <div class="clearfix"></div>
 
-        <input type="text" name="enderecoExiste" id="enderecoExiste" value="1" hidden="">
+        <input type="hidden" name="enderecoExiste" id="enderecoExiste" value="1">
+        
         <div class="form-group" style="padding-top: 10px">
-        <div class="pull-right">
+            <div class="pull-right">
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Alterar</button>
-        </div>
+            </div>
         </div>
 
     </form>

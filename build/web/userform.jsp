@@ -20,7 +20,7 @@
         rg = "";
         nome = "";
         sobrenome = "";
-        sexo = "";
+        sexo = "F";
         datanascimento = "";
         email = "";
         cep = ""; 
@@ -68,31 +68,31 @@
             <div class="clearfix"></div>
             
             <%
-                if(sexo.equals("F")){
+                if(sexo.equals("M")){                    
             %>
                 <div class="radio-inline">
-                    <label><input type="radio" name="sexo" id="sexo1" value="F" checked>Feminino</label>
+                    <label><input type="radio" name="sexo" id="sexo" value="F">Feminino</label>
                 </div>
                 <div class="radio-inline">
-                    <label><input type="radio" name="sexo" id="sexo2" value="M">Masculino</label>
-                </div>
-                <%
-                }else{
-                %>
-                <div class="radio-inline">
-                    <label><input type="radio" name="sexo" id="sexo1" value="F">Feminino</label>
-                </div>
-                <div class="radio-inline">
-                    <label><input type="radio" name="sexo" id="sexo2" value="M" checked>Masculino</label>
+                    <label><input type="radio" name="sexo" id="sexo" value="M" checked>Masculino</label>
                 </div>
             <%
-                }
+                }else{
+            %>
+                <div class="radio-inline">
+                    <label><input type="radio" name="sexo" id="sexo" value="F" checked>Feminino</label>
+                </div>
+                <div class="radio-inline">
+                    <label><input type="radio" name="sexo" id="sexo" value="M">Masculino</label>
+                </div>
+            <%
+                }                
             %>
 
         </div>  
         <div class="col-sm-3">
             <label for="datanascimento">Data de Nascimento</label>
-            <input type="text" name="datanascimento" id="datanascimento" class="form-control" value="<%=datanascimento%>">
+            <input type="text" name="datanascimento" id="data" class="form-control" value="<%=datanascimento%>">
         </div>
         <div class="col-sm-6" style="padding-right: 0px;"> 
             <label for="email">E-mail</label>
@@ -116,15 +116,14 @@
      
 <form method="post" action="cadastrarUser.do">
 
-    <input type="text" name="cpf" id="cpf" value="<%=cpf%>" hidden="">
-    <input type="text" name="rg" id="rg" value="<%=rg%>" hidden="">
-    <input type="text" name="nome" id="nome" value="<%=nome%>" hidden="">
-    <input type="text" name="sobrenome" id="sobrenome" value="<%=sobrenome%>" hidden="">
-    <input type="text" name="sexo" id="sexo" value="<%=sexo%>" hidden="">
-    <input type="text" name="datanascimento" id="datanascimento" value="<%=datanascimento%>" hidden="">
-    <input type="text" name="email" id="email" value="<%=email%>" hidden="">
-    <input type="text" name="cep" id="cep" value="<%=cep%>" hidden="">
-    
+    <input type="hidden" name="cpfOculto" id="cpfOculto" value="<%=cpf%>"/>
+    <input type="hidden" name="rgOculto" id="rgOculto" value="<%=rg%>">
+    <input type="hidden" name="nomeOculto" id="nomeOculto" value="<%=nome%>">
+    <input type="hidden" name="sobrenomeOculto" id="sobrenomeOculto" value="<%=sobrenome%>">
+    <input type="hidden" name="sexoOculto" id="sexoOculto" value="<%=sexo%>">
+    <input type="hidden" name="datanascimentoOculto" id="dataOculto" value="<%=datanascimento%>">
+    <input type="hidden" name="emailOculto" id="emailOculto" value="<%=email%>">
+    <input type="hidden" name="cepOculto" id="cepOculto" value="<%=cep%>">
     
         <div class="col-sm-5">
             <label for="endereco">Endereço</label>
@@ -132,7 +131,7 @@
         </div>
         <div class="col-sm-2">
             <label for="numero">Número</label>
-            <input type="text" name="numero" id="numero" class="form-control">
+            <input type="text" name="numero" id="numero" class="form-control" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
         </div>
         <div class="col-sm-2" style="padding-right: 0; padding-left: 0; width: 14%;">
             <label for="complemento">Complemento</label>
@@ -152,7 +151,7 @@
         </div>            
         <div class="col-sm-2" style="padding-right: 0px;">
             <label for="estado">UF</label>
-            <input type="text" name="estado" id="estado" class="form-control">
+            <input type="text" name="estado" id="estado" class="form-control" maxlength="2" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return false; else return true;">
         </div>
         
     </div>
@@ -167,14 +166,14 @@
         </div>
         <div class="col-sm-2">
             <label for="ramal">ramal</label>
-            <input type="text" name="ramal" id="ramal" class="form-control" />
+            <input type="text" name="ramal" id="ramal" class="form-control" maxlength="4" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;"/>
         </div>
         
         <div class="col-sm-4" style="padding-right: 0px;">
             <label for="funcao">Função</label>
             <select id="funcao" name="funcao" class="form-control">
-                  <jsp:useBean id="listaF" class="br.immunit.dao.FuncaoDAO" />
-              <c:forEach var="f" items="<%=listaF.preencheLista()%>">
+                <jsp:useBean id="listaF" class="br.immunit.dao.FuncaoDAO" />
+                <c:forEach var="f" items="<%=listaF.preencheLista()%>">
                     <option>${f.funcao}</option>
                 </c:forEach>
             </select>
@@ -183,10 +182,10 @@
         <div class="col-sm-3" style="padding-right: 0px;">
             <label for="ubs">UBS</label>
             <select id="ubs" name="ubs" class="form-control">
-                  <jsp:useBean id="listaU" class="br.immunit.dao.UbsDAO" />
+                <jsp:useBean id="listaU" class="br.immunit.dao.UbsDAO" />
                 <c:forEach var="u" items="<%=listaU.listaUBS()%>">
                     <option>${u.nomeFantasia}</option>
-</c:forEach>
+                </c:forEach>
             </select>
         </div>
     </div>

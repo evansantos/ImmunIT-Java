@@ -31,6 +31,7 @@ public class LoginControl extends org.apache.struts.action.Action {
             response.addCookie(logado);
             return mapping.findForward(SUCCESS);
         } else {
+            session.removeAttribute("login");
             return mapping.findForward(FAIL);   
         }
     }

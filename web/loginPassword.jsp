@@ -1,31 +1,16 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
-<%    
-    String cpf = (String) session.getAttribute("pesquisaUser");
-    
-    long u_Cpf = 0;
-    
-    if(cpf != null){
-        u_Cpf = Long.parseLong(cpf);
-    }
-    
-%>
-
-<jsp:useBean id="l_UserPassword" class="br.immunit.dao.UserDAO" />
-<c:forEach var="u" items="<%=l_UserPassword.preencheLista(u_Cpf)%>">
-
 <h1 class="page-header">Alterar senha</h1>
 
-<form method="post" action="alterarSenhaUser.do">
-    
+<form method="post" action="alterarSenhaLogin.do">
+    <label style="color: red"><i>* A senha deverá conter no mínimo oito ou no máximo dezesseis caracteres.</i> </label>
     <div class="form-group" style="padding-top: 10px">
         <div class="col-sm-6">
             <label>Usuário</label>
-            <input type="text" name="usuario" id="usuario" class="form-control" style="" value="${u.login}" readonly="">
+            <input type="text" name="usuario" id="usuario" class="form-control" style="" value="<%=loginPerfil%>" readonly="">
         </div>
         <div class="col-sm-6">
             <label>Senha atual</label>
@@ -47,15 +32,10 @@
     <div class="form-group" style="padding-top: 10px">
         <div class="col-sm-12">
             <div class="pull-right">
-                <button type="submit" class="btn btn-default">
-                    <span class="glyphicon glyphicon-save"></span> Salvar
-                </button>
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Salvar</button>
             </div>
         </div>
     </div>
-    
 </form>
-    
-</c:forEach>
 
 <%@include  file="includes/_footer.jsp" %>

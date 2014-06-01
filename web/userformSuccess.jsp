@@ -15,8 +15,8 @@
     String cep = (String) session.getAttribute("cep");  
 %>
 
-<jsp:useBean id="lista" class="br.immunit.dao.EnderecoDAO" />
-<c:forEach var="e" items="<%=lista.preencheLista(cep)%>"> 
+<jsp:useBean id="l_UserFormSuccess" class="br.immunit.dao.EnderecoDAO" />
+<c:forEach var="e" items="<%=l_UserFormSuccess.preencheLista(cep)%>"> 
 
     <h1 class="page-header">Adicionar Usuário</h1>
 

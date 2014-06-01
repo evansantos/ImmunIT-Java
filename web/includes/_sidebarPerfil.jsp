@@ -4,8 +4,8 @@
     String login = (String) session.getAttribute("login"); 
 %>
 
-<jsp:useBean id="lista" class="br.immunit.dao.LoginDAO" />
-<c:forEach var="l" items="<%=lista.perfilUser(login)%>">
+<jsp:useBean id="l_sidebarPerfil" class="br.immunit.dao.LoginDAO" />
+<c:forEach var="l" items="<%=l_sidebarPerfil.perfilUser(login)%>">
 
     <div class="container-fluid">
     <div class="row">
