@@ -34,6 +34,11 @@
                 <forward name="success" path="/user.jsp"/>
                 <forward name="fail" path="/userPassword.jsp"/>
             </action>
+            
+            <action path="/enviaSenha" type="br.immunit.controller.LoginEnviaSenhaControl">
+                <forward name="success" path="/main.jsp"/>
+                <forward name="fail" path="/enviarSenhar.jsp"/>
+            </action>            
         <!-- CONTROLE DE LOGINS-->
         
         <!-- CONTROLE DE UBS-->
@@ -43,7 +48,7 @@
             </action>
 
             <action path="/cadastrarUbs" type="br.immunit.controller.UbsCadastraControl">
-                <forward name="success" path="/ubs.jsp" />
+                <forward name="success" path="/ubsSuccess.jsp" />
                 <forward name="fail" path="/ubsform.jsp" />
             </action>
 
@@ -53,7 +58,15 @@
             </action>
 
             <action path="/editaUbs" type="br.immunit.controller.UbsEditaControl">
-                <forward name="success" path="/ubs.jsp" />
+                <forward name="success" path="/ubsformEdit.jsp" />
+            </action>
+
+            <action path="/editaCadastroUbs" type="br.immunit.controller.UbsEditaCadastroControl">
+                <forward name="success" path="/ubsSuccess.jsp" />
+            </action>
+            
+            <action path="/excluiUbs" type="br.immunit.controller.UbsExcluiControl">
+                <forward name="success" path="/ubsSuccess.jsp" />
             </action>
         <!-- CONTROLE DE UBS-->
         
@@ -64,7 +77,7 @@
             </action>
 
             <action path="/cadastrarUser" type="br.immunit.controller.UserCadastraControl">
-                <forward name="success" path="/user.jsp" />
+                <forward name="success" path="/userSuccess.jsp" />
                 <forward name="fail" path="/userform.jsp" />
             </action>
 
@@ -74,11 +87,15 @@
             </action>
 
             <action path="/editaUser" type="br.immunit.controller.UserEditaControl">
-                <forward name="success" path="/user.jsp" />
+                <forward name="success" path="/userformEdit.jsp" />
+            </action>
+            
+            <action path="/editaCadastraUser" type="br.immunit.controller.UserEditaCadastroControl">
+                <forward name="success" path="/userSuccess.jsp" />
             </action>
             
             <action path="/excluiUser" type="br.immunit.controller.UserExcluiControl">
-                <forward name="success" path="/user.jsp" />
+                <forward name="success" path="/userSuccess.jsp" />
             </action>
             
             <action path="/enderecoUserEdit" type="br.immunit.controller.UserEnderecoEditControl">
@@ -89,10 +106,43 @@
         
         <!-- CONTROLE DE VACINA-->
             <action path="/cadastrarVacina" type="br.immunit.controller.VacinaCadastraControl">
-                <forward name="success" path="/vacine.jsp" />
+                <forward name="success" path="/vacineSuccess.jsp" />
                 <forward name="fail" path="/vacineform.jsp" />
             </action>
+            
+            <action path="/pesquisaVacina" type="br.immunit.controller.VacinaPesquisaControl">
+                <forward name="success" path="/vacineSuccess.jsp" />
+                <forward name="fail" path="/vacine.jsp" />
+            </action>
+            
+            <action path="/editaVacina" type="br.immunit.controller.VacinaEditaControl">
+                <forward name="success" path="/vacineformEdit.jsp" />
+            </action>
+            
+            <action path="/editaCadastroVacina" type="br.immunit.controller.VacinaEditaCadastroControl">
+                <forward name="success" path="/vacineSuccess.jsp" />
+            </action>
         <!-- CONTROLE DE VACINA-->
+        
+        <!-- CONTROLE DE LOTE-->
+            <action path="/cadastrarLote" type="br.immunit.controller.LoteCadastraControl">
+                <forward name="success" path="/vacineControlSuccess.jsp" />
+                <forward name="fail" path="/vacineControlForm.jsp" />
+            </action>
+            
+            <action path="/pesquisaLote" type="br.immunit.controller.VacinaPesquisaControl">
+                <forward name="success" path="/vacineSuccess.jsp" />
+                <forward name="fail" path="/vacine.jsp" />
+            </action>
+            
+            <action path="/editaLote" type="br.immunit.controller.VacinaEditaControl">
+                <forward name="success" path="/vacineformEdit.jsp" />
+            </action>
+            
+            <action path="/editaCadastroVacina" type="br.immunit.controller.VacinaEditaCadastroControl">
+                <forward name="success" path="/vacineSuccess.jsp" />
+            </action>
+        <!-- CONTROLE DE LOTE-->
         
         <!-- CONTROLE DE PACIENTE-->
             <action path="/enderecoPaciente" type="br.immunit.controller.PacienteEnderecoControl">

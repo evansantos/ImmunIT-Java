@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -26,12 +27,14 @@ public class UserPesquisaControl extends org.apache.struts.action.Action{
 
         if(request.getParameter("pesquisaUser").equals(""))
         {
+            JOptionPane.showMessageDialog(null, "Digite o nome do usuário que deseja pesquisar.");
             return mapping.findForward(FAIL);
         }else{
             UserDAO u = new UserDAO();
-            if(u.pesquisaUser(Long.parseLong(request.getParameter("pesquisaUser")))){
+            if(u.pesquisaUserNome(request.getParameter("pesquisaUser"))){
                 return mapping.findForward(SUCCESS);
-            }else{ 
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuário não encontrado.");
                 return mapping.findForward(FAIL);
             }
         }

@@ -9,7 +9,6 @@
    
         <script type="text/javascript">
         $(document).ready(function(){
-            
             $("#cep").mask("99999-999");
             $("#cpf").mask("999.999.999-99");
             $("#data").mask("99/99/9999");
@@ -17,14 +16,19 @@
             $("#telefone").mask("(99)9999-9999");
             $("#cartaoSUS").mask("999.9999.9999.9999");
             $("#cnes").mask("9999999");
-            
-            $('input').on('change', function() {
-                if('#' + $(this).attr('id') + 'Oculto'){
-                    $('#' + $(this).attr('id') + 'Oculto').val($(this).val());
-                }
-            });
-            
         });
-        </script>        
+        
+        function callReport() {
+            window.open("vacineReport.jsp", "_blank", "toolbar=yes, scrollbars=yes, \n\
+                        resizable=no,width=800, height=640");
+        }
+        
+        $('input').on('change', function() {
+            if('#' + $(this).attr('id') + 'Oculto'){
+                $('#' + $(this).attr('id') + 'Oculto').val($(this).val());
+            }
+        });
+        
+        </script>
     </body>
 </html>

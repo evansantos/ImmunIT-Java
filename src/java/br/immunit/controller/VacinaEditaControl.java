@@ -8,18 +8,18 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-public class UbsEditaControl extends org.apache.struts.action.Action{
-
+public class VacinaEditaControl extends org.apache.struts.action.Action{
+    
     private static final String SUCCESS = "success";
     
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
         HttpServletRequest request, HttpServletResponse response) 
         throws SQLException{
-      
+            
             HttpSession session = request.getSession();
-            String cnes = request.getParameter("cnes");
-            session.setAttribute("cnes", cnes);
+            String codigo = request.getParameter("codigo");
+            session.setAttribute("codigo", codigo);
             
             return mapping.findForward(SUCCESS);
     }

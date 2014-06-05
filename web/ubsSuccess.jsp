@@ -5,51 +5,62 @@
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
 <%    
-    String cnes = (String) session.getAttribute("pesquisaUBS");    
-    int u_Cnes = Integer.parseInt(cnes);
+    
+    session.removeAttribute("cnes");
+    session.removeAttribute("nomeFantasia");
+    session.removeAttribute("razaoSocial");
+    session.removeAttribute("telefone");
+    session.removeAttribute("cep");
+    session.removeAttribute("endereco");
+    session.removeAttribute("numero");
+    session.removeAttribute("bairro");
+    session.removeAttribute("cidade");
+    session.removeAttribute("estado");
+
+    String ubs = (String) session.getAttribute("pesquisaUBS");    
 %>
 
-<jsp:useBean id="l_UbsSucces" class="br.immunit.dao.UbsDAO" />
-<c:forEach var="u" items="<%=l_UbsSucces.preencheLista(u_Cnes)%>">
+<h1 class="page-header">UBS</h1>
 
-    <h1 class="page-header">UBS</h1>
+<form method="post" action="pesquisaUbs.do">
 
-    <form method="post" action="pesquisaUbs.do">
-
-        <div class="form-group">
-            <div class="col-sm-2" style="padding-left: 0;">
-                <label>Buscar UBS</label>
-                <input type="text" name="pesquisaUBS" id="cnes" class="form-control">
-            </div>
-            <div class="col-sm-2" style="padding-top: 25px; padding-left: 0">
-                <button type="submit" class="btn btn-default">
-                    <span class="glyphicon glyphicon-search"></span> Pesquisar
-                </button>
-            </div>
+    <div class="form-group">
+        <div class="col-sm-2" style="padding-left: 0;">
+            <label>Buscar UBS</label>
+            <input type="text" name="pesquisaUBS" class="form-control">
         </div>
+        <div class="col-sm-2" style="padding-top: 25px; padding-left: 0">
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span> Pesquisar
+            </button>
+        </div>
+    </div>
 
-    </form>
+</form>
 
-    <table class="table table-striped">
+<table class="table table-striped">
 
-        <thead>
-            <tr>
-                <th>CNES</th>
-                <th>Nome Fantasia</th>
-                <th>Razão Social</th>
-                <th>Endereço</th>
-                <th>Status</th>
-                <th style="text-align:right;">
-                    <a href="ubsform.jsp">
-                        <button type="button" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-plus"></span> Adicionar
-                        </button>
-                    </a>
-                </th>
-            </tr>
-        </thead>
+    <thead>
+        <tr>
+            <th>CNES</th>
+            <th>Nome Fantasia</th>
+            <th>Razão Social</th>
+            <th>Endereço</th>
+            <th>Status</th>
+            <th style="text-align:right;">
+                <a href="ubsform.jsp">
+                    <button type="button" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-plus"></span> Adicionar
+                    </button>
+                </a>
+            </th>
+        </tr>
+    </thead>
 
-        <tbody>
+    
+    <tbody>
+        <jsp:useBean id="l_UbsSucces" class="br.immunit.dao.UbsDAO" />
+        <c:forEach var="u" items="<%=l_UbsSucces.preencheLista(ubs)%>">
             <tr>
                 <td>${u.cnes}</td>
                 <td>${u.nomeFantasia}</td>
@@ -60,25 +71,31 @@
                     <c:if test="${u.ativo != true}"><span class="glyphicon glyphicon-remove"></span></c:if>
                 </td>
                 <td style="text-align:right;">
-                    <a href="ubsformEdit.jsp">
-                        <div class="btn-group btn-group-sm">
+                    <div class="btn-group btn-group-sm">
+                        <form method="post" action="editaUbs.do">
                             <button type="submit" class="btn btn-default">
                                 <span class="glyphicon glyphicon-pencil"></span> Editar
                             </button>
-                        </div>
-                    </a>
+                            <input type="hidden" name="cnes" class="form-control" value="${u.cnes}">
+                        </form>
+                        <form method="post" action="excluiUbs.do">
+                            <button type="submit" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-minus"></span> Excluir
+                            </button>
+                            <input type="hidden" name="cnes" class="form-control" value="${u.cnes}">
+                        </form>
+                    </div>
                 </td>
             </tr>
-        </tbody>
+        </c:forEach>
+    </tbody>
+        
+    <tfoot>
+        <tr>
+            <td colspan="6"></td>
+        </tr>
+    </tfoot>
 
-        <tfoot>
-            <tr>
-                <td colspan="6"></td>
-            </tr>
-        </tfoot>
-
-    </table>
-
-</c:forEach>
+</table>
 
 <%@include  file="includes/_footer.jsp" %>

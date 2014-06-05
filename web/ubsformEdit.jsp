@@ -5,16 +5,16 @@
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
 <%    
-    String cnes = (String) session.getAttribute("pesquisaUBS");    
+    String cnes = (String) session.getAttribute("cnes");    
     int u_Cnes = Integer.parseInt(cnes);
 %>
 
 <jsp:useBean id="l_UbsFormEdit" class="br.immunit.dao.UbsDAO" />
-<c:forEach var="u" items="<%=l_UbsFormEdit.preencheLista(u_Cnes)%>">                  
+<c:forEach var="u" items="<%=l_UbsFormEdit.preencheListaNome(u_Cnes)%>">                  
 
     <h1 class="page-header">Editar UBS</h1>
 
-    <form method="post" action="editaUbs.do">
+    <form method="post" action="editaCadastroUbs.do">
 
         <div class="form-group">
             <label for="cnes">CNES</label>

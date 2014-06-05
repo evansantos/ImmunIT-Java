@@ -9,7 +9,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-public class UbsEditaControl extends org.apache.struts.action.Action{
+public class UbsEditaCadastroControl extends org.apache.struts.action.Action{
 
     private static final String SUCCESS = "success";
     
@@ -19,6 +19,8 @@ public class UbsEditaControl extends org.apache.struts.action.Action{
         throws SQLException{
       
             int cnes = Integer.parseInt(request.getParameter("cnes"));
+            String nomeFantasia = request.getParameter("nomefantasia");
+            String razaoSocial = request.getParameter("razaosocial");
             String telefone = request.getParameter("telefone");
             String ativo = request.getParameter("ativo");
             
@@ -30,7 +32,7 @@ public class UbsEditaControl extends org.apache.struts.action.Action{
             }
             
             UbsDAO u = new UbsDAO();
-            u.atualizaUBS(cnes,telefone,u_Ativo);
+            u.atualizaUBS(cnes,nomeFantasia,razaoSocial,telefone,u_Ativo);
             
             JOptionPane.showMessageDialog(null,"Alteração efetuado com sucesso.");
             

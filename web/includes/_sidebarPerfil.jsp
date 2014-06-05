@@ -9,7 +9,7 @@
 
     <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar"><!-- Administrador -->
+        <div class="col-sm-3 col-md-2 sidebar">
             
             <c:if test="${l.funcao.equals('Administrador')}">
                 <ul class="nav nav-sidebar">
@@ -20,29 +20,26 @@
             </c:if>
             
             <c:if test="${l.funcao.equals('Gerente')}">
-                <ul class="nav nav-sidebar"><!-- gerencia -->
+                <ul class="nav nav-sidebar">
                     <li><a href="vacineControl.jsp">Controle de vacinas</a></li>
                     <li><a href="#" onclick="callReport()">Relatório de vacinas</a></li>
-                    <!--<li><a href="">One more nav</a></li>
-                    <li><a href="">Another nav item</a></li>
-                    <li><a href="">More navigation</a></li>-->
                 </ul>
             </c:if>
             
             <c:if test="${l.funcao.equals('Funcionário')}">
-                <ul class="nav nav-sidebar"><!-- Funcionário -->
+                <ul class="nav nav-sidebar">
                     <li><a href="patient.jsp">Paciente</a></li>
-                    <!--<li><a href="">One more nav</a></li>
-                    <li><a href="">Another nav item</a></li>
-                    <li><a href="">More navigation</a></li>-->
+                    <li><a href="vacineApplication.jsp">Aplicação de vacina</a></li>
                 </ul>
             </c:if>
-            <!--<ul class="nav nav-sidebar">--><!-- usuario/paciente -->
-            <!--<li><a href="">Nav item again</a></li>
-                <li><a href="">One more nav</a></li>
-                <li><a href="">Another nav item</a></li>
-            </ul>-->
+            
+            <c:if test="${l.funcao.equals('Paciente')}">
+                <ul class="nav nav-sidebar">
+                    <li><a href="vacinationCard.jsp">Carterinha de vacinação</a></li>
+                </ul>
+            </c:if>
         </div>
+        
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     
 </c:forEach>

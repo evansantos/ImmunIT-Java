@@ -32,6 +32,38 @@ public class UbsDAO extends DAO{
         
     }
     
+    public boolean pesquisaUBSNome(String ubs) throws SQLException{        
+        
+        start();
+        Statement stmt = conn.createStatement(); 
+        
+        String sql;
+        
+        if(ubs.equals("*")){
+            
+            sql = "SELECT COUNT(*) AS Quantidade FROM ubs INNER JOIN "
+                + "endereco ON ubs.end_Cep = endereco.end_Cep";
+            
+        }else{
+        
+            sql = "SELECT COUNT(*) AS Quantidade FROM ubs INNER JOIN "
+                + "endereco ON ubs.end_Cep = endereco.end_Cep "
+                + "WHERE ubs_NomeFantasia LIKE '%" + ubs + "%'"; 
+        }
+
+        ResultSet rs = stmt.executeQuery(sql);
+        rs.next();
+
+        boolean resultado = false;
+
+        if (rs.getInt("Quantidade") > 0) {
+            resultado = true;
+        }
+
+        stop();
+        return resultado;
+    }
+    
     public boolean pesquisaUBS(int cnes) throws SQLException{        
         
         start();
@@ -53,7 +85,59 @@ public class UbsDAO extends DAO{
         return resultado;
     }
     
-    public List<UbsModel> preencheLista(int cnes) throws SQLException {
+    public List<UbsModel> preencheLista(String ubs) throws SQLException {
+               
+        start();
+        Statement stmt = conn.createStatement();
+
+        String sql;
+        
+        if(ubs == null){
+            ubs = "*";
+        }
+        
+        if(ubs.equals("*")){
+            
+            sql = "SELECT Ubs.*, Endereco.* FROM Ubs INNER JOIN"
+                + " Endereco ON Ubs.end_Cep = Endereco.end_Cep";
+            
+        }else{
+        
+            sql = "SELECT Ubs.*, Endereco.* FROM Ubs INNER JOIN"
+                    + " Endereco ON Ubs.end_Cep = Endereco.end_Cep "
+                    + "WHERE ubs_NomeFantasia LIKE '%" + ubs + "%'"; 
+        }
+        
+        ResultSet rs = stmt.executeQuery(sql);
+        
+        List<UbsModel> lista = new ArrayList<UbsModel>();
+
+        while (rs.next()) {
+            
+            UbsModel u = new UbsModel();
+            
+            u.setCnes(rs.getInt("Ubs.ubs_Cnes"));
+            u.setNomeFantasia(rs.getString("Ubs.ubs_NomeFantasia"));
+            u.setRazaoSocial(rs.getString("Ubs.ubs_RazaoSocial"));
+            u.setTelefone(rs.getString("Ubs.ubs_Telefone"));
+            u.setCep(rs.getString("Endereco.end_Cep"));
+            u.setEndereco(rs.getString("Endereco.end_Endereco"));
+            u.setNumero(rs.getInt("Ubs.ubs_Numero"));
+            u.setBairro(rs.getString("Endereco.end_Bairro"));
+            u.setCidade(rs.getString("Endereco.end_Cidade"));
+            u.setEstado(rs.getString("Endereco.end_Estado"));
+            u.setAtivo(rs.getBoolean("Ubs.ubs_Ativo"));
+            
+            lista.add(u);
+            
+        }
+
+        stop();
+        return lista;
+        
+    }
+
+    public List<UbsModel> preencheListaNome(int cnes) throws SQLException {
                
         start();
         Statement stmt = conn.createStatement();
@@ -90,13 +174,16 @@ public class UbsDAO extends DAO{
         
     }
     
-    public void atualizaUBS(int cnes, String telefone, boolean ativo) throws SQLException{        
+    public void atualizaUBS(int cnes, String nomeFantasia, String razaoSocial, String telefone, boolean ativo) 
+            throws SQLException{        
         
         start();
         Statement stmt = conn.createStatement();
         
-        String sql = "UPDATE ubs SET ubs_telefone = '" + telefone + "', ubs_ativo = " + ativo + " "
-                   + "WHERE ubs_cnes = " + cnes + ""; 
+        String sql = "UPDATE ubs SET ubs_NomeFantasia = '" + nomeFantasia + "', "
+                + "ubs_RazaoSocial = '" + razaoSocial + "', "
+                + "ubs_telefone = '" + telefone + "', ubs_ativo = " + ativo + " "
+                + "WHERE ubs_cnes = " + cnes + ""; 
         
         stmt.execute(sql);
         stop();
@@ -143,6 +230,18 @@ public class UbsDAO extends DAO{
 
         stop();
         return cnes;
+    }
+    
+    public void excluiUbs(int cnes) throws SQLException{        
+        
+        start();
+        Statement stmt = conn.createStatement();
+        
+        String sql = "DELETE FROM Ubs WHERE ubs_Cnes = " + cnes  + "";
+        stmt.execute(sql);
+        
+        stop();
+       
     }
     
 }

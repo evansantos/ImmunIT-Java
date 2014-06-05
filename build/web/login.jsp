@@ -45,6 +45,9 @@
                             <input class="btn btn-lg btn-primary btn-block" type="submit" value="Acessar">
                             <!--<button class="btn btn-lg btn-primary btn-block" type="submit" >login</button>-->
                         </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12" style="margin-top:10px">
+                            <h4><a href="enviarSenhar.jsp">Esqueci minha senha</a></h4>
+                        </div>
                     </div>
                 </form>
             </div>

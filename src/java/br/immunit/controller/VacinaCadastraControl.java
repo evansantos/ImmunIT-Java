@@ -4,6 +4,7 @@ import br.immunit.dao.VacinaDAO;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -22,15 +23,13 @@ public class VacinaCadastraControl extends org.apache.struts.action.Action {
 
         if(nome.equals(""))
         {
+            JOptionPane.showMessageDialog(null,"Informe o nome da vacina que deseja cadastrar.","ImmunIT",JOptionPane.ERROR_MESSAGE);
             return mapping.findForward(FAIL);
-        }else{          
-            
+        }else{                      
             VacinaDAO v = new VacinaDAO();
             v.cadastraVacina(nome);
-            
-            return mapping.findForward(SUCCESS);
-            
+            JOptionPane.showMessageDialog(null,"Vacina cadastrada com sucesso.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
+            return mapping.findForward(SUCCESS);       
         }
-    }
-    
+    }   
 }

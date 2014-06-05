@@ -1,5 +1,6 @@
 package br.immunit.controller;
 
+import br.immunit.dao.EnderecoDAO;
 import br.immunit.dao.UbsDAO;
 import br.immunit.dao.UserDAO;
 import br.immunit.dao.FuncaoDAO;
@@ -9,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 import org.apache.commons.mail.EmailException;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -42,23 +44,34 @@ public class UserCadastraControl extends org.apache.struts.action.Action {
         String bairro = request.getParameter("bairro");
         String cidade = request.getParameter("cidade");
         String estado = request.getParameter("estado");
-        String enderecoExiste = request.getParameter("enderecoExiste");
 
-        int dia = Integer.parseInt(dataNascimento.substring(0,2));
-        int mes = Integer.parseInt(dataNascimento.substring(3,5));
-        int ano = Integer.parseInt(dataNascimento.substring(6,10));
-
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");    
-        Calendar c = Calendar.getInstance();
-        String anoAtual = df.format(c.getTime()).substring(6, 10);
+        int dia;
+        int mes;
+        int ano;
+        String anoAtual;
         
+        if(dataNascimento.isEmpty()){
+            return mapping.findForward(FAIL);
+        }else{        
+            dia = Integer.parseInt(dataNascimento.substring(0,2));
+            mes = Integer.parseInt(dataNascimento.substring(3,5));
+            ano = Integer.parseInt(dataNascimento.substring(6,10));
+            
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");    
+            Calendar c = Calendar.getInstance();
+            anoAtual = df.format(c.getTime()).substring(6, 10);
+        }
+
         if(cpf.equals("") || nome.equals("") || sobrenome.equals("") || 
                 cep.equals("") || endereco.equals("") || numero.equals("") ||  
                 bairro.equals("") || cidade.equals("") || estado.equals("") || 
                 (ano < 1900 || ano > Integer.parseInt(anoAtual)) || 
                 (mes < 1 || mes > 12) || (dia < 1 || dia > 31))
         {
+        
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos.","ImmunIT",JOptionPane.ERROR_MESSAGE);
             return mapping.findForward(FAIL);
+        
         }else{
             
             String cpf1 = cpf.replace(".", "");
@@ -77,11 +90,8 @@ public class UserCadastraControl extends org.apache.struts.action.Action {
             String login = "";
             
             boolean e_Cadastrado;
-            if(enderecoExiste.equals("1")){
-                e_Cadastrado = true;
-            }else{
-                e_Cadastrado = false;
-            }
+            EnderecoDAO e = new EnderecoDAO();                
+            e_Cadastrado = e.pesquisa(cep);
         
             dataNascimento = ano + "-" + mes + "-" + dia;
             
@@ -90,6 +100,7 @@ public class UserCadastraControl extends org.apache.struts.action.Action {
                     email, cep, u_Numero, complemento, telefone, u_Ramal, u_Funcao, 
                     u_Ubs, login, endereco, bairro, cidade, estado, e_Cadastrado);
             
+            JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso.");
             return mapping.findForward(SUCCESS);
         }
     }

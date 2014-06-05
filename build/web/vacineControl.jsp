@@ -3,16 +3,24 @@
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
+<%
+    session.removeAttribute("lote");
+    session.removeAttribute("data");
+    session.removeAttribute("quantidade");
+%>
+
 <h1 class="page-header">Controle de vacinas</h1>
 
 <form method="post" action="">
     <div class="form-group">
         <div class="col-sm-2" style="padding-left: 0;">
             <label>Buscar Vacina</label>
-            <input type="text" name="pesquisaUBS" id="pesquisaUBS" class="form-control" style="">
+            <input type="text" name="pesquisaLote" id="pesquisaLote" class="form-control" style="">
         </div>
         <div class="col-sm-2" style="padding-top: 25px; padding-left: 0">
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span> Pesquisar
+            </button>
         </div>
     </div>
 </form>
@@ -27,22 +35,13 @@
             <th>Quantidade</th>
             <th style="text-align:right;">
                 <a href="vacineControlForm.jsp">
-                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
+                    <button type="button" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-plus"></span> Adicionar
+                    </button>
                 </a>
             </th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td style="text-align:right;">  </td>
-        </tr>
-        
-    </tbody>
     <tfoot>
         <tr>
             <td colspan="6"></td>

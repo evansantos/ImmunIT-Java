@@ -107,14 +107,14 @@
 
     <form method="post" action="cadastrarUser.do">
 
-        <input type="text" name="cpf" id="cpf" value="<%=cpf%>" hidden="">
-        <input type="text" name="rg" id="rg" value="<%=rg%>" hidden="">
-        <input type="text" name="nome" id="nome" value="<%=nome%>" hidden="">
-        <input type="text" name="sobrenome" id="sobrenome" value="<%=sobrenome%>" hidden="">
-        <input type="text" name="sexo" id="sexo" value="<%=sexo%>" hidden="">
-        <input type="text" name="datanascimento" id="datanascimento" value="<%=datanascimento%>" hidden="">
-        <input type="text" name="email" id="email" value="<%=email%>" hidden="">
-        <input type="text" name="cep" id="cep" value="<%=cep%>" hidden="">
+        <input type="hidden" name="cpfOculto" id="cpf" value="<%=cpf%>">
+        <input type="hidden" name="rgOculto" id="rg" value="<%=rg%>">
+        <input type="hidden" name="nomeOculto" id="nome" value="<%=nome%>">
+        <input type="hidden" name="sobrenomeOculto" id="sobrenome" value="<%=sobrenome%>">
+        <input type="hidden" name="sexoOculto" id="sexo" value="<%=sexo%>">
+        <input type="hidden" name="datanascimentoOculto" id="datanascimento" value="<%=datanascimento%>">
+        <input type="hidden" name="emailOculto" id="email" value="<%=email%>">
+        <input type="hidden" name="cepOculto" id="cep" value="<%=cep%>">
 
             <div class="col-sm-5">
                 <label for="endereco">Endereço</label>
@@ -122,7 +122,8 @@
             </div>
             <div class="col-sm-2">
                 <label for="numero">Número</label>
-                <input type="text" name="numero" id="numero" class="form-control">
+                <input type="text" name="numero" id="numero" class="form-control" 
+                       onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
             </div>
             <div class="col-sm-2" style="padding-right: 0; padding-left: 0; width: 14%;">
                 <label for="complemento">Complemento</label>
@@ -142,7 +143,8 @@
             </div>            
             <div class="col-sm-2" style="padding-right: 0px;">
                 <label for="estado">UF</label>
-                <input type="text" name="estado" id="estado" class="form-control" value="${e.estado}">
+                <input type="text" name="estado" id="estado" class="form-control" value="${e.estado}" maxlength="2"
+                       onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return false; else return true;">
             </div>
 
         </div>
@@ -157,7 +159,8 @@
             </div>
             <div class="col-sm-2">
                 <label for="ramal">Ramal</label>
-                <input type="text" name="ramal" id="ramal" class="form-control" />
+                <input type="text" name="ramal" id="ramal" class="form-control" maxlength="4"
+                       onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;"/>
             </div>
             <div class="col-sm-4" style="padding-right: 0px;">
                 <label for="funcao">Função</label>

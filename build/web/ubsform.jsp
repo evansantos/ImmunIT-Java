@@ -112,8 +112,6 @@
         </div>
     </div>
     
-    <input type="text" name="enderecoExiste" id="enderecoExiste" value="0" hidden="">
-    
     <div class="form-group" style="padding-bottom: 10px;">
         <div class="pull-right">
             <button type="submit" class="btn btn-default">

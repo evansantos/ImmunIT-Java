@@ -109,7 +109,9 @@
             <input type="text" name="cep" id="cep" class="form-control" value="<%=cep%>">
         </div>
         <div class="col-sm-1" style="padding-top: 25px; padding-left: 0; padding-right: 0; width: 11%; ">
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Pesquisa</button>
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span> Pesquisa
+            </button>
         </div>
     
 </form>       
@@ -131,7 +133,8 @@
         </div>
         <div class="col-sm-2">
             <label for="numero">Número</label>
-            <input type="text" name="numero" id="numero" class="form-control" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
+            <input type="text" name="numero" id="numero" class="form-control" 
+                   onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
         </div>
         <div class="col-sm-2" style="padding-right: 0; padding-left: 0; width: 14%;">
             <label for="complemento">Complemento</label>
@@ -151,7 +154,8 @@
         </div>            
         <div class="col-sm-2" style="padding-right: 0px;">
             <label for="estado">UF</label>
-            <input type="text" name="estado" id="estado" class="form-control" maxlength="2" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return false; else return true;">
+            <input type="text" name="estado" id="estado" class="form-control" maxlength="2" 
+                   onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return false; else return true;">
         </div>
         
     </div>
@@ -166,7 +170,8 @@
         </div>
         <div class="col-sm-2">
             <label for="ramal">ramal</label>
-            <input type="text" name="ramal" id="ramal" class="form-control" maxlength="4" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;"/>
+            <input type="text" name="ramal" id="ramal" class="form-control" maxlength="4" 
+                   onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;"/>
         </div>
         
         <div class="col-sm-4" style="padding-right: 0px;">
@@ -193,9 +198,12 @@
     <div class="clearfix"></div>
     
     <input type="text" name="enderecoExiste" id="enderecoExiste" value="0" hidden="">
+    
     <div class="form-group" style="padding-top: 10px">
         <div class="pull-right">
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Salvar</button>
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-save"></span> Salvar
+            </button>
         </div>
     </div>
     

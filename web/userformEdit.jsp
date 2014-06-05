@@ -5,7 +5,7 @@
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
 <%    
-    String cpf = (String) session.getAttribute("pesquisaUser");    
+    String cpf = (String) session.getAttribute("cpf");    
     long u_Cpf = Long.parseLong(cpf);
 %>
 
@@ -94,10 +94,10 @@
                     
     </form>     
                 
-    <form role="form" method="post" action="editaUser.do">                
+    <form role="form" method="post" action="editaCadastraUser.do">                
 
         <input type="hidden" name="cpf" id="cpf" class="form-control" value="${u.cpf}">
-        <input type="hidden" name="emailOculto" id="email" class="form-control" value="${u.email}">
+        <input type="hidden" name="emailOculto" id="emailOculto" class="form-control" value="${u.email}">
         <input type="hidden" name="cep" id="cep" class="form-control" value="${u.cep}">
         
         
@@ -172,7 +172,9 @@
         
         <div class="form-group" style="padding-top: 10px">
             <div class="pull-right">
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Alterar</button>
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-save"></span> Alterar
+                </button>
             </div>
         </div>
 

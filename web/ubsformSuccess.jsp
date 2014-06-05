@@ -96,8 +96,6 @@
             </div>
         </div>
         
-        <input type="hidden" name="enderecoExiste" id="enderecoExiste" value="1">
-        
         <div class="pull-right">
             <button type="submit" class="btn btn-default">
                 <span class="glyphicon glyphicon-save"></span> Salvar
