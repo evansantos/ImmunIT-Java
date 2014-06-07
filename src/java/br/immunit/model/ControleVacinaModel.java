@@ -1,9 +1,9 @@
 package br.immunit.model;
 
-public class ControleVaicnaModel {
+public class ControleVacinaModel {
  
     private int codigo;
-    private int codigoVacina;
+    private String nomeVacina;
     private String validade;
     private int quantidade;
 
@@ -21,18 +21,18 @@ public class ControleVaicnaModel {
         this.codigo = codigo;
     }
 
-    /**
-     * @return the vacina
+   /**
+     * @return the nomeVacina
      */
-    public int getVacina() {
-        return codigoVacina;
+    public String getNomeVacina() {
+        return nomeVacina;
     }
 
     /**
-     * @param codigoVacina the vacina to set
+     * @param nomeVacina the nomeVacina to set
      */
-    public void setVacina(int codigoVacina) {
-        this.codigoVacina = codigoVacina;
+    public void setNomeVacina(String nomeVacina) {
+        this.nomeVacina = nomeVacina;
     }
 
     /**

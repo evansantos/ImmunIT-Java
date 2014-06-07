@@ -134,6 +134,7 @@ public class UserDAO extends DAO{
         while (rs.next()) {
             
             UserModel user = new UserModel();
+            
             user.setCpf(rs.getLong("usuario.usu_Cpf"));
             user.setNome(rs.getString("usuario.usu_Nome"));
             user.setSobrenome(rs.getString("usuario.usu_Sobrenome"));
@@ -268,6 +269,22 @@ public class UserDAO extends DAO{
         stmt.execute(sqlDelLogin);
         
         stop();
+       
+    }
+    
+    public int buscaUbsUser(String login) throws SQLException{        
+        
+        start();
+        Statement stmt = conn.createStatement();
+        
+        String sqlSELECT = "SELECT * FROM usuario WHERE log_Login = '" + login + "'";
+        ResultSet rs = stmt.executeQuery(sqlSELECT);
+        rs.next();
+        
+        int l = Integer.parseInt(rs.getString("ubs_Cnes"));
+        
+        stop();
+        return l;
        
     }
     

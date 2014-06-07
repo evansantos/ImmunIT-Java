@@ -6,7 +6,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 
 <%    
-    String loginPerfil = (String) session.getAttribute("login");
+    String loginP = (String) session.getAttribute("login");
 %>
 
 <!DOCTYPE html>
@@ -32,9 +32,9 @@
     </head>
     <body>
         
-        <% if(loginPerfil != null){%>
+        <% if(loginP != null){%>
             <%@include file="_menu.jsp" %>
-            <% if(loginPerfil.equals("Admin")){%>
+            <% if(loginP.equals("Admin")){%>
                 <%@include file="_sidebar.jsp" %>
             <%}else{%>
                 <%@include file="_sidebarPerfil.jsp" %>

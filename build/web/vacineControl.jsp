@@ -7,15 +7,18 @@
     session.removeAttribute("lote");
     session.removeAttribute("data");
     session.removeAttribute("quantidade");
+    
+    String loginU = (String) session.getAttribute("login");
 %>
 
 <h1 class="page-header">Controle de vacinas</h1>
 
-<form method="post" action="">
+<form method="post" action="pesquisaLote.do">
     <div class="form-group">
         <div class="col-sm-2" style="padding-left: 0;">
             <label>Buscar Vacina</label>
             <input type="text" name="pesquisaLote" id="pesquisaLote" class="form-control" style="">
+            <input type="hidden" name="log" id="log" class="form-control" style="" value="<%=loginU%>">
         </div>
         <div class="col-sm-2" style="padding-top: 25px; padding-left: 0">
             <button type="submit" class="btn btn-default">

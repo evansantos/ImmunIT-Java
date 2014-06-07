@@ -1,6 +1,7 @@
                     </div>
-                </div>
+                </div>    
             </div>
+            
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery-latest.min.js" type="text/javascript"></script>
         <script src="js/jquery.maskedinput.min.js"></script>

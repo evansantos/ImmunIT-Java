@@ -1,5 +1,5 @@
 <%
-    String loginNome = (String) session.getAttribute("login"); 
+    String loginM = (String) session.getAttribute("login");
 %>
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -18,7 +18,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
               
-            <li><a style="color: #ffffff"><i>Seja bem-vindo <%=loginNome%></i></a></li>
+            <li><a style="color: #ffffff"><i>Seja bem-vindo <%=loginM%></i></a></li>
             <li><a href="../ImmunIT/loginPassword.jsp">Senha</a></li>
             <li><a href="../ImmunIT/">Log off</a></li>
           </ul>

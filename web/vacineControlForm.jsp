@@ -4,6 +4,11 @@
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
 <%
+    session.removeAttribute("lote");
+    session.removeAttribute("data");
+    session.removeAttribute("quantidade");
+
+    String loginU = (String) session.getAttribute("login");
     String vacina = "*";
 %>
 
@@ -41,6 +46,8 @@
         </div>
     </div>
         
+    <input type="hidden" name="login" id="login" class="form-control" value="<%=loginU%>">
+    
     <div class="clearfix"></div>
     
     <div class="pull-right">

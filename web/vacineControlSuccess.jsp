@@ -1,41 +1,65 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
+<%
+    session.removeAttribute("lote");
+    session.removeAttribute("data");
+    session.removeAttribute("quantidade");
+    
+    String vacina = (String) session.getAttribute("pesquisaLote");
+    String loginU = (String) session.getAttribute("login");
+%>
+
 <h1 class="page-header">Controle de vacinas</h1>
+
+<form method="post" action="pesquisaLote.do">
+    <div class="form-group">
+        <div class="col-sm-2" style="padding-left: 0;">
+            <label>Buscar Vacina</label>
+            <input type="text" name="pesquisaLote" id="pesquisaLote" class="form-control" style="">
+            <input type="hidden" name="log" id="log" class="form-control" style="" value="<%=loginU%>">
+        </div>
+        <div class="col-sm-2" style="padding-top: 25px; padding-left: 0">
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span> Pesquisar
+            </button>
+        </div>
+    </div>
+</form>
 
 <table class="table table-striped table-condensed">
     <thead>
         <tr>
-            <th>Código</th>
             <th>Nome</th>
             <th>Lote</th>
             <th>Validade</th>
             <th>Quantidade</th>
             <th style="text-align:right;">
                 <a href="vacineControlForm.jsp">
-                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
+                    <button type="button" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-plus"></span> Adicionar
+                    </button>
                 </a>
             </th>
         </tr>
     </thead>
+    
     <tbody>
-        <tr>
-            <td>A101 </td>
-            <td>Paracetamol</td>
-            <td>984032-SV</td>
-            <td>30/02/2050</td>
-            <td>500</td>
-            <td style="text-align:right;">
-                <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-minus"></span> Excluir</button>
-                </div>
-            </td>
-        </tr>
-        
+        <jsp:useBean id="c_ControlSuccess" class="br.immunit.dao.ControleVacinaDAO" />
+        <c:forEach var="c" items="<%=c_ControlSuccess.preencheLista(loginU, vacina)%>">        
+            <tr>
+                <td>${c.nomeVacina}</td>
+                <td>${c.codigo}</td>
+                <td>${c.validade}</td>
+                <td>${c.quantidade}</td>
+                <td style="text-align:right;"></td>
+            </tr>
+        </c:forEach>        
     </tbody>
+    
     <tfoot>
         <tr>
             <td colspan="6"></td>

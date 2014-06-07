@@ -130,17 +130,9 @@
                 <forward name="fail" path="/vacineControlForm.jsp" />
             </action>
             
-            <action path="/pesquisaLote" type="br.immunit.controller.VacinaPesquisaControl">
-                <forward name="success" path="/vacineSuccess.jsp" />
-                <forward name="fail" path="/vacine.jsp" />
-            </action>
-            
-            <action path="/editaLote" type="br.immunit.controller.VacinaEditaControl">
-                <forward name="success" path="/vacineformEdit.jsp" />
-            </action>
-            
-            <action path="/editaCadastroVacina" type="br.immunit.controller.VacinaEditaCadastroControl">
-                <forward name="success" path="/vacineSuccess.jsp" />
+            <action path="/pesquisaLote" type="br.immunit.controller.LotePesquisaControl">
+                <forward name="success" path="/vacineControlSuccess.jsp" />
+                <forward name="fail" path="/vacineControl.jsp" />
             </action>
         <!-- CONTROLE DE LOTE-->
         
