@@ -42,7 +42,7 @@
             <th>Ramal</th>
             <th>Função</th>
             <th>UBS</th>
-            <th style="text-align:right;">
+            <th style="text-align:right;" colspan="2">
                 <a href="userform.jsp">
                     <button type="button" class="btn btn-default btn-sm">
                         <span class="glyphicon glyphicon-plus"></span> Adicionar
@@ -62,7 +62,7 @@
                 <td>${u.ramal}</td>
                 <td>${u.funcao}</td>
                 <td>${u.ubs}</td>
-                <td style="text-align:right;">
+                <td width="84">
                     <div class="btn-group btn-group-sm">
                         <!--<a href="userPassword.jsp">
                             <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-lock"></span> Senha</button>
@@ -73,6 +73,10 @@
                             </button>
                             <input type="hidden" name="cpf" class="form-control" value="${u.cpf}">
                         </form>
+                    </div>
+                </td>
+                <td width="89">
+                    <div class="btn-group btn-group-sm">
                         <form method="post" action="excluiUser.do">
                             <button type="submit" class="btn btn-default btn-sm">
                                 <span class="glyphicon glyphicon-minus"></span> Excluir
@@ -87,7 +91,7 @@
     
     <tfoot>
         <tr>
-            <td colspan="14"></td>
+            <td colspan="8"></td>
         </tr>
     </tfoot>
 </table>
