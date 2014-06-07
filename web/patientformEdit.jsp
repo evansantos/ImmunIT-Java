@@ -18,17 +18,17 @@
 
         <div class="form-group">
 
-            <div class="col-sm-6" style="padding-left: 0px">
+            <div class="col-sm-4" style="padding-left: 0px">
                 <label for="cartaoSUS">Cartão SUS</label>
                 <input type="text" name="cartaoSUS" id="cartaoSUS" class="form-control"  value="${p.cartaoSUS}" readonly="">
             </div>
 
-            <div class="col-sm-6" style="padding-left: 0px;">
+            <div class="col-sm-4" style="padding-left: 0px;">
                 <label for="cpf">CPF</label>
                 <input type="text" name="cpf" id="cpf" class="form-control" value="${p.cpf}" readonly="">
             </div>
 
-            <div class="col-sm-6" style="padding-right: 0px;">
+            <div class="col-sm-4" style="padding-right: 0px;">
                 <label for="rg">RG </label>
                 <input type="text" name="rg" id="rg" class="form-control" value="${p.rg}" readonly="">
             </div>
@@ -80,11 +80,11 @@
                 <label for="datanascimento">Data de Nascimento</label>
                 <input type="text" name="datanascimento" id="datanascimento" class="form-control" value="${p.dataNascimento}" readonly="">
             </div>
-            <div class="col-sm-6" style="padding-right: 0px;"> 
+            <div class="col-sm-3" style="padding-right: 0px;"> 
                 <label for="email">E-mail</label>
                 <input type="text" name="email" id="email" class="form-control" value="${p.email}">
             </div>
-            <div class="col-sm-6" style="padding-right: 0px;"> 
+            <div class="col-sm-3" style="padding-right: 0px;"> 
                 <label for="responsavel">Responsável</label>
                 <input type="text" name="responsavel" id="responsavel" class="form-control" value="${p.responsavel}">
             </div>
@@ -117,7 +117,7 @@
             <input type="hidden" name="responsavelOculto" id="responsavelOculto" value="${p.responsavel}">
             <input type="hidden" name="cep" id="cep" value="${p.cep}">
 
-            <div class="col-sm-6">
+            <div class="col-sm-5">
                 <label for="endereco">Endereço</label>
                 <input type="text" name="endereco" id="endereco" class="form-control" value="${p.endereco}">
             </div>
@@ -127,7 +127,7 @@
                 <input type="text" name="numero" id="numero" class="form-control" value="${p.numero}">
             </div>
 
-            <div class="col-sm-2" style="padding-right: 0px;">
+            <div class="col-sm-2" style="padding-right: 0; padding-left: 0; width: 14%;">
                 <label for="complemento">Complemento</label>
                 <input type="text" name="complemento" id="complemento" class="form-control" value="${p.complemento}">
             </div>

@@ -84,7 +84,17 @@
                     </c:forEach>
                 </tbody>
             </table>
+<<<<<<< HEAD
             <!--termina o das ubs também aqui -->
+=======
+            <!--termina o das ubs tambÃ©m aqui -->
+           
+            <div class="pull-right">
+                <button class="btn btn-default btn-sm" onclick="this.display='none'; window.print()"><span class="glyphicon glyphicon-print"></span> Imprimir</button>
+            </div>
+>>>>>>> 2d500fa97ce23001aa314bd6728ea4e7b33541ee
         </div>
+        
+       
     </body>
 </html>
