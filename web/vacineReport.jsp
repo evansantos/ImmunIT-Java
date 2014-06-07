@@ -1,9 +1,10 @@
 <%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<%@page pageEncoding="ISO-8859-1"%>
 
-<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
@@ -28,84 +29,62 @@
     </head>
     <body>
         
+        <%    
+            String vacina = (String) session.getAttribute("pesquisaLote");
+            String loginU = (String) session.getAttribute("login");
+        %>
+        
         <div class="container">
             <table border="0">
                 <tr>
-                    <td width='700' rowspan="2"><span style="font-size:28px;"><strong>RelatÃ³rio de controle de vacinas</strong></span></td>
-                    <td width='100'><span style="font-size:14px;"><strong>Data</strong></span></td>
-                </tr>
-                <tr>
-                    <td>
-                        <span style="font-size:12px;">19/06/2014</span>
+                    <td width='700' rowspan="2">
+                        <span style="font-size:28px;">
+                            <strong>Relatório de controle de vacinas</strong>
+                        </span>
+                    </td>
+                    <td width='100'>
+                        <span style="font-size:14px;">
+                            <strong>Data</strong>
+                        </span>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan='2'>
-                        <hr />
-                    </td>    
+                    <td><span style="font-size:12px;">19/06/2014</span></td>
+                </tr>
+                <tr>
+                    <td colspan='2'><hr /></td>    
                 </tr>
             </table>
-            <table><!-- criar laÃ§o das ubs aqui (caso tenha uma busca por dados de todas ubs) -->
+            
+            <table><!-- criar laço das ubs aqui (caso tenha uma busca por dados de todas ubs) -->
                 <tr>
-                    <td width='50'>
-                        UBS:
-                    </td>
-                    <td width='750'>
-                        <strong>Unidade Morumbi</strong>
-                    </td>
+                    <td width='50'>UBS:</td>
+                    <td width='750'><strong>Unidade Morumbi</strong></td>
                 </tr>
             </table>
-           
+
             <table class="table table-responsive table-striped" border="0">
                 <thead>
                     <tr>
-                        <th>
-                            Vacina
-                        </th>
-                        <th>
-                            Lote
-                        </th>
-                        <th>
-                            Quantidade
-                        </th>
-                        <th>
-                            Validade
-                        </th>
+                        <th>Vacina</th>
+                        <th>Lote</th>
+                        <th>Quantidade</th>
+                        <th>Validade</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr> <!-- criar laÃ§o das vacinas aqui -->
-                        <td>
-                            BCG
-                        </td>
-                        <td>
-                            AA-10
-                        </td>
-                        <td>
-                            100
-                        </td>
-                        <td>
-                            19/07/2014
-                        </td>
-                    </tr><!-- termina laÃ§o das vacinas aqui --> 
-                    <tr> <!-- criar laÃ§o das vacinas aqui -->
-                        <td>
-                            Poliomelite
-                        </td>
-                        <td>
-                            AA-15
-                        </td>
-                        <td>
-                            50
-                        </td>
-                        <td>
-                            31s/07/2014
-                        </td>
-                    </tr><!-- termina laÃ§o das vacinas aqui --> 
+                    <jsp:useBean id="r_RelatorioControl" class="br.immunit.dao.ControleVacinaDAO"/>
+                    <c:forEach var="r" items="<%=r_RelatorioControl.preencheLista(loginU, vacina)%>"> 
+                        <tr> <!-- criar laço das vacinas aqui -->
+                            <td>${r.nomeVacina}</td>
+                            <td>${r.codigo}</td>
+                            <td>${r.quantidade}</td>
+                            <td>${r.validade}</td>
+                        </tr><!-- termina laço das vacinas aqui -->
+                    </c:forEach>
                 </tbody>
             </table>
-            <!--termina o das ubs tambÃ©m aqui -->
-           
+            <!--termina o das ubs também aqui -->
         </div>
     </body>
 </html>

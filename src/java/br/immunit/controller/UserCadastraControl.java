@@ -79,7 +79,14 @@ public class UserCadastraControl extends org.apache.struts.action.Action {
             
             long u_Cpf = Long.parseLong(cpf2);
             int u_Numero = Integer.parseInt(numero);
-            int u_Ramal = Integer.parseInt(ramal);
+            
+            int u_Ramal;
+            
+            if(ramal.isEmpty()){
+                u_Ramal = 0;
+            }else{
+                u_Ramal = Integer.parseInt(ramal);
+            }
             
             UbsDAO u = new UbsDAO();
             int u_Ubs = u.buscaUBS(ubs);
