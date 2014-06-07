@@ -106,6 +106,11 @@
             </table>
             <!--termina o das ubs também aqui -->
            
+            <div class="pull-right">
+                <button class="btn btn-default btn-sm" onclick="this.display='none'; window.print()"><span class="glyphicon glyphicon-print"></span> Imprimir</button>
+            </div>
         </div>
+        
+       
     </body>
 </html>
