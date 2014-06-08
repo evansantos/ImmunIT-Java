@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -26,12 +27,14 @@ public class PacientePesquisaControl extends org.apache.struts.action.Action {
 
         if(request.getParameter("pesquisaPaciente").equals(""))
         {
+            JOptionPane.showMessageDialog(null, "Digite o nome do paciente que deseja pesquisar.");
             return mapping.findForward(FAIL);
         }else{
             PacienteDAO p = new PacienteDAO();
-            if(p.pesquisaPaciente(Long.parseLong(request.getParameter("pesquisaPaciente")))){
+            if(p.pesquisaPacienteNome(request.getParameter("pesquisaPaciente"))){
                 return mapping.findForward(SUCCESS);
-            }else{ 
+            }else{
+                JOptionPane.showMessageDialog(null, "Paciente não encontrado.");
                 return mapping.findForward(FAIL);
             }
         }

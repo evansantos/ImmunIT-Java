@@ -40,28 +40,20 @@ public class EnderecoDAO extends DAO{
     
     public boolean pesquisa(String cep) throws SQLException {
                
-        //Conexão com banco de dados
         start();
-               
-        //Cria um statement para podermos mandar um SQL para o banco
         Statement stmt = conn.createStatement();
 
-        //Mandamos o SQL para o banco e obtemos um ResultSet
         String sql = "SELECT COUNT(*) AS Quantidade FROM endereco WHERE end_Cep = '" + cep + "'";
         
-        //Executa o comando SQL
         ResultSet rs = stmt.executeQuery(sql);
         rs.next();
-
-        //Inicia a várial como falso
-        boolean resultado = false;
         
-        //Verifica se existe o usuário no banco de dados
+        boolean resultado = false;
+
         if (rs.getInt("Quantidade") > 0) {
             resultado = true;
         }
 
-        //Fecha a conexão do banco de dados
         stop();
         return resultado;
     }

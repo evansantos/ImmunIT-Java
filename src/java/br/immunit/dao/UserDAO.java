@@ -272,19 +272,27 @@ public class UserDAO extends DAO{
        
     }
     
-    public int buscaUbsUser(String login) throws SQLException{        
+    public String buscaUbsUser(String login, int tipo) throws SQLException{        
         
         start();
         Statement stmt = conn.createStatement();
         
-        String sqlSELECT = "SELECT * FROM usuario WHERE log_Login = '" + login + "'";
+        String sqlSELECT = "SELECT Usuario.*, Ubs.* FROM Usuario INNER JOIN Ubs ON "
+                + "Usuario.ubs_Cnes = Ubs.ubs_Cnes "
+                + "WHERE log_Login = '" + login + "'";
         ResultSet rs = stmt.executeQuery(sqlSELECT);
         rs.next();
         
-        int l = Integer.parseInt(rs.getString("ubs_Cnes"));
+        String codNome;
+        
+        if(tipo == 1){
+         codNome = rs.getString("ubs_NomeFantasia");
+        }else{
+         codNome = rs.getString("ubs_Cnes");
+        }
         
         stop();
-        return l;
+        return codNome;
        
     }
     

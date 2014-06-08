@@ -30,7 +30,10 @@
     <body>
         
         <%    
-            String vacina = (String) session.getAttribute("pesquisaLote");
+            String ubs = (String) session.getAttribute("ubs");
+            String vacina = (String) session.getAttribute("vacina");
+            String lote = (String) session.getAttribute("lote");
+            String validade = (String) session.getAttribute("validade");
             String loginU = (String) session.getAttribute("login");
         %>
         
@@ -42,14 +45,14 @@
                             <strong>Relatório de controle de vacinas</strong>
                         </span>
                     </td>
-                    <td width='100'>
+                    <td width='500'>
                         <span style="font-size:14px;">
-                            <strong>Data</strong>
+                            
                         </span>
                     </td>
                 </tr>
                 <tr>
-                    <td><span style="font-size:12px;">19/06/2014</span></td>
+                    <td><span style="font-size:12px;"></span></td>
                 </tr>
                 <tr>
                     <td colspan='2'><hr /></td>    
@@ -59,8 +62,9 @@
             <table><!-- criar laço das ubs aqui (caso tenha uma busca por dados de todas ubs) -->
                 <tr>
                     <td width='50'>UBS:</td>
-                    <td width='750'><strong>Unidade Morumbi</strong></td>
+                    <td width='750'><strong><%=ubs%></strong></td>
                 </tr>
+                <tr><td><br></td></tr>
             </table>
 
             <table class="table table-responsive table-striped" border="0">
@@ -74,7 +78,7 @@
                 </thead>
                 <tbody>
                     <jsp:useBean id="r_RelatorioControl" class="br.immunit.dao.ControleVacinaDAO"/>
-                    <c:forEach var="r" items="<%=r_RelatorioControl.preencheLista(loginU, vacina)%>"> 
+                    <c:forEach var="r" items="<%=r_RelatorioControl.preencheRelatorio(ubs, vacina, lote, validade, loginU)%>"> 
                         <tr> <!-- criar laço das vacinas aqui -->
                             <td>${r.nomeVacina}</td>
                             <td>${r.codigo}</td>
@@ -84,15 +88,15 @@
                     </c:forEach>
                 </tbody>
             </table>
-<<<<<<< HEAD
-            <!--termina o das ubs também aqui -->
-=======
-            <!--termina o das ubs tambÃ©m aqui -->
            
             <div class="pull-right">
-                <button class="btn btn-default btn-sm" onclick="this.display='none'; window.print()"><span class="glyphicon glyphicon-print"></span> Imprimir</button>
+                <button class="btn btn-default btn-sm" onclick="this.display='none'; window.print()">
+                    <span class="glyphicon glyphicon-print"></span> Imprimir
+                </button>
+                <button class="btn btn-default btn-sm" onclick="this.display='none'; window.close()">
+                    <span class="glyphicon glyphicon-step-forward"></span> Fechar
+                </button>
             </div>
->>>>>>> 2d500fa97ce23001aa314bd6728ea4e7b33541ee
         </div>
         
        

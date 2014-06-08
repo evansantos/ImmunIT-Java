@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 import org.apache.commons.mail.EmailException;
 import org.apache.struts.action.ActionForm;
@@ -44,6 +45,8 @@ public class UserCadastraControl extends org.apache.struts.action.Action {
         String bairro = request.getParameter("bairro");
         String cidade = request.getParameter("cidade");
         String estado = request.getParameter("estado");
+        
+        HttpSession session = request.getSession();
 
         int dia;
         int mes;
@@ -51,8 +54,12 @@ public class UserCadastraControl extends org.apache.struts.action.Action {
         String anoAtual;
         
         if(dataNascimento.isEmpty()){
+            
+            JOptionPane.showMessageDialog(null, "Campo data de nascimento vazio, por favor preencher.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(FAIL);
-        }else{        
+            
+        }else{
+                 
             dia = Integer.parseInt(dataNascimento.substring(0,2));
             mes = Integer.parseInt(dataNascimento.substring(3,5));
             ano = Integer.parseInt(dataNascimento.substring(6,10));
@@ -60,13 +67,20 @@ public class UserCadastraControl extends org.apache.struts.action.Action {
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy");    
             Calendar c = Calendar.getInstance();
             anoAtual = df.format(c.getTime()).substring(6, 10);
+            
+            if((ano < 1900 || ano > Integer.parseInt(anoAtual)) || 
+                (mes < 1 || mes > 12) || (dia < 1 || dia > 31)){
+                
+                JOptionPane.showMessageDialog(null, "Data de nascimento inválido.","ImmunIT",JOptionPane.ERROR_MESSAGE);
+                return mapping.findForward(FAIL);   
+                
+            }
+            
         }
 
         if(cpf.equals("") || nome.equals("") || sobrenome.equals("") || 
                 cep.equals("") || endereco.equals("") || numero.equals("") ||  
-                bairro.equals("") || cidade.equals("") || estado.equals("") || 
-                (ano < 1900 || ano > Integer.parseInt(anoAtual)) || 
-                (mes < 1 || mes > 12) || (dia < 1 || dia > 31))
+                bairro.equals("") || cidade.equals("") || estado.equals(""))
         {
         
             JOptionPane.showMessageDialog(null, "Preencha todos os campos.","ImmunIT",JOptionPane.ERROR_MESSAGE);
@@ -76,39 +90,48 @@ public class UserCadastraControl extends org.apache.struts.action.Action {
             
             String cpf1 = cpf.replace(".", "");
             String cpf2 = cpf1.replace("-", "");
-            
             long u_Cpf = Long.parseLong(cpf2);
-            int u_Numero = Integer.parseInt(numero);
-            
-            int u_Ramal;
-            
-            if(ramal.isEmpty()){
-                u_Ramal = 0;
-            }else{
-                u_Ramal = Integer.parseInt(ramal);
-            }
-            
-            UbsDAO u = new UbsDAO();
-            int u_Ubs = u.buscaUBS(ubs);
-            
-            FuncaoDAO f = new FuncaoDAO();
-            int u_Funcao = f.buscaFuncao(funcao);
-            
-            String login = "";
-            
-            boolean e_Cadastrado;
-            EnderecoDAO e = new EnderecoDAO();                
-            e_Cadastrado = e.pesquisa(cep);
-        
-            dataNascimento = ano + "-" + mes + "-" + dia;
             
             UserDAO user = new UserDAO();
-            user.cadastraUser(u_Cpf, nome, sobrenome, sexo, dataNascimento, rg, 
-                    email, cep, u_Numero, complemento, telefone, u_Ramal, u_Funcao, 
-                    u_Ubs, login, endereco, bairro, cidade, estado, e_Cadastrado);
+                        
+            if(user.pesquisaUser(u_Cpf)){
+                
+                JOptionPane.showMessageDialog(null,"CPF " + u_Cpf + " já está cadastrada.","ImmunIT",JOptionPane.ERROR_MESSAGE);
+                return mapping.findForward(FAIL);
             
-            JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso.");
-            return mapping.findForward(SUCCESS);
+            }else{
+            
+                int u_Numero = Integer.parseInt(numero);
+
+                int u_Ramal;
+
+                if(ramal.isEmpty()){
+                    u_Ramal = 0;
+                }else{
+                    u_Ramal = Integer.parseInt(ramal);
+                }
+
+                UbsDAO u = new UbsDAO();
+                int u_Ubs = u.buscaUBS(ubs);
+
+                FuncaoDAO f = new FuncaoDAO();
+                int u_Funcao = f.buscaFuncao(funcao);
+
+                String login = "";
+
+                boolean e_Cadastrado;
+                EnderecoDAO e = new EnderecoDAO();                
+                e_Cadastrado = e.pesquisa(cep);
+
+                dataNascimento = ano + "-" + mes + "-" + dia;
+
+                user.cadastraUser(u_Cpf, nome, sobrenome, sexo, dataNascimento, rg, 
+                        email, cep, u_Numero, complemento, telefone, u_Ramal, u_Funcao, 
+                        u_Ubs, login, endereco, bairro, cidade, estado, e_Cadastrado);
+
+                JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso.");
+                return mapping.findForward(SUCCESS);
+            }
         }
     }
 }

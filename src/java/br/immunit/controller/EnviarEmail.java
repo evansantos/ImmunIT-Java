@@ -10,10 +10,10 @@ public class EnviarEmail {
         SimpleEmail email = new SimpleEmail();  
   
         try {  
-            email.setDebug(true);  
+            email.setDebug(true);
             email.setHostName("smtp.gmail.com");  
             email.setAuthentication("immunitsystem","10TNA-ads");  
-            email.setSSL(true);  
+            email.setSSL(true);
             email.addTo(emails); //pode ser qualquer um email  
             email.setFrom("immunitsystem@gmail.com"); //aqui necessita ser o email que voce fara a autenticacao  
             email.setSubject("ImmunIT - Senha");  

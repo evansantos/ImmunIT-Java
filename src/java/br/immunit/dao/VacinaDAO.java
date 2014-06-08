@@ -118,4 +118,24 @@ public class VacinaDAO extends DAO {
         
     }
     
+    public int buscaVacina(String nomeVacina) throws SQLException {
+
+        start();
+               
+        Statement stmt = conn.createStatement();
+
+        String sql = "SELECT * FROM Vacina WHERE vac_Nome = '" + nomeVacina + "'"; 
+
+        ResultSet rs = stmt.executeQuery(sql);
+        
+        int cod = 0;
+        
+        if(rs.next()) {
+            cod = Integer.parseInt(rs.getString("vac_Cod"));
+        }
+
+        stop();
+        return cod;
+    }
+    
 }

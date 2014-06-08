@@ -17,9 +17,7 @@
 <form role="form" method="post" action="cadastrarLote.do">
     <div class="form-group">
         <div class="col-sm-12" style="padding-left: 0px; padding-right: 0">
-            <label for="vacina">
-                Vacina
-            </label>
+            <label for="vacina">Vacina</label>
             <select id="vacina" name="vacina" class="form-control">
                 <jsp:useBean id="l_VacinaControl" class="br.immunit.dao.VacinaDAO" />
                 <c:forEach var="v" items="<%=l_VacinaControl.preencheLista(vacina)%>">

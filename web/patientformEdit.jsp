@@ -5,7 +5,7 @@
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
 <%    
-    String cpf = (String) session.getAttribute("pesquisaPaciente");    
+    String cpf = (String) session.getAttribute("cpf");    
     long p_Cpf = Long.parseLong(cpf);
 %>
 
@@ -104,7 +104,7 @@
 
     </form>
 
-    <form method="post" action="editaPaciente.do">   
+    <form method="post" action="editaCadastraPaciente.do">   
 
             <input type="hidden" name="cartaoSUS" id="cartaoSUS" value="${p.cartaoSUS}">
             <input type="hidden" name="cpf" id="cpf" value="${p.cpf}">
@@ -163,7 +163,9 @@
         <div class="form-group" style="padding-top: 10px">
             <div class="pull-right">
                 <p><!--Espaço--></p>
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Alterar</button>
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-save"></span> Alterar
+                </button>
             </div>
         </div>
 

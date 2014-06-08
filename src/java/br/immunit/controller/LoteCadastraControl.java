@@ -72,13 +72,13 @@ public class LoteCadastraControl extends org.apache.struts.action.Action {
             int v_Vacina = Integer.parseInt(vacina);
             int l_Lote = Integer.parseInt(lote);
             int l_Qtd = Integer.parseInt(quantidade);
-            int u_Cnes;
+            String u_Cnes;
             
             if(login.equals("Admin")){
-                u_Cnes = 1;
+                u_Cnes = "1";
             }else{
                 UserDAO u = new UserDAO();
-                u_Cnes = u.buscaUbsUser(login);
+                u_Cnes = u.buscaUbsUser(login, 0);
             }
             
             ControleVacinaDAO vc = new ControleVacinaDAO();
@@ -87,7 +87,7 @@ public class LoteCadastraControl extends org.apache.struts.action.Action {
                 JOptionPane.showMessageDialog(null,"Já existe o cadastro do lote " + l_Lote + ", digite um lote diferente.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
                 return mapping.findForward(FAIL);
             }else{
-                vc.cadastraVacina(l_Lote, v_Vacina, data, l_Qtd, u_Cnes);
+                vc.cadastraVacina(l_Lote, v_Vacina, data, l_Qtd, Integer.parseInt(u_Cnes));
                 JOptionPane.showMessageDialog(null,"Lote cadastrado com sucesso.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
                 return mapping.findForward(SUCCESS);
             }

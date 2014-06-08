@@ -89,7 +89,9 @@
                 <input type="text" name="cep" id="cep" class="form-control" value="${u.cep}">
             </div>
             <div class="col-sm-1" style="padding-top: 25px; padding-left: 0; padding-right: 0; width: 11%; ">
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Pesquisa</button>
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search"></span> Pesquisa
+                </button>
             </div>
                     
     </form>     
@@ -109,7 +111,7 @@
                 <label for="numero">Número</label>
                 <input type="text" name="numero" id="numero" class="form-control" value="${u.numero}">
             </div>
-            <div class="col-sm-2"" style="padding-right: 0; padding-left: 0; width: 14%;">
+            <div class="col-sm-2" style="padding-right: 0; padding-left: 0; width: 14%;">
                 <label for="complemento">Complemento</label>
                 <input type="text" name="complemento" id="complemento" class="form-control" value="${u.complemento}">
             </div>

@@ -3,14 +3,18 @@
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
+<%
+    String login = (String) session.getAttribute("login");
+%>
+
 <h1 class="page-header">Alterar senha</h1>
 
 <form method="post" action="alterarSenhaLogin.do">
-    <label style="color: red"><i>* A senha deverá conter no mínimo oito ou no máximo dezesseis caracteres.</i> </label>
+    <label style="color: #428bca"><i>* A senha deverá conter no mínimo oito ou no máximo dezesseis caracteres.</i> </label>
     <div class="form-group" style="padding-top: 10px">
         <div class="col-sm-6">
             <label>Usuário</label>
-            <input type="text" name="usuario" id="usuario" class="form-control" style="" value="<%=loginPerfil%>" readonly="">
+            <input type="text" name="usuario" id="usuario" class="form-control" style="" value="<%=login%>" readonly="">
         </div>
         <div class="col-sm-6">
             <label>Senha atual</label>

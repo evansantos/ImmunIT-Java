@@ -173,7 +173,9 @@
         
         <div class="form-group" style="padding-top: 10px">
             <div class="pull-right">
-                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Alterar</button>
+                    <button type="submit" class="btn btn-default">
+                        <span class="glyphicon glyphicon-save"></span> Alterar
+                    </button>
             </div>
         </div>
 

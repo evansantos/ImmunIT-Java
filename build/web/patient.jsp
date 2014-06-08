@@ -19,18 +19,23 @@
 <h1 class="page-header">Paciente</h1>
 
 <form method="post" action="pesquisaPaciente.do">
+    
     <div class="form-group">
         <div class="col-sm-2" style="padding-left: 0;">
             <label>Buscar Paciente</label>
             <input type="text" name="pesquisaPaciente" id="pesquisaPaciente" class="form-control">
         </div>
         <div class="col-sm-2" style="padding-top: 25px; padding-left: 0">
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span> Pesquisar
+            </button>
         </div>
     </div>
+    
 </form>
 
-<table class="table table-striped">
+<table class="table table-striped table-condensed">
+    
     <thead>
         <tr>
             <th>Cartão SUS</th>
@@ -42,24 +47,13 @@
             <th>Acesso</th>
             <th style="text-align:right;">
                 <a href="patientform.jsp">
-                    <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
+                    <button type="button" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-plus"></span> Adicionar
+                    </button>
                 </a>
             </th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td style="text-align:right;"></td>
-        </tr>
-        
-    </tbody>
     <tfoot>
         <tr>
             <td colspan="8"></td>

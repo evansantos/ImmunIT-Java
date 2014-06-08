@@ -45,11 +45,11 @@
             <input type="text" name="funcionario" id="funcionario" class="form-control" readonly="">
         </div>
     </div>
-                <div class="row">
-            <div class="col-sm-12">
-                <button type="submit" class="btn btn-default pull-right" style="margin-top: 15px;"><span class="glyphicon glyphicon-save"></span> Salvar</button>
-            </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-default pull-right" style="margin-top: 15px;"><span class="glyphicon glyphicon-save"></span> Salvar</button>
         </div>
+    </div>
 </div>
 
 </form>

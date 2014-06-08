@@ -11,7 +11,7 @@
 
             <ul class="nav nav-sidebar"><!-- Gerência -->
                 <li><a href="vacineControl.jsp">Controle de vacinas</a></li>
-                <li><a href="#" onclick="callReport()">Relatório de vacinas</a></li>
+                <li><a href="vacineReportControl.jsp">Relatório de vacinas</a></li>
             </ul>
             
             <ul class="nav nav-sidebar"><!-- Funcionário -->

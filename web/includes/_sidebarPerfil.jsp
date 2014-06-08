@@ -22,7 +22,7 @@
             <c:if test="${l.funcao.equals('Gerente')}">
                 <ul class="nav nav-sidebar">
                     <li><a href="vacineControl.jsp">Controle de vacinas</a></li>
-                    <li><a href="#" onclick="callReport()">Relatório de vacinas</a></li>
+                    <li><a href="vacineReportControl.jsp">Relatório de vacinas</a></li>
                 </ul>
             </c:if>
             

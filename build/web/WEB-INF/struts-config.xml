@@ -136,6 +136,12 @@
             </action>
         <!-- CONTROLE DE LOTE-->
         
+        <!-- RELATÓRIO CONTROLE DE LOTE-->
+            <action path="/geraRelatorio" type="br.immunit.controller.ReportControl">
+                <forward name="success" path="/vacineReport.jsp" />
+            </action>
+        <!-- RELATÓRIO CONTROLE DE LOTE-->
+        
         <!-- CONTROLE DE PACIENTE-->
             <action path="/enderecoPaciente" type="br.immunit.controller.PacienteEnderecoControl">
                 <forward name="success" path="/patientformSuccess.jsp" />
@@ -153,7 +159,11 @@
             </action>
 
             <action path="/editaPaciente" type="br.immunit.controller.PacienteEditaControl">
-                <forward name="success" path="/patient.jsp" />
+                <forward name="success" path="/patientformEdit.jsp" />
+            </action>
+            
+            <action path="/editaCadastraPaciente" type="br.immunit.controller.PacienteEditaCadastroControl">
+                <forward name="success" path="/patientSuccess.jsp" />
             </action>
             
             <action path="/enderecoPacienteEdit" type="br.immunit.controller.PacienteEnderecoEditControl">

@@ -14,7 +14,16 @@
     session.removeAttribute("bairro");
     session.removeAttribute("cidade");
     session.removeAttribute("estado");
+    
+    String login = (String) session.getAttribute("login");
 %>
+
+<jsp:useBean id="userAdmin" class="br.immunit.dao.LoginDAO" />
+<c:forEach var="ua" items="<%=userAdmin.perfilUser(login)%>">
+    <c:if test="${!ua.funcao.equals('Administrador')}">
+        <jsp:forward page="main.jsp"></jsp:forward>
+    </c:if>
+</c:forEach>
 
 <h1 class="page-header">UBS</h1>
 

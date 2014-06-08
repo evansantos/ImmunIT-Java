@@ -5,7 +5,7 @@
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
 <%    
-    String cpf = (String) session.getAttribute("pesquisaPaciente"); 
+    String cpf = (String) session.getAttribute("cpf"); 
     String cep = (String) session.getAttribute("cep");
     long p_Cpf = Long.parseLong(cpf);
 %>
@@ -164,7 +164,9 @@
         <div class="form-group" style="padding-top: 10px">
             <div class="pull-right">
                 <p><!--Espaço--></p>
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Alterar</button>
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-save"></span> Alterar
+                </button>
             </div>
         </div>
 
