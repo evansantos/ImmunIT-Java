@@ -171,6 +171,18 @@
                 <forward name="fail" path="/patientformEditFail.jsp" />
             </action>
         <!-- CONTROLE DE PACIENTE-->
+        
+        <!-- CONTROLE DE APLICAÇÃO DA VACINA-->
+            <action path="/pesquisaCartaoSUS" type="br.immunit.controller.AplicacaoPesquisaControl">
+                <forward name="success" path="/vacineApplicationSuccess.jsp" />
+                <forward name="fail" path="/vacineApplication.jsp" />
+            </action>
+            
+            <action path="/cadastraAplicacao" type="br.immunit.controller.AplicacaoCadastraControl">
+                <forward name="success" path="/vacineApplicationSuccess.jsp" />
+                <forward name="fail" path="/vacineApplication.jsp" />
+            </action>
+        <!-- CONTROLE DE APLICAÇÃO DA VACINA-->
 
             <action path="/Welcome" forward="/login.jsp" />
     </action-mappings>

@@ -294,6 +294,28 @@ public class UserDAO extends DAO{
         stop();
         return codNome;
        
+    }    
+    
+    public List<UserModel> buscaUser(String login) throws SQLException{        
+        
+        start();
+        Statement stmt = conn.createStatement();
+        
+        String sqlSELECT = "SELECT * FROM Usuario "
+                + "WHERE log_Login = '" + login + "'";
+        ResultSet rs = stmt.executeQuery(sqlSELECT);
+        
+        List<UserModel> lista = new ArrayList<UserModel>();
+
+        while (rs.next()) {
+            UserModel u = new UserModel();
+            u.setNome(rs.getString("usu_Nome"));
+            u.setSobrenome(rs.getString("usu_Sobrenome"));
+            lista.add(u);
+        }
+                
+        stop();
+        return lista;       
     }
     
 }

@@ -157,7 +157,9 @@
     </div>
 
 </div>
-  <div class="clearfix"></div>
+
+<div class="clearfix"></div>
+
 <div class="form-group" style="padding-bottom: 10px;">
 
     <div class="col-sm-4" style="padding-left: 0px;">

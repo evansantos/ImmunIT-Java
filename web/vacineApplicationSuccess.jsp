@@ -5,11 +5,10 @@
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
 <%    
-    session.removeAttribute("cartaoSUS");
-
     String vacina = "*";
-    String login = "LSantos1"; //String login = (String) session.getAttribute("login"); 
-    int codVacina = 1;
+    String login = "LSantos1"; //String login = (String) session.getAttribute("login");
+    String card = (String) session.getAttribute("cartaoSUS");
+    long cartaoSUS = Long.parseLong(card.replace(".", ""));
 %>
 
 <h1 class="page-header">Aplicação de vacina</h1>
@@ -18,7 +17,7 @@
     <div class="form-group">        
         <div class="col-sm-2" style="padding-left: 0px;"> <!--width: 20.1%;-->
             <label for="cartaoSUS">Cartão SUS</label>
-            <input type="text" name="cartaoSUS" id="cartaoSUS" class="form-control">
+            <input type="text" name="cartaoSUS" id="cartaoSUS" class="form-control" value="<%=card%>">
         </div>
         <div class="col-sm-1" style="padding-top: 25px; padding-left: 0; padding-right: 0; width: 10%; ">
             <button type="submit" class="btn btn-default">
@@ -27,7 +26,10 @@
         </div>
         <div class="col-sm-8">
             <label for="paciente">Nome do Paciente</label>
-            <input type="text" name="paciente" id="paciente" class="form-control" readonly="">
+            <jsp:useBean id="p_Paciente" class="br.immunit.dao.PacienteDAO" />
+            <c:forEach var="p" items="<%=p_Paciente.buscaPaciente(cartaoSUS)%>">
+                <input type="text" name="paciente" id="paciente" class="form-control" value="${p.nome} ${p.sobrenome}" readonly="">
+            </c:forEach>
         </div>        
     </div>    
 </form>
@@ -41,17 +43,14 @@
             <select id="vacina" name="vacina" class="form-control">
                 <jsp:useBean id="l_VacinaControl" class="br.immunit.dao.VacinaDAO" />
                 <c:forEach var="v" items="<%=l_VacinaControl.preencheLista(vacina)%>">
-                    <option value="${v.codigo}">${v.nome}</option>                     
-                </c:forEach>                   
+                    <option value="${v.codigo}">${v.nome}</option>
+                </c:forEach>
             </select>
-        </div>
+        </div>                
         <div class="col-sm-2" style="padding-left: 0px;">
             <label for="lote">Lote</label>
             <select id="lote" name="lote" class="form-control">
-                <jsp:useBean id="l_Lote" class="br.immunit.dao.ControleVacinaDAO" />
-                <c:forEach var="c" items="<%=l_Lote.preencheLote(codVacina)%>">
-                    <option value="${c.codigo}">${c.codigo}</option>  
-                </c:forEach>    
+                <option></option>                
             </select>
         </div> 
         <div class="col-sm-6" style="padding-right: 20px;">
@@ -65,8 +64,10 @@
             <button type="submit" class="btn btn-default pull-right" style="margin-top: 25px; margin-left: 0px;">
                 <span class="glyphicon glyphicon-save"></span> Salvar
             </button>
-        </div>  
+        </div>   
     </div>  
+</form>       
+            
 </form>
 
 <%@include  file="includes/_footer.jsp" %>

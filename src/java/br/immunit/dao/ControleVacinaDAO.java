@@ -4,8 +4,6 @@ import br.immunit.model.ControleVacinaModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -152,7 +150,8 @@ public class ControleVacinaDAO extends DAO{
         
     }
     
-    public List<ControleVacinaModel> preencheRelatorio(String ubs, String vacina, String lote, String validade, String login)throws SQLException {
+    public List<ControleVacinaModel> preencheRelatorio(String ubs, String vacina, String lote, 
+            String validade, String login)throws SQLException {
 
         start();
         Statement stmt = conn.createStatement();
@@ -237,6 +236,27 @@ public class ControleVacinaDAO extends DAO{
 
         stop();
         return lista;    
+    }
+    
+    public List<ControleVacinaModel> preencheLote(int codigo) throws SQLException{
+        
+        start();
+        Statement stmt = conn.createStatement();
+        
+        String sql = "SELECT * FROM controle WHERE vac_Cod = " + codigo + " AND con_Quantidade > 0";
+        ResultSet rs = stmt.executeQuery(sql);
+        
+        List<ControleVacinaModel> lista = new ArrayList<ControleVacinaModel>();
+
+        while (rs.next()) {
+            ControleVacinaModel c = new ControleVacinaModel();
+            c.setCodigo(rs.getInt("con_Lote"));
+            lista.add(c);
+        }
+                
+        stop();
+        return lista;
+        
     }
     
 }

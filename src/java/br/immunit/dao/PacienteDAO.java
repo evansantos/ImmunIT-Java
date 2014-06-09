@@ -224,4 +224,26 @@ public class PacienteDAO extends DAO{
         }        
     }
     
+    public List<PacienteModel> buscaPaciente(long cartaoSUS) throws SQLException{        
+        
+        start();
+        Statement stmt = conn.createStatement();
+        
+        String sql = "SELECT * FROM Paciente "
+                + "WHERE pac_CartSus = " + cartaoSUS + "";
+        ResultSet rs = stmt.executeQuery(sql);
+        
+        List<PacienteModel> lista = new ArrayList<PacienteModel>();
+
+        while (rs.next()) {
+            PacienteModel p = new PacienteModel();
+            p.setNome(rs.getString("pac_Nome"));
+            p.setSobrenome(rs.getString("pac_Sobrenome"));
+            lista.add(p);
+        }
+                
+        stop();
+        return lista;       
+    }
+    
 }
