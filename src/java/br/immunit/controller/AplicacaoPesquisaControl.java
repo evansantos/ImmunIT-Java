@@ -24,18 +24,25 @@ public class AplicacaoPesquisaControl extends org.apache.struts.action.Action {
         
         session.removeAttribute("cartaoSUS");        
         session.setAttribute("cartaoSUS", request.getParameter("cartaoSUS"));
-
-        if(request.getParameter("cartaoSUS").equals(""))
-        {
+        
+        if(request.getParameter("cartaoSUS").equals("")){
             JOptionPane.showMessageDialog(null, "Digite o número do cartão SUS que deseja pesquisar.");
             return mapping.findForward(FAIL);
         }else{
-            PacienteDAO p = new PacienteDAO();
-            if(p.pesquisaPaciente(0, Long.parseLong(request.getParameter("cartaoSUS").replace(".", "")))){
-                return mapping.findForward(SUCCESS);
-            }else{
-                JOptionPane.showMessageDialog(null, "Paciente não encontrado.");
+                        
+            String card = request.getParameter("cartaoSUS").substring(17);
+            
+            if(card.equals("")){
+                JOptionPane.showMessageDialog(null, "Digite o número do cartão SUS que deseja pesquisar.");
                 return mapping.findForward(FAIL);
+            }else{
+                PacienteDAO p = new PacienteDAO();
+                if(p.pesquisaPaciente(0, Long.parseLong(request.getParameter("cartaoSUS").replace(".", "")))){
+                    return mapping.findForward(SUCCESS);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Paciente não encontrado.");
+                    return mapping.findForward(FAIL);
+                }
             }
         }
     }

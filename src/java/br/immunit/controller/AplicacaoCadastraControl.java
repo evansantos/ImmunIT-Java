@@ -1,7 +1,11 @@
 package br.immunit.controller;
 
-import br.immunit.dao.PacienteDAO;
+import br.immunit.dao.AplicacaoDAO;
+import br.immunit.dao.ControleVacinaDAO;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,15 +24,27 @@ public class AplicacaoCadastraControl extends org.apache.struts.action.Action {
         HttpServletRequest request, HttpServletResponse response) 
         throws SQLException{
 
-        String lote = request.getParameter("lote");
+        HttpSession session = request.getSession();
+
         String login = "LSantos1"; //String login = request.getParameter("login");
-        String cartaoSUS = request.getParameter("cartaoSUS");
-        String paciente = request.getParameter("paciente");        
+        String cartaoSUS = request.getParameter("cartaoSUSOculto");
+        int codVacina =  Integer.parseInt(request.getParameter("codVacina"));
         
-        if(paciente.isEmpty()){
+        Calendar c = Calendar.getInstance();
+        DateFormat df = new SimpleDateFormat("yyy-MM-dd");    
+        String dataSys = df.format(c.getTime()).toString();
+        
+        if(request.getParameter("cartaoSUSOculto").equals("")){
             JOptionPane.showMessageDialog(null, "Digite o número do cartão SUS para buscar o paciente.");
             return mapping.findForward(FAIL);
         }else{
+            
+            int codLote;            
+            ControleVacinaDAO controle = new ControleVacinaDAO();
+            controle.pesquisaLote(codVacina);
+            
+            
+            AplicacaoDAO a = new AplicacaoDAO();
             
             
             

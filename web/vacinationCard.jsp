@@ -1,15 +1,14 @@
 <%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<%@page pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
 <%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
 
 <%
-
-    long cpf = Long.parseLong("34249309894");
-
+    String login = "123456789012345"; //String login = (String) session.getAttribute("login");   
 %>
 
-<h1 class="page-header">Carteira de vacinaÃ§Ã£o</h1>
+<h1 class="page-header">Carteira de vacinação</h1>
 <style id="jsbin-css">
     .row label{
         border-bottom: #ccc thin solid;
@@ -45,7 +44,7 @@
 </style>
 
 <jsp:useBean id="c_Carterinha" class="br.immunit.dao.PacienteDAO"/>
-<c:forEach var="c" items="<%=c_Carterinha.preencheLista(cpf)%>">
+<c:forEach var="c" items="<%=c_Carterinha.preencheLista(0, login)%>">
 
     <div class="container">
         <div class="row">
@@ -60,7 +59,7 @@
         </div>
         <div class="row">
             <div class="col-xs-8">
-                <label>MÃ£e ou responsavel:</label>
+                <label>Mãe ou responsavel:</label>
                 <input type="text" class="form-control" value="${c.responsavel}"/> 
             </div>
             <div class="col-xs-4">
@@ -70,7 +69,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <label>EndereÃ§o:</label>
+                <label>Endereço:</label>
                 <input type="text" class="form-control" value="${c.endereco}" />
             </div>
         </div>
@@ -80,7 +79,7 @@
                 <input type="text" class="form-control" value="${c.bairro}"/>
             </div>
             <div class="col-xs-3">
-                <label>MunicÃ­pio:</label>
+                <label>Município:</label>
                 <input type="text" class="form-control" value="${c.cidade}"/>
             </div>
             <div class="col-xs-3">
@@ -129,581 +128,334 @@
                         <th class="col-xs-2">BCG (Tuberculose)</th>
                         <th class="col-xs-2">Paralisia Infantil</th>
                         <th class="col-xs-2">Penta</th>
-                        <th class="col-xs-2">RotavÃ­rus</th>
+                        <th class="col-xs-2">Rotavírus</th>
                         <th class="col-xs-2">Pneumo 10</th>
                         <th class="col-xs-2">Meningo C</th>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </tbody>
+                </thead>                
+                <jsp:useBean id="teste" class="br.immunit.dao.PacienteDAO"/>
+                <c:forEach var="c" items="<%=teste.preencheLista(0, login)%>">                
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table>
+                                    <c:if test="">
+                                        <tr><td colspan="2"><b>Data:</b></td></tr>
+                                        <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                        <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                        <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    </c:if>
+                                    <c:if test="${c.nome.equals('Leticia')}">
+                                        <tr><td colspan="2"><b>Data:</b> ${c.nome}</td></tr>
+                                        <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                        <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                        <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    </c:if>    
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>                
+                </c:forEach>                
                 <thead>
                     <tr>
                         <th class="col-xs-2">Hepatite B</th>
-                        <th class="col-xs-2">Paralisia Infantil - 2Âª Dose</th>
-                        <th class="col-xs-2">Penta - 2Âª Dose</th>
-                        <th class="col-xs-2">RotavÃ­rus - 2Âª Dose</th>
-                        <th class="col-xs-2">Pneumo 10 - 2Âª Dose</th>
-                        <th class="col-xs-2">Meningo C - 2Âª Dose</th>
+                        <th class="col-xs-2">Paralisia Infantil - 2ª Dose</th>
+                        <th class="col-xs-2">Penta - 2ª Dose</th>
+                        <th class="col-xs-2">Rotavírus - 2ª Dose</th>
+                        <th class="col-xs-2">Pneumo 10 - 2ª Dose</th>
+                        <th class="col-xs-2">Meningo C - 2ª Dose</th>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </tbody>
+                </thead>                
+                <jsp:useBean id="teste1" class="br.immunit.dao.PacienteDAO"/>
+                <c:forEach var="c" items="<%=teste1.preencheLista(0, login)%>">                
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>                
+                </c:forEach>
                 <thead>
                     <tr>
                         <th class="col-xs-2"></th>
-                        <th class="col-xs-2">Paralisia Infantil - 3Âª Dose</th>
-                        <th class="col-xs-2">Penta - 3Âª Dose</th>
-                        <th class="col-xs-2">Sarampo/Caxumba/RubÃ©ola</th>
-                        <th class="col-xs-2">Pneumo 10 - 3Âª Dose</th>
-                        <th class="col-xs-2">Meningo C - ReforÃ§o</th>
+                        <th class="col-xs-2">Paralisia Infantil - 3ª Dose</th>
+                        <th class="col-xs-2">Penta - 3ª Dose</th>
+                        <th class="col-xs-2">Sarampo/Caxumba/Rubéola</th>
+                        <th class="col-xs-2">Pneumo 10 - 3ª Dose</th>
+                        <th class="col-xs-2">Meningo C - Reforço</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </tbody>
+                <jsp:useBean id="teste2" class="br.immunit.dao.PacienteDAO"/>
+                <c:forEach var="c" items="<%=teste2.preencheLista(0, login)%>">                
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>                
+                </c:forEach>
                 <thead>
                     <tr>
                         <th class="col-xs-2"></th>
-                        <th class="col-xs-2">Paralisia Infantil - 1Âª ReforÃ§o</th>
-                        <th class="col-xs-2">Difteria/TÃ©tano/Coqueluche</th>
-                        <th class="col-xs-2">Sarampo/Caxumba/RubÃ©ola</th>
-                        <th class="col-xs-2">Pneumo 10 - ReforÃ§o</th>
+                        <th class="col-xs-2">Paralisia Infantil - 1ª Reforço</th>
+                        <th class="col-xs-2">Difteria/Tétano/Coqueluche</th>
+                        <th class="col-xs-2">Sarampo/Caxumba/Rubéola</th>
+                        <th class="col-xs-2">Pneumo 10 - Reforço</th>
                         <th class="col-xs-2">Febre Amarela</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </tbody>
+                <jsp:useBean id="teste4" class="br.immunit.dao.PacienteDAO"/>
+                <c:forEach var="c" items="<%=teste1.preencheLista(0, login)%>">                
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>                
+                </c:forEach>
                 <thead>
                     <tr>
                         <th class="col-xs-2"></th>
-                        <th class="col-xs-2">Paralisia Infantil - 2Âº ReforÃ§o</th>
-                        <th class="col-xs-2">Difteria/TÃ©tano/Coqueluche</th>
+                        <th class="col-xs-2">Paralisia Infantil - 2º Reforço</th>
+                        <th class="col-xs-2">Difteria/Tétano/Coqueluche</th>
                         <th class="col-xs-2"></th>
                         <th class="col-xs-2"></th>
                         <th class="col-xs-2"></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td>
-                            <table>
-                                <tr><td colspan="2">Data:</td></tr>
-                                <tr>
-                                    <td>Lote:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nome:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td>RG Prof.:</td>
-                                    <td style="padding-left: 10px;"></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </tbody>
+                <jsp:useBean id="teste5" class="br.immunit.dao.PacienteDAO"/>
+                <c:forEach var="c" items="<%=teste5.preencheLista(0, login)%>">                
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr><td colspan="2"><b>Data:</b><!--COLOCAR AQUI--></td></tr>
+                                    <tr><td><b>Lote:</b><!--COLOCAR AQUI--></td><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>Nome:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                    <tr><td><b>RG Prof.:</b></td><!--COLOCAR AQUI--><td style="padding-left: 10px;"></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>                
+                </c:forEach>
             </table>
         </div>
     </div>

@@ -10,7 +10,7 @@
 %>
 
 <jsp:useBean id="l_PatientFormEdit" class="br.immunit.dao.PacienteDAO" />
-<c:forEach var="p" items="<%=l_PatientFormEdit.preencheLista(p_Cpf)%>">
+<c:forEach var="p" items="<%=l_PatientFormEdit.preencheLista(p_Cpf,"")%>">
 
     <h1 class="page-header">Edita paciente</h1>
 

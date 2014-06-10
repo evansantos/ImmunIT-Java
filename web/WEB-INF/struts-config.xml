@@ -180,7 +180,12 @@
             
             <action path="/cadastraAplicacao" type="br.immunit.controller.AplicacaoCadastraControl">
                 <forward name="success" path="/vacineApplicationSuccess.jsp" />
-                <forward name="fail" path="/vacineApplication.jsp" />
+                <forward name="fail" path="/vacineApplicationFail.jsp" />
+            </action>
+            
+            <action path="/pesquisaLoteVacinas" type="br.immunit.controller.AplicacaoPesquisaLoteControl">
+                <forward name="success" path="/vacineApplicationSuccess.jsp" />
+                <forward name="fail" path="/vacineApplicationFail.jsp" />
             </action>
         <!-- CONTROLE DE APLICAÇÃO DA VACINA-->
 

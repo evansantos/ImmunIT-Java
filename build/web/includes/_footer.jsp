@@ -30,6 +30,10 @@
             }
         });
         
+        $('#vacina').on('change', function(){
+             $('#codVacina').val($(this).val());
+        });
+       
         </script>
     </body>
 </html>

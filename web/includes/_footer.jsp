@@ -31,10 +31,7 @@
         });
         
         $('#vacina').on('change', function(){
-             alert($(this).val());
-             $.post('pesquisaCartaoSUS.do',{ lote: $(this).val()}, function(data) {
-                 $('#lote').val(data.val());
-             });
+             $('#codVacina').val($(this).val());
         });
        
         </script>

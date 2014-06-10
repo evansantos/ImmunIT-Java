@@ -94,14 +94,14 @@ public class PacienteDAO extends DAO{
         return resultado;
     }
     
-    public List<PacienteModel> preencheLista(long cpf) throws SQLException {
+    public List<PacienteModel> preencheLista(long cpf, String login) throws SQLException {
 
         start();
         Statement stmt = conn.createStatement();
 
         String sql = "SELECT paciente.*, endereco.* FROM paciente "
                    + "INNER JOIN endereco ON paciente.end_Cep = endereco.end_Cep "
-                   + "WHERE paciente.pac_Cpf = " + cpf + "";
+                   + "WHERE paciente.pac_Cpf = " + cpf + " OR log_Login = '" + login + "'";
 
         ResultSet rs = stmt.executeQuery(sql);
         

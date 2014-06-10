@@ -136,7 +136,7 @@ public class ControleVacinaDAO extends DAO{
         start();
         Statement stmt = conn.createStatement();
         
-        String sql = "SELECT * FROM controle WHERE con_Lote = " + lote + "";
+        String sql = "SELECT * FROM controle WHERE vac_Cod = " + lote + "";
         ResultSet rs = stmt.executeQuery(sql);
         
         boolean resultado = false;
