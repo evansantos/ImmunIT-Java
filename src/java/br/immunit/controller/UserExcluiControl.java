@@ -18,10 +18,14 @@ public class UserExcluiControl extends org.apache.struts.action.Action{
         HttpServletRequest request, HttpServletResponse response) 
         throws SQLException{
 
-        UserDAO u = new UserDAO();
-        u.excluiUser(Long.parseLong(request.getParameter("cpf")));
-        
-        JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso.");
-        return mapping.findForward(SUCCESS);
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir esse usuário?", "WARNING",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            UserDAO u = new UserDAO();
+            u.excluiUser(Long.parseLong(request.getParameter("cpf")));
+            JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso.");
+            return mapping.findForward(SUCCESS);
+        }else{
+            JOptionPane.showMessageDialog(null, "Operação cancelada.");
+            return mapping.findForward(SUCCESS);
+        }
     }
 }

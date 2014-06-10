@@ -179,7 +179,7 @@
             </action>
             
             <action path="/cadastraAplicacao" type="br.immunit.controller.AplicacaoCadastraControl">
-                <forward name="success" path="/vacineApplicationSuccess.jsp" />
+                <forward name="success" path="/vacineApplication.jsp" />
                 <forward name="fail" path="/vacineApplicationFail.jsp" />
             </action>
             

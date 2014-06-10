@@ -286,9 +286,9 @@ public class UserDAO extends DAO{
         String codNome;
         
         if(tipo == 1){
-         codNome = rs.getString("ubs_NomeFantasia");
+            codNome = rs.getString("ubs_NomeFantasia");
         }else{
-         codNome = rs.getString("ubs_Cnes");
+            codNome = rs.getString("ubs_Cnes");
         }
         
         stop();

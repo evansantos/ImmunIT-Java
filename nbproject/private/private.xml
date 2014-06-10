@@ -11,13 +11,6 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Rafael/ImmunIT/src/java/br/immunit/dao/AplicacaoDAO.java</file>
-            <file>file:/C:/Users/Rafael/ImmunIT/src/java/br/immunit/controller/AplicacaoCadastraControl.java</file>
-            <file>file:/C:/Users/Rafael/ImmunIT/src/java/br/immunit/controller/PacienteCadastraControl.java</file>
-            <file>file:/C:/Users/Rafael/ImmunIT/web/WEB-INF/struts-config.xml</file>
-            <file>file:/C:/Users/Rafael/ImmunIT/src/java/br/immunit/dao/ControleVacinaDAO.java</file>
-            <file>file:/C:/Users/Rafael/ImmunIT/web/vacineApplicationSuccess.jsp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

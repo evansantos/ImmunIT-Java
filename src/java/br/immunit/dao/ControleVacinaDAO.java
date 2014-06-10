@@ -259,4 +259,39 @@ public class ControleVacinaDAO extends DAO{
         
     }
     
+    public void atualizaLote(int lote) throws SQLException{
+        
+        start();
+        Statement stmt = conn.createStatement();
+        
+        String sql = "SELECT * FROM controle WHERE con_Lote = " + lote + "";
+        ResultSet rs = stmt.executeQuery(sql);
+        rs.next();
+        
+        int quantidade = rs.getInt("con_Quantidade");
+        quantidade -= 1;
+        
+        String sqlUPDATE = "UPDATE controle SET con_Quantidade = " + quantidade + " WHERE con_Lote = " + lote + "";
+        
+        stmt.execute(sqlUPDATE);        
+        stop();
+        
+    }
+    
+    public int buscaCodVacina(int lote) throws SQLException{
+        
+        start();
+        Statement stmt = conn.createStatement();
+        
+        String sql = "SELECT * FROM controle WHERE con_Lote = " + lote + "";
+        ResultSet rs = stmt.executeQuery(sql);
+        rs.next();
+        
+        int codVac = rs.getInt("vac_Cod");
+        
+        stop();
+        return codVac;
+        
+    }
+    
 }

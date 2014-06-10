@@ -73,7 +73,14 @@
                 
         <input type="hidden" name="codVacina" id="codVacina" class="form-control" value="<%=cod%>">
         <input type="hidden" name="nomeVacina" id="nomeVacina" class="form-control" value="<%=nome%>">
-        
+          
+</form>
+                
+<form role="form" method="post" action="cadastraAplicacao.do">
+    
+    <input type="hidden" name="cartaoSUSOculto" id="cartaoSUSOculto" class="form-control" value="<%=cartaoSUS%>">
+    <input type="hidden" name="codVacina" id="codVacina" class="form-control" value="<%=cod%>">
+    
         <div class="col-sm-2">
             <label for="lote">Lote</label>
             <select id="lote" name="lote" class="form-control">
@@ -82,27 +89,22 @@
                     <option value="${c.codigo}">${c.codigo}</option>  
                 </c:forEach>    
             </select>
-        </div> 
+        </div>
                 
-</form>
-                
-<form role="form" method="post" action="cadastraAplicacao.do">
-    
-    <input type="hidden" name="cartaoSUSOculto" id="cartaoSUSOculto" class="form-control" value="<%=cartaoSUS%>">
-    <input type="hidden" name="codVacina" id="codVacina" class="form-control" value="<%=cod%>">
-        
         <div class="col-sm-6" style="padding-right: 20px;">
             <label for="funcionario">Nome do Funcionário</label>
             <jsp:useBean id="u_User" class="br.immunit.dao.UserDAO" />
             <c:forEach var="u" items="<%=u_User.buscaUser(login)%>">
                 <input type="text" name="funcionario" id="funcionario" class="form-control" value="${u.nome} ${u.sobrenome}" readonly="">
             </c:forEach>
-        </div>  
+        </div>
+            
         <div class="col-sm-2 pull-right">
             <button type="submit" class="btn btn-default pull-right" style="margin-top: 25px; margin-left: 0px;">
                 <span class="glyphicon glyphicon-save"></span> Salvar
             </button>
-        </div>  
+        </div>
+            
     </div>  
 </form>
             

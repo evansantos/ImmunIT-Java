@@ -1,24 +1,39 @@
 package br.immunit.dao;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AplicacaoDAO extends DAO{
     
-    public void cadastraVacina(int lote, int vacina, String data, int quantidade, int cnes) throws SQLException{        
+    public void cadastraVacina(int lote, int cnes, long cartaoSUS, String data) throws SQLException{        
         
         start();
         Statement stmt = conn.createStatement();
         
-        String sql = "INSERT INTO Controle (con_Lote, vac_Cod, con_Validade, con_Quantidade, ubs_Cnes) VALUES "
-                     + "(" + lote + "," + vacina + ",'" + data + "'," + quantidade + "," + cnes + ")"; 
+        String sql = "INSERT INTO Aplicacao (con_Lote, ubs_Cnes, pac_CartSUS, apl_DataApl) VALUES "
+                + "(" + lote + "," + cnes + "," + cartaoSUS + ",'" + data + "')"; 
+ 
+        stmt.execute(sql);
+        
+        ControleVacinaDAO controle = new ControleVacinaDAO();
+        controle.atualizaLote(lote);
+        
+        stop();
+        
+    }
+    
+    public boolean pesquisaVacina(int lote) throws SQLException{        
+        
+        start();
+        Statement stmt = conn.createStatement();
+        
+        String sql = ""; 
  
         stmt.execute(sql);
         stop();
         
-    }    
+        return true;
+        
+    }
     
 }
