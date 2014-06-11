@@ -43,7 +43,7 @@
 
 <form role="form" method="post" action="pesquisaLoteVacinas.do"> 
     
-    <div class="col-sm-8">
+    <div class="col-sm-8" style="width: 73.25%;">
             <label for="paciente">Nome do Paciente</label>
                 <input type="text" name="paciente" id="paciente" class="form-control" value="<%=paciente%>" readonly="">
         </div>        
@@ -54,7 +54,7 @@
     <input type="hidden" name="cartaoSUS" id="cartaoSUS" class="form-control" value="<%=card%>">
     
     <div class="form-group" style="padding-top: 10px;">        
-        <div class="col-sm-4" style="padding-left: 0px;">
+        <div class="col-sm-2" style="padding-left: 0px;">
             <label for="vacina">Vacina</label>
             <select id="vacina" name="vacina" class="form-control">
                 <option value="${v.codigo};${v.nome}">${v.nome}</option> 
@@ -65,7 +65,7 @@
             </select>
         </div>
                 
-        <div class="col-sm-1" style="padding-top: 25px; padding-left: 0; padding-right: 0; width: 10%; ">
+        <div class="col-sm-1"  style="padding-top: 25px; padding-left: 0; padding-right: 0; width: 12%;">
            <button type="submit" class="btn btn-default">
                <span class="glyphicon glyphicon-search"></span> Buscar Lote
            </button>
@@ -90,19 +90,20 @@
     
     <!--<input type="hidden" name="cartaoSUSOculto" id="cartaoSUSOculto" class="form-control" value="">-->
         
-        <div class="col-sm-6" style="padding-right: 20px;">
+        <div class="col-sm-6" style="padding-right: 0; width: 53.25%;">
             <label for="funcionario">Nome do Funcionário</label>
             <jsp:useBean id="u_User" class="br.immunit.dao.UserDAO" />
             <c:forEach var="u" items="<%=u_User.buscaUser(login)%>">
                 <input type="text" name="funcionario" id="funcionario" class="form-control" value="${u.nome} ${u.sobrenome}" readonly="">
             </c:forEach>
         </div>  
-        <div class="col-sm-2 pull-right">
+          
+    </div> 
+            <div class="col-sm-2 pull-right">
             <button type="submit" class="btn btn-default pull-right" style="margin-top: 25px; margin-left: 0px;">
                 <span class="glyphicon glyphicon-save"></span> Salvar
             </button>
-        </div>  
-    </div>  
+        </div>
 </form>
             
 <%@include  file="includes/_footer.jsp" %>
