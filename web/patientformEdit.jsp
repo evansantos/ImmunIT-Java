@@ -7,10 +7,11 @@
 <%    
     String cpf = (String) session.getAttribute("cpf");    
     long p_Cpf = Long.parseLong(cpf);
+    String p_Login = "";
 %>
 
 <jsp:useBean id="l_PatientFormEdit" class="br.immunit.dao.PacienteDAO" />
-<c:forEach var="p" items="<%=l_PatientFormEdit.preencheLista(p_Cpf,"")%>">
+<c:forEach var="p" items="<%=l_PatientFormEdit.preencheLista(p_Cpf, p_Login)%>">
 
     <h1 class="page-header">Edita paciente</h1>
 

@@ -20,7 +20,7 @@
             </ul>
             
             <ul class="nav nav-sidebar"><!-- Paciente -->
-                <li><a href="vacinationCard.jsp">Carterinha de vacinação</a></li>
+                <li><a href="vacinationCard.jsp" target="_blank">Carterinha de vacinação</a></li>
             </ul>
 
         </div>

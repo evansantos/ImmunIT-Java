@@ -1,6 +1,5 @@
 package br.immunit.controller;
 
-import br.immunit.dao.PacienteDAO;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

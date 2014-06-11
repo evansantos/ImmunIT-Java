@@ -28,14 +28,14 @@ public class VacinaDAO extends DAO {
         
         String sql;
         
-        if(vacina.equals("*")){
+        if(vacina == null){
+            vacina = "*";
+        }
         
+        if(vacina.equals("*")){        
             sql = "SELECT * FROM vacina";
-
-        }else{
-            
-            sql = "SELECT * FROM vacina WHERE vac_Nome LIKE '%" + vacina + "%'";
-            
+        }else{            
+            sql = "SELECT * FROM vacina WHERE vac_Nome LIKE '%" + vacina + "%'";            
         }
         
         ResultSet rs = stmt.executeQuery(sql);

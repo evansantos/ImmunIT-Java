@@ -46,6 +46,8 @@ public class AplicacaoCadastraControl extends org.apache.struts.action.Action {
 
             AplicacaoDAO a = new AplicacaoDAO();
             a.cadastraVacina(lote, codCnes, cartaoSUS, data);
+            
+            
 
             JOptionPane.showMessageDialog(null, "Vacina registrada com sucesso.");
             return mapping.findForward(SUCCESS);
