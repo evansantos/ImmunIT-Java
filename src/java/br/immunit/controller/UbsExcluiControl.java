@@ -22,10 +22,10 @@ public class UbsExcluiControl extends org.apache.struts.action.Action{
             UbsDAO u = new UbsDAO();
             int cnes = Integer.parseInt(request.getParameter("cnes"));
             u.excluiUbs(cnes);        
-            JOptionPane.showMessageDialog(null, "UBS excluída com sucesso.");
+            JOptionPane.showMessageDialog(null, "UBS excluída com sucesso.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(SUCCESS);
         } else {      
-            JOptionPane.showMessageDialog(null, "Operação cancelada.");
+            JOptionPane.showMessageDialog(null, "Operação cancelada.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(SUCCESS);
         }
     }

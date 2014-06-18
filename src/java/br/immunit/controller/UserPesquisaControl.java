@@ -27,14 +27,14 @@ public class UserPesquisaControl extends org.apache.struts.action.Action{
 
         if(request.getParameter("pesquisaUser").equals(""))
         {
-            JOptionPane.showMessageDialog(null, "Digite o nome do usuário que deseja pesquisar.");
+            JOptionPane.showMessageDialog(null, "Digite o nome do usuário que deseja pesquisar.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(FAIL);
         }else{
             UserDAO u = new UserDAO();
             if(u.pesquisaUserNome(request.getParameter("pesquisaUser"))){
                 return mapping.findForward(SUCCESS);
             }else{
-                JOptionPane.showMessageDialog(null, "Usuário não encontrado.");
+                JOptionPane.showMessageDialog(null, "Usuário não encontrado.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
                 return mapping.findForward(FAIL);
             }
         }

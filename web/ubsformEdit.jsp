@@ -2,12 +2,22 @@
 <%@page pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
-<%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
+<%@include file="includes/_header.jsp" %>
 
 <%    
     String cnes = (String) session.getAttribute("cnes");    
     int u_Cnes = Integer.parseInt(cnes);
+    String login = (String) session.getAttribute("login");
 %>
+
+<jsp:useBean id="userAdmin" class="br.immunit.dao.LoginDAO" />
+<c:if test="${!login.equals('Admin')}" >
+    <c:forEach var="ua" items="<%=userAdmin.perfilUser(login)%>">
+        <c:if test="${!ua.funcao.equals('Administrador')}">
+            <jsp:forward page="main.jsp"></jsp:forward>
+        </c:if>
+    </c:forEach>
+</c:if>
 
 <jsp:useBean id="l_UbsFormEdit" class="br.immunit.dao.UbsDAO" />
 <c:forEach var="u" items="<%=l_UbsFormEdit.preencheListaNome(u_Cnes)%>">                  

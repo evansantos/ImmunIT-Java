@@ -40,7 +40,7 @@ public class UbsCadastraControl extends org.apache.struts.action.Action {
                 bairro.equals("") || cidade.equals("") || estado.equals(""))
         {
             
-            JOptionPane.showMessageDialog(null,"Preencha todos os campos.","ImmunIT",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Preencha todos os campos.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
             
             session.setAttribute("cnes", request.getParameter("cnesOculto"));
             session.setAttribute("nomeFantasia", request.getParameter("nomefantasiaOculto"));
@@ -73,7 +73,7 @@ public class UbsCadastraControl extends org.apache.struts.action.Action {
                 session.removeAttribute("cidade");
                 session.removeAttribute("estado");
 
-                JOptionPane.showMessageDialog(null,"UBS " + cnes + " já está cadastrada.","ImmunIT",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"UBS " + cnes + " já está cadastrada.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
                 return mapping.findForward(FAIL);
                 
             }else{

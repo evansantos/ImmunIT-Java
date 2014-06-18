@@ -2,7 +2,7 @@
 <%@page pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
-<%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
+<%@include file="includes/_header.jsp" %>
 
 <%    
     String cnes = (String) session.getAttribute("cnes"); 
@@ -10,7 +10,17 @@
     String razaoSocial = (String) session.getAttribute("razaoSocial");
     String telefone = (String) session.getAttribute("telefone"); 
     String cep = (String) session.getAttribute("cep");   
+    String login = (String) session.getAttribute("login");
 %>
+
+<jsp:useBean id="userAdmin" class="br.immunit.dao.LoginDAO" />
+<c:if test="${!login.equals('Admin')}" >
+    <c:forEach var="ua" items="<%=userAdmin.perfilUser(login)%>">
+        <c:if test="${!ua.funcao.equals('Administrador')}">
+            <jsp:forward page="main.jsp"></jsp:forward>
+        </c:if>
+    </c:forEach>
+</c:if>
 
 <jsp:useBean id="l_UbsFormSuccess" class="br.immunit.dao.EnderecoDAO" />
 <c:forEach var="e" items="<%=l_UbsFormSuccess.preencheLista(cep)%>">                   

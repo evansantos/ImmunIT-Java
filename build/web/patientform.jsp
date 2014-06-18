@@ -1,7 +1,7 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="ISO-8859-1"%>
 
-<%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
+<%@include file="includes/_header.jsp" %>
 
 <%
     String cartaoSUS = (String) session.getAttribute("cartaoSUS");
@@ -28,7 +28,18 @@
         responsavel = "";
         cep = "";
     }
+    
+    String login = (String) session.getAttribute("login");
 %>
+
+<jsp:useBean id="userAdmin" class="br.immunit.dao.LoginDAO" />
+<c:if test="${!login.equals('Admin')}" >
+    <c:forEach var="ua" items="<%=userAdmin.perfilUser(login)%>">
+        <c:if test="${!ua.funcao.equals('Funcionário')}">
+            <jsp:forward page="main.jsp"></jsp:forward>
+        </c:if>
+    </c:forEach>
+</c:if>
 
 <h1 class="page-header">Adicionar paciente</h1>
 

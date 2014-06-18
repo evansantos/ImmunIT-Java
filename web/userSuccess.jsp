@@ -2,7 +2,7 @@
 <%@page pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
-<%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
+<%@include file="includes/_header.jsp" %>
 
 <%  
     session.removeAttribute("cpf");
@@ -15,8 +15,18 @@
     session.removeAttribute("cep");
 
     String nome = (String) session.getAttribute("pesquisaUser");
+    String login = (String) session.getAttribute("login");
 %>
- 
+
+<jsp:useBean id="userAdmin" class="br.immunit.dao.LoginDAO" />
+<c:if test="${!login.equals('Admin')}" >
+    <c:forEach var="ua" items="<%=userAdmin.perfilUser(login)%>">
+        <c:if test="${!ua.funcao.equals('Administrador')}">
+            <jsp:forward page="main.jsp"></jsp:forward>
+        </c:if>
+    </c:forEach>
+</c:if>
+
 <h1 class="page-header">Usuário</h1>
 
 <form method="post" action="pesquisaUser.do">
@@ -64,9 +74,6 @@
                 <td>${u.ubs}</td>
                 <td width="84">
                     <div class="btn-group btn-group-sm">
-                        <!--<a href="userPassword.jsp">
-                            <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-lock"></span> Senha</button>
-                        </a>-->
                         <form method="post" action="editaUser.do">
                             <button type="submit" class="btn btn-default btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span> Editar

@@ -21,10 +21,10 @@ public class UserExcluiControl extends org.apache.struts.action.Action{
         if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir esse usuário?", "WARNING",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             UserDAO u = new UserDAO();
             u.excluiUser(Long.parseLong(request.getParameter("cpf")));
-            JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso.");
+            JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(SUCCESS);
         }else{
-            JOptionPane.showMessageDialog(null, "Operação cancelada.");
+            JOptionPane.showMessageDialog(null, "Operação cancelada.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(SUCCESS);
         }
     }

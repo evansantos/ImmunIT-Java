@@ -2,13 +2,23 @@
 <%@page pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
-<%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
+<%@include file="includes/_header.jsp" %>
 
 <%
     session.removeAttribute("nome");
     
     String vacina = (String) session.getAttribute("pesquisaVacina");  
+    String login = (String) session.getAttribute("login");
 %>
+
+<c:if test="${!login.equals('Admin')}" >
+<jsp:useBean id="userAdmin" class="br.immunit.dao.LoginDAO" />
+<c:forEach var="ua" items="<%=userAdmin.perfilUser(login)%>">
+    <c:if test="${!ua.funcao.equals('Administrador')}">
+        <jsp:forward page="main.jsp"></jsp:forward>
+    </c:if>
+</c:forEach>
+</c:if>
 
 <h1 class="page-header">Vacinas</h1>
 

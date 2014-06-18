@@ -23,7 +23,7 @@ public class VacinaCadastraControl extends org.apache.struts.action.Action {
 
         if(nome.equals(""))
         {
-            JOptionPane.showMessageDialog(null,"Informe o nome da vacina que deseja cadastrar.","ImmunIT",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Informe o nome da vacina que deseja cadastrar.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(FAIL);
         }else{                      
             VacinaDAO v = new VacinaDAO();

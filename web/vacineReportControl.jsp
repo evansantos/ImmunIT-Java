@@ -2,13 +2,14 @@
 <%@page pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
-<%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
+<%@include file="includes/_header.jsp" %>
 
 <%
-    String loginU = (String) session.getAttribute("login");
+    String login = (String) session.getAttribute("login");
     String vacina = "*";
     String Admin = "Admin";
 %>
+
 
 <h1 class="page-header">Relatório de controle de vacinas</h1>
 
@@ -16,7 +17,7 @@
     
     <div class="form-group">    
 
-        <c:if test="<%=loginU.equals(Admin)%>">
+        <c:if test="<%=login.equals(Admin)%>">
             <div class="col-sm-4" style="padding-left: 0;">
                 <label>UBS</label>
                 <select id="ubs" name="ubs" class="form-control">
@@ -29,11 +30,11 @@
             </div>
         </c:if>
          
-        <c:if test="<%=!loginU.equals(Admin)%>">
+        <c:if test="<%=!login.equals(Admin)%>">
             <div class="col-sm-4" style="padding-left: 0;">
                 <label>UBS</label>
                 <jsp:useBean id="listaUser" class="br.immunit.dao.UserDAO" />
-                <input type="text" name="ubs" id="ubs" class="form-control" value="<%=listaUser.buscaUbsUser(loginU, 1)%>" readonly="">
+                <input type="text" name="ubs" id="ubs" class="form-control" value="<%=listaUser.buscaUbsUser(login, 1)%>" readonly="">
             </div>
         </c:if>
                 

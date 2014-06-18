@@ -13,8 +13,7 @@ public class UserDAO extends DAO{
     public void cadastraUser(long cpf, String nome, String sobrenome, String sexo, String dataNascimento,
                              String rg, String email, String cep, int numero, String complemento, String telefone,
                              int ramal, int funcao, int cnes, String login, String endereco, String bairro,
-                             String cidade, String estado, boolean cadastrarEndereco) 
-            throws SQLException, EmailException{        
+                             String cidade, String estado, boolean cadastrarEndereco) throws SQLException, EmailException{        
         
         start();
         Statement stmt = conn.createStatement();

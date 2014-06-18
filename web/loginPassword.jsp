@@ -10,7 +10,11 @@
 <h1 class="page-header">Alterar senha</h1>
 
 <form method="post" action="alterarSenhaLogin.do">
-    <label style="color: #428bca"><i>* A senha deverá conter no mínimo oito ou no máximo dezesseis caracteres.</i> </label>
+    
+    <label style="color: #428bca">
+        <i>* A senha deverá conter no mínimo oito ou no máximo dezesseis caracteres.</i> 
+    </label>
+    
     <div class="form-group" style="padding-top: 10px">
         <div class="col-sm-6">
             <label>Usuário</label>
@@ -21,7 +25,9 @@
             <input type="password" name="senhaatual" id="senhaatual" class="form-control" required="">
         </div>
     </div>
+        
     <div class="clearfix" ></div>
+    
     <div class="form-group" style="padding-top: 10px">
         <div class="col-sm-6">
             <label>Nova senha</label>
@@ -32,14 +38,19 @@
             <input type="password" name="novasenhaconfere" id="novasenhaconfere" class="form-control" required="">
         </div>
     </div>
+    
     <div class="clearfix" ></div>
+    
     <div class="form-group" style="padding-top: 10px">
         <div class="col-sm-12">
             <div class="pull-right">
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Salvar</button>
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-save"></span> Salvar
+                </button>
             </div>
         </div>
     </div>
+    
 </form>
 
 <%@include  file="includes/_footer.jsp" %>

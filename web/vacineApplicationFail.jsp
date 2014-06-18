@@ -2,11 +2,11 @@
 <%@page pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
-<%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
+<%@include file="includes/_header.jsp" %>
 
 <%    
     String vacina = "*";
-    String login = "LSantos1"; //String login = (String) session.getAttribute("login");
+    String login = (String) session.getAttribute("login");
     String card = (String) session.getAttribute("cartaoSUS");
     String cod = (String) session.getAttribute("codVacina");
     String nome = (String) session.getAttribute("nomeVacina");
@@ -23,14 +23,22 @@
     if(cod != null){
         codVacina = Integer.parseInt(cod);
     }   
-    
 %>
+
+<c:if test="${!login.equals('Admin')}" >
+<jsp:useBean id="userAdmin" class="br.immunit.dao.LoginDAO" />
+<c:forEach var="ua" items="<%=userAdmin.perfilUser(login)%>">
+    <c:if test="${!ua.funcao.equals('Funcionário')}">
+        <jsp:forward page="main.jsp"></jsp:forward>
+    </c:if>
+</c:forEach>
+</c:if>
 
 <h1 class="page-header">Aplicação de vacina</h1>
 
 <form role="form" method="post" action="pesquisaCartaoSUS.do">     
     <div class="form-group">        
-        <div class="col-sm-2" style="padding-left: 0px;"> <!--width: 20.1%;-->
+        <div class="col-sm-2" style="padding-left: 0px;">
             <label for="cartaoSUS">Cartão SUS</label>
             <input type="text" name="cartaoSUS" id="cartaoSUS" class="form-control" value="<%=card%>">
         </div>
@@ -88,8 +96,6 @@
                 
 <form role="form" method="post" action="cadastraAplicacao.do">
     
-    <!--<input type="hidden" name="cartaoSUSOculto" id="cartaoSUSOculto" class="form-control" value="">-->
-        
         <div class="col-sm-6" style="padding-right: 0; width: 53.25%;">
             <label for="funcionario">Nome do Funcionário</label>
             <jsp:useBean id="u_User" class="br.immunit.dao.UserDAO" />

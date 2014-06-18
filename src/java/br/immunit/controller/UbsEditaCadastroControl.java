@@ -34,7 +34,7 @@ public class UbsEditaCadastroControl extends org.apache.struts.action.Action{
             UbsDAO u = new UbsDAO();
             u.atualizaUBS(cnes,nomeFantasia,razaoSocial,telefone,u_Ativo);
             
-            JOptionPane.showMessageDialog(null,"Alteração efetuado com sucesso.");
+            JOptionPane.showMessageDialog(null,"Alteração efetuado com sucesso.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
             
             return mapping.findForward(SUCCESS);
     }

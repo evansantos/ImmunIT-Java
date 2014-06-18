@@ -41,7 +41,7 @@ public class UserEditaCadastroControl extends org.apache.struts.action.Action{
             u.atualizaUser(cpf, email, cep, endereco, numero, complemento,bairro, 
                            cidade, estado, telefone, ramal, funcao, ubs, e_Cadastrado);
             
-            JOptionPane.showMessageDialog(null, "Alteração efetuado com sucesso.");
+            JOptionPane.showMessageDialog(null, "Alteração efetuado com sucesso.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(SUCCESS);
     }
 }

@@ -26,10 +26,10 @@ public class LoginEnviaSenhaControl extends org.apache.struts.action.Action {
         LoginDAO l = new LoginDAO();
                 
         if(l.enviaSenha(cpf)){
-            JOptionPane.showMessageDialog(null,"Senha enviada para seu e-mail.");
+            JOptionPane.showMessageDialog(null,"Senha enviada para seu e-mail.", "ImmunIT", JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(SUCCESS);
         }else{
-            JOptionPane.showMessageDialog(null,"Usuário não encontrado, por favor procurar a UBS mais próxima.","",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Usuário não encontrado, por favor procurar a UBS mais próxima.","ImmunIT", JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(FAIL);
         }        
     }

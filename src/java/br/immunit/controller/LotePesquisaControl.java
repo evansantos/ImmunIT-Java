@@ -28,7 +28,7 @@ public class LotePesquisaControl extends org.apache.struts.action.Action {
 
         if(request.getParameter("pesquisaLote").equals(""))
         {
-            JOptionPane.showMessageDialog(null, "Digite o nome da vacina que deseja pesquisar.", "ImmunIT", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Digite o nome da vacina que deseja pesquisar.","ImmunIT", JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(FAIL);
         }else{
             ControleVacinaDAO c = new ControleVacinaDAO();

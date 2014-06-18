@@ -1,7 +1,6 @@
 package br.immunit.controller;
 
 import br.immunit.dao.AplicacaoDAO;
-import br.immunit.dao.ControleVacinaDAO;
 import br.immunit.dao.UserDAO;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -25,16 +24,16 @@ public class AplicacaoCadastraControl extends org.apache.struts.action.Action {
         throws SQLException{
         
         int lote =  Integer.parseInt(request.getParameter("lote"));
-        String login = "LSantos1"; //String login = request.getParameter("login");
+        String login = request.getParameter("login");
         String cSUS = request.getParameter("cartaoSUSOculto");
-        int cVacina = Integer.parseInt(request.getParameter("codVacina"));
+        //int cVacina = Integer.parseInt(request.getParameter("codVacina"));
         
         Calendar c = Calendar.getInstance();
         DateFormat df = new SimpleDateFormat("yyy-MM-dd");    
         String data = df.format(c.getTime()).toString();
         
         if(request.getParameter("cartaoSUSOculto").equals("")){
-            JOptionPane.showMessageDialog(null, "Digite o número do cartão SUS para buscar o paciente.");
+            JOptionPane.showMessageDialog(null, "Digite o número do cartão SUS para buscar o paciente.","ImmunIT", JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(FAIL);
         }else{
             
@@ -45,11 +44,9 @@ public class AplicacaoCadastraControl extends org.apache.struts.action.Action {
             long cartaoSUS = Long.parseLong(cSUS);
 
             AplicacaoDAO a = new AplicacaoDAO();
-            a.cadastraVacina(lote, codCnes, cartaoSUS, data);
-            
-            
+            a.cadastraVacina(lote, codCnes, cartaoSUS, data, login);
 
-            JOptionPane.showMessageDialog(null, "Vacina registrada com sucesso.");
+            JOptionPane.showMessageDialog(null, "Vacina registrada com sucesso.","ImmunIT", JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(SUCCESS);
             
         }

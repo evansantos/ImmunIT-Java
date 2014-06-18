@@ -38,7 +38,7 @@ public class AplicacaoPesquisaLoteControl extends org.apache.struts.action.Actio
             session.removeAttribute("cartaoSUS"); 
             session.removeAttribute("paciente");
             
-            JOptionPane.showMessageDialog(null, "Digite o número do cartão SUS que deseja pesquisar.");
+            JOptionPane.showMessageDialog(null, "Digite o número do cartão SUS que deseja pesquisar.","ImmunIT", JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(FAIL);   
         }else{            
             if(vac.equals(";")){
@@ -48,7 +48,7 @@ public class AplicacaoPesquisaLoteControl extends org.apache.struts.action.Actio
                 session.removeAttribute("cartaoSUS"); 
                 session.removeAttribute("paciente");
                 
-                JOptionPane.showMessageDialog(null, "Por favor, escolha uma vacina.");
+                JOptionPane.showMessageDialog(null, "Por favor, escolha uma vacina.","ImmunIT", JOptionPane.INFORMATION_MESSAGE);
                 return mapping.findForward(FAIL);
             }else{
                 String vVacina [] = vac.split(";");
@@ -62,7 +62,7 @@ public class AplicacaoPesquisaLoteControl extends org.apache.struts.action.Actio
                 if(c.pesquisaLote(Integer.parseInt(codigoVacina))){
                     return mapping.findForward(SUCCESS);
                 }else{
-                    JOptionPane.showMessageDialog(null, "Não existe lotes cadastrados para essa vacina.");
+                    JOptionPane.showMessageDialog(null, "Não existe lotes cadastrados para essa vacina.","ImmunIT", JOptionPane.INFORMATION_MESSAGE);
                     return mapping.findForward(FAIL);
                 }
             }

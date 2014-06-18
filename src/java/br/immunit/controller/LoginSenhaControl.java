@@ -29,10 +29,10 @@ public class LoginSenhaControl extends org.apache.struts.action.Action {
         
         if(senhaAtual.equals(senhaBD) && senhaNova.equals(senhaConfere) && (quantidade >= 8 && quantidade <= 16)){
             l.atualizaSenha(login, senhaNova);
-            JOptionPane.showMessageDialog(null,"SENHA ALTERADA COM SUCESSO.");
+            JOptionPane.showMessageDialog(null,"Senha alterada com sucesso.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(SUCCESS);
         }else{
-            JOptionPane.showMessageDialog(null,"ERRO AO ALTERAR A SENHA.","",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Erro ao alterar a senha.","ImmunIT", JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(FAIL);
         }        
     }

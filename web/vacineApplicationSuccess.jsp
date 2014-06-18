@@ -2,11 +2,11 @@
 <%@page pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
-<%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
+<%@include file="includes/_header.jsp" %>
 
 <%    
     String vacina = "*";
-    String login = "LSantos1"; //String login = (String) session.getAttribute("login");
+    String login = (String) session.getAttribute("login");
     String card = (String) session.getAttribute("cartaoSUS");
     String cod = (String) session.getAttribute("codVacina");
     String nome = (String) session.getAttribute("nomeVacina");
@@ -19,14 +19,23 @@
     }else{
         codVacina = Integer.parseInt(cod);
     }   
-    
+
 %>
+
+<c:if test="${!login.equals('Admin')}" >
+<jsp:useBean id="userAdmin" class="br.immunit.dao.LoginDAO" />
+<c:forEach var="ua" items="<%=userAdmin.perfilUser(login)%>">
+    <c:if test="${!ua.funcao.equals('Funcionário')}">
+        <jsp:forward page="main.jsp"></jsp:forward>
+    </c:if>
+</c:forEach>
+</c:if>
 
 <h1 class="page-header">Aplicação de vacina</h1>
 
 <form role="form" method="post" action="pesquisaCartaoSUS.do">     
     <div class="form-group">        
-        <div class="col-sm-2" style="padding-left: 0px;"> <!--width: 20.1%;-->
+        <div class="col-sm-2" style="padding-left: 0px;">
             <label for="cartaoSUS">Cartão SUS</label>
             <input type="text" name="cartaoSUS" id="cartaoSUS" class="form-control" value="<%=card%>">
         </div>
@@ -80,6 +89,7 @@
     
     <input type="hidden" name="cartaoSUSOculto" id="cartaoSUSOculto" class="form-control" value="<%=cartaoSUS%>">
     <input type="hidden" name="codVacina" id="codVacina" class="form-control" value="<%=cod%>">
+    <input type="hidden" name="login" id="login" class="form-control" value="<%=login%>">
     
         <div class="col-sm-2">
             <label for="lote">Lote</label>
@@ -98,12 +108,13 @@
                 <input type="text" name="funcionario" id="funcionario" class="form-control" value="${u.nome} ${u.sobrenome}" readonly="">
             </c:forEach>
         </div>
-      </div> 
-            <div class="col-sm-2 pull-right">
-            <button type="submit" class="btn btn-default pull-right" style="margin-top: 25px; margin-left: 0px;">
-                <span class="glyphicon glyphicon-save"></span> Salvar
-            </button>
-        </div>
+
+        </div> 
+              <div class="col-sm-2 pull-right">
+              <button type="submit" class="btn btn-default pull-right" style="margin-top: 25px; margin-left: 0px;">
+                  <span class="glyphicon glyphicon-save"></span> Salvar
+              </button>
+          </div>
 </form>
             
 <%@include  file="includes/_footer.jsp" %>

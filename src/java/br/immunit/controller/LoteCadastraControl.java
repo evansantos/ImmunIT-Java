@@ -36,7 +36,7 @@ public class LoteCadastraControl extends org.apache.struts.action.Action {
         int ano;
         
         if(data.isEmpty()){
-            JOptionPane.showMessageDialog(null,"Preencha todos os campos.","ImmunIT",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Preencha todos os campos.","ImmunIT", JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(FAIL);
         }else{        
             dia = Integer.parseInt(data.substring(0,2));
@@ -55,17 +55,17 @@ public class LoteCadastraControl extends org.apache.struts.action.Action {
             DateFormat dformat = new SimpleDateFormat("dd/MM/yyyy");            
             
             if((mes < 1 || mes > 12) || (dia < 1 || dia > 31)){
-                JOptionPane.showMessageDialog(null,"Por favor, digite uma data válida.","ImmunIT",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Por favor, digite uma data válida.","ImmunIT", JOptionPane.INFORMATION_MESSAGE);
                 return mapping.findForward(FAIL);
             }else if(dat.before(hoje)){
-                JOptionPane.showMessageDialog(null,"A validade tem que ser maior que " + dformat.format(new Date()) + ".","ImmunIT",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"A validade tem que ser maior que " + dformat.format(new Date()) + ".","ImmunIT", JOptionPane.INFORMATION_MESSAGE);
                 return mapping.findForward(FAIL);
             }
         }
         
         if(lote.equals("") || quantidade.equals(""))
         {
-            JOptionPane.showMessageDialog(null,"Preencha todos os campos.","ImmunIT",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Preencha todos os campos.","ImmunIT", JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(FAIL);
         }else{ 
             
@@ -88,7 +88,7 @@ public class LoteCadastraControl extends org.apache.struts.action.Action {
                 return mapping.findForward(FAIL);
             }else{
                 vc.cadastraVacina(l_Lote, v_Vacina, data, l_Qtd, Integer.parseInt(u_Cnes));
-                JOptionPane.showMessageDialog(null,"Lote cadastrado com sucesso.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Lote cadastrado com sucesso.","ImmunIT", JOptionPane.INFORMATION_MESSAGE);
                 return mapping.findForward(SUCCESS);
             }
         }

@@ -1,16 +1,25 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="ISO-8859-1"%>
 
-<%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
+<%@include file="includes/_header.jsp" %>
 
 <%
     session.removeAttribute("lote");
     session.removeAttribute("data");
     session.removeAttribute("quantidade");
 
-    String loginU = (String) session.getAttribute("login");
+    String login = (String) session.getAttribute("login");
     String vacina = "*";
 %>
+
+<c:if test="${!login.equals('Admin')}" >
+<jsp:useBean id="userAdmin" class="br.immunit.dao.LoginDAO" />
+<c:forEach var="ua" items="<%=userAdmin.perfilUser(login)%>">
+    <c:if test="${!ua.funcao.equals('Gerente')}">
+        <jsp:forward page="main.jsp"></jsp:forward>
+    </c:if>
+</c:forEach>
+</c:if>
 
 <h1 class="page-header">Adicionar lote</h1>
 
@@ -44,7 +53,7 @@
         </div>
     </div>
         
-    <input type="hidden" name="login" id="login" class="form-control" value="<%=loginU%>">
+    <input type="hidden" name="login" id="login" class="form-control" value="<%=login%>">
     
     <div class="clearfix"></div>
     

@@ -1,7 +1,7 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="ISO-8859-1"%>
 
-<%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
+<%@include file="includes/_header.jsp" %>
 
 <%
     session.removeAttribute("cnes");
@@ -19,11 +19,13 @@
 %>
 
 <jsp:useBean id="userAdmin" class="br.immunit.dao.LoginDAO" />
-<c:forEach var="ua" items="<%=userAdmin.perfilUser(login)%>">
-    <c:if test="${!ua.funcao.equals('Administrador')}">
-        <jsp:forward page="main.jsp"></jsp:forward>
-    </c:if>
-</c:forEach>
+<c:if test="${!login.equals('Admin')}" >
+    <c:forEach var="ua" items="<%=userAdmin.perfilUser(login)%>">
+        <c:if test="${!ua.funcao.equals('Administrador')}">
+            <jsp:forward page="main.jsp"></jsp:forward>
+        </c:if>
+    </c:forEach>
+</c:if>
 
 <h1 class="page-header">UBS</h1>
 

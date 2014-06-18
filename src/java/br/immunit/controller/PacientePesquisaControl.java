@@ -27,14 +27,14 @@ public class PacientePesquisaControl extends org.apache.struts.action.Action {
 
         if(request.getParameter("pesquisaPaciente").equals(""))
         {
-            JOptionPane.showMessageDialog(null, "Digite o nome do paciente que deseja pesquisar.");
+            JOptionPane.showMessageDialog(null, "Digite o nome do paciente que deseja pesquisar.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(FAIL);
         }else{
             PacienteDAO p = new PacienteDAO();
             if(p.pesquisaPacienteNome(request.getParameter("pesquisaPaciente"))){
                 return mapping.findForward(SUCCESS);
             }else{
-                JOptionPane.showMessageDialog(null, "Paciente não encontrado.");
+                JOptionPane.showMessageDialog(null, "Paciente não encontrado.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
                 return mapping.findForward(FAIL);
             }
         }

@@ -2,7 +2,7 @@
 <%@page pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
-<%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
+<%@include file="includes/_header.jsp" %>
 
 <%
     session.removeAttribute("lote");
@@ -10,8 +10,17 @@
     session.removeAttribute("quantidade");
     
     String vacina = (String) session.getAttribute("pesquisaLote");
-    String loginU = (String) session.getAttribute("login");
+    String login = (String) session.getAttribute("login");
 %>
+
+<c:if test="${!login.equals('Admin')}" >
+<jsp:useBean id="userAdmin" class="br.immunit.dao.LoginDAO" />
+<c:forEach var="ua" items="<%=userAdmin.perfilUser(login)%>">
+    <c:if test="${!ua.funcao.equals('Gerente')}">
+        <jsp:forward page="main.jsp"></jsp:forward>
+    </c:if>
+</c:forEach>
+</c:if>
 
 <h1 class="page-header">Controle de vacinas</h1>
 
@@ -20,7 +29,7 @@
         <div class="col-sm-2" style="padding-left: 0;">
             <label>Buscar Vacina</label>
             <input type="text" name="pesquisaLote" id="pesquisaLote" class="form-control" style="">
-            <input type="hidden" name="log" id="log" class="form-control" style="" value="<%=loginU%>">
+            <input type="hidden" name="log" id="log" class="form-control" style="" value="<%=login%>">
         </div>
         <div class="col-sm-2" style="padding-top: 25px; padding-left: 0">
             <button type="submit" class="btn btn-default">
@@ -49,7 +58,7 @@
     
     <tbody>
         <jsp:useBean id="c_ControlSuccess" class="br.immunit.dao.ControleVacinaDAO" />
-        <c:forEach var="c" items="<%=c_ControlSuccess.preencheLista(loginU, vacina)%>">        
+        <c:forEach var="c" items="<%=c_ControlSuccess.preencheLista(login, vacina)%>">        
             <tr>
                 <td>${c.nomeVacina}</td>
                 <td>${c.codigo}</td>

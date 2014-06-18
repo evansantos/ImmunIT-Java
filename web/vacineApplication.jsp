@@ -2,7 +2,7 @@
 <%@page pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
-<%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
+<%@include file="includes/_header.jsp" %>
 
 <%    
     session.removeAttribute("codVacina");
@@ -11,12 +11,22 @@
     session.removeAttribute("paciente");
 
     String vacina = "*";
-    String login = "LSantos1"; //String login = (String) session.getAttribute("login");
+    String login = (String) session.getAttribute("login");
 %>
+
+<c:if test="${!login.equals('Admin')}" >
+<jsp:useBean id="userAdmin" class="br.immunit.dao.LoginDAO" />
+<c:forEach var="ua" items="<%=userAdmin.perfilUser(login)%>">
+    <c:if test="${!ua.funcao.equals('Funcionário')}">
+        <jsp:forward page="main.jsp"></jsp:forward>
+    </c:if>
+</c:forEach>
+</c:if>
 
 <h1 class="page-header">Aplicação de vacina</h1>
 
 <form role="form" method="post" action="pesquisaCartaoSUS.do">     
+    
     <div class="form-group">        
         <div class="col-sm-2" style="padding-left: 0px;"> <!--width: 20.1%;-->
             <label for="cartaoSUS">Cartão SUS</label>
@@ -69,8 +79,6 @@
 </form>
                 
 <form role="form" method="post" action="cadastraAplicacao.do">    
-        
-        <!--<input type="hidden" name="cartaoSUSOculto" id="cartaoSUSOculto" class="form-control">-->
     
         <div class="col-sm-6" style="padding-right: 0; width: 53.25%;">
             <label for="funcionario">Nome do Funcionário</label>
@@ -81,11 +89,13 @@
         </div>  
           
     </div>  
-            <div class="col-sm-2 pull-right">
-            <button type="submit" class="btn btn-default pull-right" style="margin-top: 25px; margin-left: 0px;">
-                <span class="glyphicon glyphicon-save"></span> Salvar
-            </button>
-        </div>
+    
+    <div class="col-sm-2 pull-right">
+        <button type="submit" class="btn btn-default pull-right" style="margin-top: 25px; margin-left: 0px;">
+            <span class="glyphicon glyphicon-save"></span> Salvar
+        </button>
+    </div>
+            
 </form>
             
 <%@include  file="includes/_footer.jsp" %>

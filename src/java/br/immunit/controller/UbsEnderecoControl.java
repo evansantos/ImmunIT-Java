@@ -46,7 +46,7 @@ public class UbsEnderecoControl extends org.apache.struts.action.Action {
         session.setAttribute("estado", request.getParameter("estado"));
         
         if(request.getParameter("cep").equals("")){
-            JOptionPane.showMessageDialog(null,"Preencha o campo CEP.","ImmunIT",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Preencha o campo CEP.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
             
             session.setAttribute("cep", null);
             

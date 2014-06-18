@@ -2,12 +2,22 @@
 <%@page pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
-<%@include file="includes/_header.jsp" %> <%-- Incluir sempre header --%>
+<%@include file="includes/_header.jsp" %>
 
 <%    
     String codigo = (String) session.getAttribute("codigo");    
     int v_Codigo = Integer.parseInt(codigo);
+    String login = (String) session.getAttribute("login");
 %>
+
+<c:if test="${!login.equals('Admin')}" >
+<jsp:useBean id="userAdmin" class="br.immunit.dao.LoginDAO" />
+<c:forEach var="ua" items="<%=userAdmin.perfilUser(login)%>">
+    <c:if test="${!ua.funcao.equals('Administrador')}">
+        <jsp:forward page="main.jsp"></jsp:forward>
+    </c:if>
+</c:forEach>
+</c:if>
 
 <jsp:useBean id="l_vacina" class="br.immunit.dao.VacinaDAO" />
 <c:forEach var="v" items="<%=l_vacina.preencheListaNome(v_Codigo)%>"> 

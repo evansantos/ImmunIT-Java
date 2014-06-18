@@ -5,7 +5,8 @@ import org.apache.commons.mail.SimpleEmail;
 
 public class EnviarEmail {
     
-    public void criaEmail(String login, String senha, String nome, String sobrenome, String emails) throws EmailException{
+    public void criaEmail(String login, String senha, String nome, String sobrenome, String emails) 
+            throws EmailException{
     
         SimpleEmail email = new SimpleEmail();  
   
@@ -14,8 +15,8 @@ public class EnviarEmail {
             email.setHostName("smtp.gmail.com");  
             email.setAuthentication("immunitsystem","10TNA-ads");  
             email.setSSL(true);
-            email.addTo(emails); //pode ser qualquer um email  
-            email.setFrom("immunitsystem@gmail.com"); //aqui necessita ser o email que voce fara a autenticacao  
+            email.addTo(emails);
+            email.setFrom("immunitsystem@gmail.com");
             email.setSubject("ImmunIT - Senha");  
             email.setMsg("Olá " + nome + " " + sobrenome + ",\n\n"
                     + "Seu login de acesso é " + login + " sua senha atual é " + senha + "\n"

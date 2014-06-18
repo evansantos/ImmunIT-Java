@@ -16,18 +16,22 @@ public class LoginDAO extends DAO{
         start();
         Statement stmt = conn.createStatement();
 
-        String sql = "SELECT COUNT(*) AS Quantidade FROM login WHERE log_Login COLLATE utf8_bin = '"
-                + login + "' AND log_Senha COLLATE utf8_bin = '" + senha + "'";
+        String sql = "SELECT CAST(AES_DECRYPT(log_Senha, 'criptografiaImmunIT') AS CHAR(50)) log_Senha FROM login "
+                + "WHERE log_Login COLLATE utf8_bin = '" + login + "'";        
         
         ResultSet rs = stmt.executeQuery(sql);
-        rs.next();
-
+        
+        String senhaBD = "";
         boolean resultado = false;
-
-        if (rs.getInt("Quantidade") > 0) {
+        
+        if(rs.next()){
+            senhaBD = rs.getString("log_Senha");
+        }        
+        
+        if(senhaBD.equals(senha)){
             resultado = true;
         }
-
+        
         stop();
         return resultado;
     }
@@ -57,7 +61,8 @@ public class LoginDAO extends DAO{
 
         String senhaLogin = geraSenha();
         
-        String sql = "INSERT INTO login (log_Login, log_Senha) VALUES ('" + login + "','" + senhaLogin + "')";
+        String sql = "INSERT INTO login (log_Login, log_Senha) VALUES "
+                + "('" + login + "', AES_ENCRYPT('" + senhaLogin + "','criptografiaImmunIT'))";
        
         stmt.execute(sql);
         stop();
@@ -72,7 +77,8 @@ public class LoginDAO extends DAO{
         start();
         Statement stmt = conn.createStatement();
 
-        String sql = "SELECT * FROM login WHERE log_Login = '"+ login + "'";
+        String sql = "SELECT CAST(AES_DECRYPT(log_Senha, 'criptografiaImmunIT') AS CHAR(50)) log_Senha "
+                + "FROM login WHERE log_Login = '"+ login + "'";
         
         ResultSet rs = stmt.executeQuery(sql);
         rs.next();
@@ -88,8 +94,9 @@ public class LoginDAO extends DAO{
         start();
         Statement stmt = conn.createStatement();
 
-        String sql = "UPDATE login SET log_Senha = '" + senha + "' WHERE log_Login = '" + login + "'";
-       
+        String sql = "UPDATE login SET log_Senha = AES_ENCRYPT('" + senha + "','criptografiaImmunIT') "
+                + "WHERE log_Login = '" + login + "'";
+
         stmt.execute(sql);
         stop();
         
@@ -108,16 +115,19 @@ public class LoginDAO extends DAO{
         ResultSet rs = stmt.executeQuery(sql);
         
         List<FuncaoModel> lista = new ArrayList<FuncaoModel>();
-
-        while (rs.next()) {
-            FuncaoModel funcao = new FuncaoModel();
+        FuncaoModel funcao = new FuncaoModel();
+        
+        if (rs.next()) {            
             funcao.setFuncao(rs.getString("funcao.fun_Funcao"));
+            lista.add(funcao);
+        }else{
+            funcao.setFuncao("Paciente");
             lista.add(funcao);
         }
         
         stop();
         return lista;
-        
+               
     }
     
     public boolean enviaSenha(String cpf) throws SQLException, EmailException {
@@ -125,9 +135,11 @@ public class LoginDAO extends DAO{
         start();
         Statement stmt = conn.createStatement();
         
-        String sqlPac = "SELECT Login.*, Paciente.* FROM Login INNER JOIN Paciente ON "
+        String sqlPac = "SELECT Login.*, Paciente.*, "
+                + "CAST(AES_DECRYPT(log_Senha, 'criptografiaImmunIT') AS CHAR(50)) senha "
+                + "FROM Login INNER JOIN Paciente ON "
                 + "Paciente.log_Login = Login.log_Login "
-                + "WHERE Paciente.pac_Cpf = " + cpf + "";
+                + "WHERE Paciente.pac_Cpf = " + cpf + "";       
         
         ResultSet rsPac = stmt.executeQuery(sqlPac);    
 
@@ -138,7 +150,7 @@ public class LoginDAO extends DAO{
             resultado = true;
 
             String login = rsPac.getString("Login.log_Login");
-            String senhaLogin = rsPac.getString("Login.log_Senha");
+            String senhaLogin = rsPac.getString("senha");
             String nome = rsPac.getString("Paciente.pac_Nome");
             String sobrenome = rsPac.getString("Paciente.pac_Sobrenome");
             String email = rsPac.getString("Paciente.pac_Email");
@@ -146,7 +158,9 @@ public class LoginDAO extends DAO{
             e.criaEmail(login, senhaLogin, nome, sobrenome, email);
         }
         
-        String sqlUser = "SELECT Login.*, Usuario.* FROM Login INNER JOIN Usuario ON "
+        String sqlUser = "SELECT Login.*, Usuario.*, "
+                + "CAST(AES_DECRYPT(log_Senha, 'criptografiaImmunIT') AS CHAR(50)) senha "
+                + "FROM Login INNER JOIN Usuario ON "
                 + "Usuario.log_Login = Login.log_Login "
                 + "WHERE Usuario.usu_Cpf = " + cpf + "";
         
@@ -156,7 +170,7 @@ public class LoginDAO extends DAO{
             resultado = true;
 
             String login = rsUser.getString("Login.log_Login");
-            String senhaLogin = rsUser.getString("Login.log_Senha");
+            String senhaLogin = rsUser.getString("senha");
             String nome = rsUser.getString("Usuario.usu_Nome");
             String sobrenome = rsUser.getString("Usuario.usu_Sobrenome");
             String email = rsUser.getString("Usuario.usu_Email");
@@ -167,32 +181,7 @@ public class LoginDAO extends DAO{
         stop();
         return resultado;
     }
-    
-   //CRIPTOGRAFIA USANDO SHA2 (SHA-224, SHA-256, SHA-384, e SHA-512)
-   /*public String criptografa(String senha) throws UnsupportedEncodingException{  
-
-       try{  
-         
-            MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
-            byte messageDigest[];
-            messageDigest = algorithm.digest(senha.getBytes("UTF-8"));
-
-            StringBuilder hexString = new StringBuilder();
-
-            for (byte b : messageDigest) {
-              hexString.append(String.format("%02X", 0xFF & b));
-            }
-
-            senha = hexString.toString();
-        
-        }catch(NoSuchAlgorithmException ns){  
-            ns.getMessage();
-        }  
-        
-        return senha;  
-
-    }*/ 
-    
+       
     public String geraSenha(){  
   
         String criaSenha = "";

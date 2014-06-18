@@ -1,6 +1,6 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="ISO-8859-1"%>
 
-<%session.removeAttribute("login");%> 
+<%session.invalidate();%> 
 
 <jsp:forward page="Welcome.do"/>

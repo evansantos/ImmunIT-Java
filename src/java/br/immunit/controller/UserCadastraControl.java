@@ -71,7 +71,7 @@ public class UserCadastraControl extends org.apache.struts.action.Action {
             if((ano < 1900 || ano > Integer.parseInt(anoAtual)) || 
                 (mes < 1 || mes > 12) || (dia < 1 || dia > 31)){
                 
-                JOptionPane.showMessageDialog(null, "Data de nascimento inválido.","ImmunIT",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Data de nascimento inválido.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
                 return mapping.findForward(FAIL);   
                 
             }
@@ -83,7 +83,7 @@ public class UserCadastraControl extends org.apache.struts.action.Action {
                 bairro.equals("") || cidade.equals("") || estado.equals(""))
         {
         
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos.","ImmunIT",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(FAIL);
         
         }else{
@@ -96,7 +96,7 @@ public class UserCadastraControl extends org.apache.struts.action.Action {
                         
             if(user.pesquisaUser(u_Cpf)){
                 
-                JOptionPane.showMessageDialog(null,"CPF " + u_Cpf + " já está cadastrada.","ImmunIT",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"CPF " + u_Cpf + " já está cadastrada.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
                 return mapping.findForward(FAIL);
             
             }else{
@@ -129,7 +129,7 @@ public class UserCadastraControl extends org.apache.struts.action.Action {
                         email, cep, u_Numero, complemento, telefone, u_Ramal, u_Funcao, 
                         u_Ubs, login, endereco, bairro, cidade, estado, e_Cadastrado);
 
-                JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso.");
+                JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
                 return mapping.findForward(SUCCESS);
             }
         }

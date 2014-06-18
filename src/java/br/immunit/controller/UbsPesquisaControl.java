@@ -27,14 +27,14 @@ public class UbsPesquisaControl extends org.apache.struts.action.Action {
 
         if(request.getParameter("pesquisaUBS").equals(""))
         {
-            JOptionPane.showMessageDialog(null, "Digite o nome da UBS que deseja pesquisar.");
+            JOptionPane.showMessageDialog(null, "Digite o nome da UBS que deseja pesquisar.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
             return mapping.findForward(FAIL);
         }else{
             UbsDAO u = new UbsDAO();
             if(u.pesquisaUBSNome(request.getParameter("pesquisaUBS"))){
                 return mapping.findForward(SUCCESS);
             }else{ 
-                JOptionPane.showMessageDialog(null, "UBS não encontrada.");
+                JOptionPane.showMessageDialog(null, "UBS não encontrada.","ImmunIT",JOptionPane.INFORMATION_MESSAGE);
                 return mapping.findForward(FAIL);
             }
         }
